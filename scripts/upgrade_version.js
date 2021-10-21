@@ -28,8 +28,10 @@ const checkVersionFormat = (version) => {
 };
 
 const gitCommit = (version) => {
+  shell.exec(`git tag v${version} -d`, shellSilentOption);
   shell.exec(`git commit --amend -m "bump to version ${version}" --no-verify`, shellSilentOption);
-  console.log(`bump to version ${version}`);
+  shell.exec(`git tag v${version}`, shellSilentOption);
+  console.log(`bump to version ${version}, add tag v${version}`);
 };
 
 const updatePackageVersion = (version) => {

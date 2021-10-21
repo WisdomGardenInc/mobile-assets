@@ -1,0 +1,30 @@
+name: "release"
+
+on:
+  push:
+    tags:
+      - "v*.*.*"
+
+jobs:
+  release:
+    name: "Release"
+    runs-on: "ubuntu-latest"
+
+    steps:
+      - uses: actions/checkout@v2
+      
+      - name: Get the version
+        id: getVersion
+        run: echo ::set-output name=VERSION::$(echo $GITHUB_REF | cut -d / -f 3)
+
+      - uses: "marvinpinto/action-automatic-releases@latest"
+        with:
+          repo_token: "${{ secrets.GITHUB_TOKEN }}"
+          draft: false
+          prerelease: false
+          automatic_release_tag: "${{steps.getVersion.outputs.VERSION}}"
+          title: "${{steps.getVersion.outputs.VERSION}}"
+          files: |
+            *.html
+            *.md
+            *.json
