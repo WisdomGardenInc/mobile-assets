@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        .video-container {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            right: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        iframe {
+            /* optional */
+            width: 100%;
+            height: 100%;
+        }
+        .loading-container {
+            position: absolute;
+            left: 0;
+            top: -10px;
+            right: 0;
+            bottom: 0;
+            z-index: 13;
+            display: flex;
+            -webkit-box-pack: center;
+            -ms-flex-pack: center;
+            -webkit-justify-content: center;
+            -moz-justify-content: center;
+            justify-content: center;
+            -webkit-box-align: center;
+            -ms-flex-align: center;
+            -webkit-align-items: center;
+            -moz-align-items: center;
+            align-items: center;
+            -webkit-transition: 0.2s opacity linear;
+            transition: 0.2s opacity linear;
+        }
+        .loading{
+            padding: 25px;
+            min-width: 205px;
+            max-width: 80%;
+            height: 60px;
+            background-color: rgb(4, 6, 6);
+            border-radius: 15px;
+            color: #fff;
+            text-align: center;
+            text-overflow: ellipsis;
+            font-size: 15px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 400px;
+        }
+        .loading>*{
+            flex: 1;
+        }
+        .spinner svg {
+            width: 40px;
+            height: 40px;
+        }
+        .spinner {
+            stroke: #1BB6B7;
+            fill: #1BB6B7;
+        }
+        .loading-text{
+            font-size: 25px;
+        }
+    </style>
+    <meta charset="UTF-8">
+    <script src="https://code.jquery.com/jquery-1.11.2.min.js" integrity="sha256-Ls0pXSlb7AYs7evhd+VLnWsZ/AqEHcXBeMZUycz/CcA=" crossorigin="anonymous"></script>
+</head>
+<body>
+<div class="loading-container active">
+    <div class="loading">
+        <ion-spinner class="spinner spinner-ios"><svg viewBox="0 0 64 64"><g stroke-width="4" stroke-linecap="round"><line y1="17" y2="29" transform="translate(32,32) rotate(180)"><animate attributeName="stroke-opacity" dur="750ms" values="1;.85;.7;.65;.55;.45;.35;.25;.15;.1;0;1" repeatCount="indefinite"></animate></line><line y1="17" y2="29" transform="translate(32,32) rotate(210)"><animate attributeName="stroke-opacity" dur="750ms" values="0;1;.85;.7;.65;.55;.45;.35;.25;.15;.1;0" repeatCount="indefinite"></animate></line><line y1="17" y2="29" transform="translate(32,32) rotate(240)"><animate attributeName="stroke-opacity" dur="750ms" values=".1;0;1;.85;.7;.65;.55;.45;.35;.25;.15;.1" repeatCount="indefinite"></animate></line><line y1="17" y2="29" transform="translate(32,32) rotate(270)"><animate attributeName="stroke-opacity" dur="750ms" values=".15;.1;0;1;.85;.7;.65;.55;.45;.35;.25;.15" repeatCount="indefinite"></animate></line><line y1="17" y2="29" transform="translate(32,32) rotate(300)"><animate attributeName="stroke-opacity" dur="750ms" values=".25;.15;.1;0;1;.85;.7;.65;.55;.45;.35;.25" repeatCount="indefinite"></animate></line><line y1="17" y2="29" transform="translate(32,32) rotate(330)"><animate attributeName="stroke-opacity" dur="750ms" values=".35;.25;.15;.1;0;1;.85;.7;.65;.55;.45;.35" repeatCount="indefinite"></animate></line><line y1="17" y2="29" transform="translate(32,32) rotate(0)"><animate attributeName="stroke-opacity" dur="750ms" values=".45;.35;.25;.15;.1;0;1;.85;.7;.65;.55;.45" repeatCount="indefinite"></animate></line><line y1="17" y2="29" transform="translate(32,32) rotate(30)"><animate attributeName="stroke-opacity" dur="750ms" values=".55;.45;.35;.25;.15;.1;0;1;.85;.7;.65;.55" repeatCount="indefinite"></animate></line><line y1="17" y2="29" transform="translate(32,32) rotate(60)"><animate attributeName="stroke-opacity" dur="750ms" values=".65;.55;.45;.35;.25;.15;.1;0;1;.85;.7;.65" repeatCount="indefinite"></animate></line><line y1="17" y2="29" transform="translate(32,32) rotate(90)"><animate attributeName="stroke-opacity" dur="750ms" values=".7;.65;.55;.45;.35;.25;.15;.1;0;1;.85;.7" repeatCount="indefinite"></animate></line><line y1="17" y2="29" transform="translate(32,32) rotate(120)"><animate attributeName="stroke-opacity" dur="750ms" values=".85;.7;.65;.55;.45;.35;.25;.15;.1;0;1;.85" repeatCount="indefinite"></animate></line><line y1="17" y2="29" transform="translate(32,32) rotate(150)"><animate attributeName="stroke-opacity" dur="750ms" values="1;.85;.7;.65;.55;.45;.35;.25;.15;.1;0;1" repeatCount="indefinite"></animate></line></g></svg></ion-spinner>
+        <span class="loading-text"></span>
+        <div class="loading-close">
+            <i class="icon-svg icon-svg-cross icon-close"></i>
+        </div>
+    </div>
+</div>
+
+<div class="video-container">
+    <div id="player"></div>
+</div>
+
+
+<script>
+    window.onload = function(){
+        let tag = document.createElement('script');
+        tag.src = "https://www.youtube.com/iframe_api";
+        let firstScriptTag = document.getElementsByTagName('script')[1];
+        firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+    };
+
+    let playerReady = false;
+
+    let player;
+
+    function getVariable(variable) {
+        let query = window.location.search.substring(1);
+        let vars = query.split("&");
+        for (let i = 0; i < vars.length; i++) {
+            let pair = vars[i].split("=");
+            if(pair[0] == variable){return pair[1]}
+        }
+        return(false);
+    }
+
+    let videoId = getVariable('videoId');
+    let courseId = getVariable('courseId');
+    let moduleId = getVariable('moduleId');
+    let syllabusId = getVariable('syllabusId');
+    let activityId = getVariable('activityId');
+    let isMobile = getVariable('isMobile');
+    let userId = getVariable('userId');
+    let orgId = getVariable('orgId');
+    let depId = getVariable('depId');
+    let actionType = getVariable('actionType');
+    let endpoint = getVariable('endpoint');
+    let url = getVariable('url');
+    let statisticSession = getVariable('statisticSession');
+    let apiSession = getVariable('apiSession');
+    let apiUrl = getVariable('apiUrl');
+    let currentLang = getVariable('currentLang');
+    let isTeacher = getVariable('isTeacher');
+    let isStudent = getVariable('isStudent');
+    let ts = getVariable('ts');
+    let masterCourseId = getVariable('masterCourseId');
+    let orgName = getVariable('orgName');
+    let orgCode = getVariable('orgCode');
+    let userNo = getVariable('userNo');
+    let userName = getVariable('userName');
+    let courseCode = getVariable('courseCode');
+    let courseName = getVariable('courseName');
+    let depName = getVariable('depName');
+    let depCode = getVariable('depCode');
+
+    let start, end, currentStartTime, currentEndTime, duration, intervalId, videoDuration, THRESHOLD=5 * 60 * 1000, unStarted = false, errorTips;
+
+    if (currentLang === 'zh-Hans') {
+        errorTips = '受YouTube限制，该视频只能在web端观看';
+        loadingErr = '加载超时，请稍后重试，或在web端进行观看';
+        $('.loading-text').text('正在加载...');
+    } else if (currentLang === 'zh-Hant') {
+        errorTips = '受YouTube限制，該影片只能在web端觀看';
+        loadingErr = '加載超時，請稍後重試，或在web端進行觀看';
+        $('.loading-text').text('正在加載...');
+    } else {
+        errorTips = 'Limited by YouTube, the video can only be viewed on the web.';
+        loadingErr = 'Loading timed out, please try again later, or watch it on web';
+        $('.loading-text').text('Loading...');
+    }
+
+    function onYouTubeIframeAPIReady() {
+        player = new YT.Player('player', {
+            videoId: videoId,
+            width: window.innerWidth,
+            height: window.innerHeight,
+            playerVars: {'playsinline': 1},
+            events: {
+                'onReady': onPlayerReady,
+                'onStateChange': onPlayerStateChange
+            }
+        });
+    }
+
+    function onPlayerReady(event) {
+        event.target.playVideo();
+        videoDuration = player.getDuration();
+        playerReady = true;
+        $('.loading-container').css('display', 'none');
+    }
+    function onPlayerStateChange(event) {
+        if(event.data == YT.PlayerState.PLAYING) {
+            start = Math.round(player.getCurrentTime());
+            currentStartTime = new Date();
+            intervalId = setInterval(function () {
+                end = Math.round(player.getCurrentTime());
+                if(end - start > 0) {
+                    duration = end - start;
+                    post();
+                }
+                currentStartTime = new Date();
+                return start = end;
+            }, THRESHOLD);
+        } else if(event.data == YT.PlayerState.PAUSED || event.data == YT.PlayerState.ENDED || event.data == YT.PlayerState.BUFFERING) {
+            if(intervalId) {
+                clearInterval(intervalId);
+            }
+            end = Math.round(player.getCurrentTime());
+            currentEndTime = new Date();
+            duration = Math.round((currentEndTime - currentStartTime)/1000);
+            if(start != null && duration > 0) {
+                post();
+                start = null;
+            }
+        }
+    }
+
+
+    function post() {
+        let videoData = {
+            is_mobile: isMobile,
+            user_id: userId,
+            org_id: orgId,
+            dep_id: depId,
+            course_id: courseId,
+            module_id: moduleId,
+            syllabus_id: syllabusId,
+            activity_id: activityId,
+            action_type: actionType,
+            start_at: start,
+            end_at: end,
+            duration: duration,
+            is_teacher: isTeacher,
+            is_student: isStudent,
+            ts: ts,
+            master_course_id: masterCourseId,
+            org_name: orgName,
+            org_code: orgCode,
+            user_no: userNo,
+            user_name: userName,
+            course_code: courseCode,
+            course_name: courseName,
+            dep_name: depName,
+            dep_code: depCode,
+        };
+
+        $.ajax({
+            type: 'POST',
+            headers: {SESSION: statisticSession},
+            contentType: 'application/json; charset=utf-8',
+            url: `${url}/${endpoint}`,
+            data: JSON.stringify(videoData),
+            dataType: "json",
+            processData: true
+        });
+
+        let logPlayInfo = {
+            start: start,
+            end: end,
+            duration: videoDuration
+        };
+
+        $.ajax({
+            type: 'POST',
+            headers: {'X-SESSION-ID': apiSession},
+            contentType: 'application/json; charset=utf-8',
+            url: `${apiUrl}/api/course/activities-read/${activityId}`,
+            data: JSON.stringify(logPlayInfo),
+            dataType: "json",
+            processData: true
+        });
+    }
+
+    window.onbeforeunload = window.onunload = function () {
+        if(player){
+            end = Math.round(player.getCurrentTime());
+            currentEndTime = new Date();
+            duration = Math.round((currentEndTime - currentStartTime)/1000);
+            if(start != null && duration > 0) {
+                post();
+                start = null;
+            }
+        }
+    };
+
+    setTimeout(function(){
+        if(!playerReady){
+            $('.loading-container').css('display', 'none');
+            alert(loadingErr);
+            window.close()
+        }
+    },15*1000)
+</script>
+</body>
+</html>
