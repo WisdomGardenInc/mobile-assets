@@ -2,8 +2,8 @@ name: "release"
 
 on:
   push:
-    tags:
-      - "*"
+    branches:
+      - master
 
 jobs:
   release:
@@ -11,14 +11,12 @@ jobs:
     runs-on: "ubuntu-latest"
 
     steps:
-      - name: Get the version
-        id: getVersion
-        run: echo ::set-output name=VERSION::$(echo $GITHUB_REF | cut -d / -f 3)
-
-      - uses: "marvinpinto/action-automatic-releases@latest"
+      - uses: actions/checkout@v1
+      - uses: actions/setup-node@v1
         with:
-          repo_token: "${{ secrets.GITHUB_TOKEN }}"
-          draft: false
-          prerelease: false
-          automatic_release_tag: "${{steps.getVersion.outputs.VERSION}}"
-          title: "${{steps.getVersion.outputs.VERSION}}"
+          node-version: 10
+
+      - uses: JS-DevTools/npm-publish@v1
+        with:
+          token: ${{ secrets.NPM_TOKEN }}
+          tag: "latest"
