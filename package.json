@@ -6,7 +6,7 @@
   "repository": "git@github.com:WisdomGardenInc/mobile-assets.git",
   "author": "liupeixin <fengyi.mail@gmail.com>",
   "license": "WisdomGarden",
-  "private": true,
+  "private": false,
   "files": [
     "/*.html",
     "/*.json",
