@@ -1,0 +1,14 @@
+{
+  "name": "mobile-assets",
+  "version": "2.1.2",
+  "description": "host mobile assets",
+  "main": "index.js",
+  "repository": "git@github.com:WisdomGardenInc/mobile-assets.git",
+  "author": "liupeixin <fengyi.mail@gmail.com>",
+  "license": "private",
+  "private": true,
+  "devDependencies": {
+    "enquirer": "^2.3.6",
+    "shelljs": "^0.8.4"
+  }
+}
