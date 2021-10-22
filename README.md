@@ -37,3 +37,9 @@ release note use markdown syntax
   "release_note_zh_hant": "- IOS安全區域調整\n- 修復作業描述不顯示問題\n- 作業批改邏輯優化\n- 修復搶答結果頁和評分頁面不顯示默認頭像問題\n- 修復互動列表，學生點擊搶答無反應問題\n- 互動教材播放提示文案優化\n- QR Code簽到失敗頁面優化\n- UI優化",
 }
 ```
+
+refresh cnd use purge api
+```
+https://purge.jsdelivr.net/npm/@wisdomgarden/mobile-assets@latest/version_update_android.json
+https://purge.jsdelivr.net/npm/@wisdomgarden/mobile-assets@latest/version_update_ios.json
+```
