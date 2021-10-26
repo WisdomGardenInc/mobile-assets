@@ -1,6 +1,6 @@
 {
   "name": "@wisdomgarden/mobile-assets",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "host mobile assets",
   "main": "index.js",
   "repository": "git@github.com:WisdomGardenInc/mobile-assets.git",
