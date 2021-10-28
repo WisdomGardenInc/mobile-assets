@@ -3,7 +3,7 @@
   "update_type": 1,
   "allow_lowest_version": "2.1.3",
   "app_store_url": "https://apps.apple.com/app/scratch/id973028199",
-  "release_note_en_us": "- IOS security zone adjustment\n- Repair job description is not displayed\n- Optimized job review logic\n- Fixed the problem that the default avatar was not displayed on the answering result page and the scoring page\n- Fix the interactive list, the students clicked and did not respond\n- Optimized the prompt information of interactive teaching materials\n- QR code sign-in failure page optimization\n- UI optimization",
-  "release_note_zh_hans": "- IOS安全区域调整\n- 修复作业描述不显示\n- 作业批改逻辑优化\n- 修复抢答结果页和评分页面不显示默认头像\n- 修复互动列表，学生点击抢答无响应\n- 互动教材播放提示信息优化\n- 二维码签到失败页面优化\n- UI优化",
-  "release_note_zh_hant": "- IOS安全區域調整\n- 修復作業描述不顯示問題\n- 作業批改邏輯優化\n- 修復搶答結果頁和評分頁面不顯示默認頭像問題\n- 修復互動列表，學生點擊搶答無反應問題\n- 互動教材播放提示文案優化\n- QR Code簽到失敗頁面優化\n- UI優化"
+  "release_note_en_us": "- Add viewing portal of course outline on course page.\n- Add update prompt.\n- Improve style of learning-activity criterion on section page.\n- Fix problem with showing To-Dos.",
+  "release_note_zh_hans": "- 课程详情页新增课程信息查看入口\n- 新增APP版本更新提示\n- 优化章节列表学习活动完成度样式\n- 修复部分用户待办事项显示错误的问题",
+  "release_note_zh_hant": "- 課程詳情頁新增「課程資訊」查看入口\n- 新增APP版本更新提示\n- 優化章節列表學習活動完成度樣式\n- 修復部分使用者待辦事項顯示錯誤的問題"
 }

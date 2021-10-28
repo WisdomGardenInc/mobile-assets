@@ -72,12 +72,15 @@
     <div>
       <span>Force Update:</span><span id="forceUpdate"></span>
     </div>
+    <div id="download">
+      <span>Download:</span>
+    </div>
   </div>
 
   <div class="release-note-area">
     <span>Release Note:</span>
     <div class="note">
-      <span>Simple Chinese</span>
+      <span>Simplified Chinese</span>
       <div id="content_cn"></div>
     </div>
 
@@ -93,7 +96,7 @@
   </div>
   <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
   <script>
-    fetch("./version_update_ios.json").then(function (response) {
+    fetch("./version_update_android.json").then(function (response) {
       return response.text();
     }).then(function (text) {
       const json = JSON.parse(text);
@@ -103,6 +106,14 @@
       document.getElementById('lowestVersion').innerHTML = json["allow_lowest_version"];
       document.getElementById('forceUpdate').innerHTML = json["allow_lowest_version"] === 0 ? "true" : "false";
 
+      const aTag = document.createElement("a");
+      aTag.setAttribute("href", json["app_store_url_cn"]);
+      aTag.setAttribute("target", "_blank");
+      aTag.text = "app-release-" + json["version"] + ".apk"
+
+      document.getElementById('download').appendChild(aTag);
+
+
       document.getElementById('content_cn').innerHTML =
         marked(json["release_note_zh_hans"]);
 
@@ -111,6 +122,8 @@
 
       document.getElementById('content_en').innerHTML =
         marked(json["release_note_en_us"]);
+
+
     })
 
   </script>
