@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Preview Release</title>
+
+  <link crossorigin="anonymous" media="all" rel="stylesheet"
+    href="https://cdn.jsdelivr.net/gh/markdowncss/air/css/air.min.css" />
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      font-size: 16px;
+      text-align: left;
+    }
+
+    body {
+      margin: 8px 32px;
+    }
+
+    .info>div>span:nth-child(1) {
+      font-weight: bold;
+      font-size: 20px;
+      margin-right: 12px;
+    }
+
+    .info>div>span:nth-child(2) {
+      color: red;
+    }
+
+    .note {
+      margin-top: 32px;
+      padding-bottom: 32px;
+      border-bottom: 1px solid #ddd;
+    }
+
+    .note:first-of-type {
+      margin-top: 16px;
+    }
+
+    .note>span {
+      display: inline-block;
+      font-size: 16px;
+      font-weight: bold;
+      padding-bottom: 8px;
+    }
+
+    .release-note-area {
+      margin-top: 32px;
+    }
+
+    .release-note-area>span {
+      font-size: 20px;
+      font-weight: bold;
+      padding-bottom: 16px;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="info">
+    <div>
+      <span>Version:</span><span id="version"></span>
+    </div>
+    <div>
+      <span>Allow Lowest Version:</span><span id="lowestVersion"></span>
+    </div>
+    <div>
+      <span>Force Update:</span><span id="forceUpdate"></span>
+    </div>
+  </div>
+
+  <div class="release-note-area">
+    <span>Release Note:</span>
+    <div class="note">
+      <span>Simple Chinese</span>
+      <div id="content_cn"></div>
+    </div>
+
+    <div class="note">
+      <span>Traditional Chinese</span>
+      <div id="content_tw"></div>
+    </div>
+
+    <div class="note">
+      <span>English</span>
+      <div id="content_en"></div>
+    </div>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+  <script>
+    fetch("./version_update_ios.json").then(function (response) {
+      return response.text();
+    }).then(function (text) {
+      const json = JSON.parse(text);
+      const releaseNote = json["release_note_zh_hans"];
+
+      document.getElementById('version').innerHTML = json["version"];
+      document.getElementById('lowestVersion').innerHTML = json["allow_lowest_version"];
+      document.getElementById('forceUpdate').innerHTML = json["allow_lowest_version"] === 0 ? "true" : "false";
+
+      document.getElementById('content_cn').innerHTML =
+        marked(json["release_note_zh_hans"]);
+
+      document.getElementById('content_tw').innerHTML =
+        marked(json["release_note_zh_hant"]);
+
+      document.getElementById('content_en').innerHTML =
+        marked(json["release_note_en_us"]);
+    })
+
+  </script>
+</body>
+
+</html>
