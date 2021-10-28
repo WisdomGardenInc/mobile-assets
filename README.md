@@ -40,6 +40,13 @@ release note use markdown syntax
 
 refresh cnd use purge api
 ```
+https://www.npmjs.com/package/@wisdomgarden/mobile-assets
+https://data.jsdelivr.com/v1/package/npm/@wisdomgarden/mobile-assets
+https://cdn.jsdelivr.net/npm/@wisdomgarden/mobile-assets@latest/version_update_android.json
+https://cdn.jsdelivr.net/npm/@wisdomgarden/mobile-assets@latest/version_update_ios.json
+```
+
+```
 https://purge.jsdelivr.net/npm/@wisdomgarden/mobile-assets@latest/version_update_android.json
 https://purge.jsdelivr.net/npm/@wisdomgarden/mobile-assets@latest/version_update_ios.json
 ```

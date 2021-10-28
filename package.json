@@ -13,6 +13,7 @@
     "/*.md"
   ],
   "devDependencies": {
+    "axios": "^0.24.0",
     "enquirer": "^2.3.6",
     "shelljs": "^0.8.4"
   }
