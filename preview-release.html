@@ -94,7 +94,7 @@
       <div id="content_en"></div>
     </div>
   </div>
-  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/marked@4.0.1/marked.min.js"></script>
   <script>
     fetch("./version_update_android.json").then(function (response) {
       return response.text();
@@ -115,13 +115,13 @@
 
 
       document.getElementById('content_cn').innerHTML =
-        marked(json["release_note_zh_hans"]);
+        marked.parse(json["release_note_zh_hans"]);
 
       document.getElementById('content_tw').innerHTML =
-        marked(json["release_note_zh_hant"]);
+        marked.parse(json["release_note_zh_hant"]);
 
       document.getElementById('content_en').innerHTML =
-        marked(json["release_note_en_us"]);
+        marked.parse(json["release_note_en_us"]);
 
 
     })
