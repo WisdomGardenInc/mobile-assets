@@ -1,10 +1,10 @@
 {
-  "version": "2.1.5",
+  "version": "2.1.6",
   "update_type": 1,
-  "allow_lowest_version": "2.1.5",
+  "allow_lowest_version": "2.1.6",
   "app_store_url": "https://play.google.com/store/apps/details?id=com.wisdomgarden.trpc",
-  "app_store_url_cn": "https://mobile-download.tronclass.com.cn/mobile-2.0/app/android/app-release-2.1.5.apk",
-  "release_note_en_us": "- Fix problem with not being able to submit or submission lost when taking tests.",
-  "release_note_zh_hans": "- 修复测验作答时可能会出现无法提交或提交后内容丢失的问题",
-  "release_note_zh_hant": "- 修復測驗作答時可能會出現無法提交或提交後內容遺失的問題"
+  "app_store_url_cn": "https://mobile-download.tronclass.com.cn/mobile-2.0/app/android/app-release-2.1.6.apk",
+  "release_note_en_us": "- Improve rich-text style.\n- Optimize anti-cheating function.\n- Modify notifications/indicators when content fails to load.\n- Optimize text style in dark mode.\n- Optimize test topic content styles.\n- Modify \"Content-required\" prompt when creating new learning activities.\n- Optimize the selection process.\n- Fix submission of tests not being recorded as it is triggered by autocommit in some cases.\n- Fix problems with submitting video job.",
+  "release_note_zh_hans": "- 优化富文本内容显示样式\n- 优化APP测验防作弊功能\n- 优化内容加载失败时的操作和文字提示\n- 优化深色模式文字样式\n- 优化测验题目图片及文字样式\n- 优化新建学习活动必填内容提示\n- 优化选人操作流程\n- 修复部分用户测验自动提交但未被系统记录的问题\n- 修复部分用户视频作业提交失败的问题",
+  "release_note_zh_hant": "- 優化富文字編輯器內容顯示樣式\n- 優化APP線上測驗提供防作弊功能\n- 優化內容載入失敗時的操作和文字提示\n- 優化深色模式文字樣式\n- 優化線上測驗題目圖片及文字樣式\n- 優化新增學習活動時必填內容提示\n- 優化選人活動操作流程\n- 修復部分使用者線上測驗自動提交但未被系統記錄的問題\n- 修復部分使用者在作業中上傳影片提交失敗的問題"
 }
