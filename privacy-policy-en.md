@@ -23,31 +23,31 @@ Welcome to use TronClass's related services! In order to use TronClass's related
    > Jiguang Push Core Service SDK
    > SDK name: jcore.android-2.3.2
    > Purpose of use: for push messages
-   > Data type: user identification information (IMEI, MAC address)
+   > Data type: user identification information (IMEI, MAC address, APP installation list)
    > Official website link: https://www.jiguang.cn/
 
    > Aurora Push SDK
    > SDK name: cn.jpush.android-3.3.8
    > Purpose of use: for push messages
-   > Data type: user identification information (IMEI, MAC address)
+   > Data type: user identification information (IMEI, MAC address, APP installation list)
    > Official website link: https://www.jiguang.cn/
    
    > OneSignal SDK
    > SDK name: onesignal
    > Purpose of use: for push messages
-   > Data type: user identification information (IMEI, MAC address)
+   > Data type: user identification information (IMEI, MAC address, APP installation list)
    > Official website link: https://onesignal.com/
 
    > Huawei Push SDK
    > SDK name: com.huawei.hms
    > Purpose of use: for push messages
-   > Data type: user identification information (IMEI, MAC address)
+   > Data type: user identification information (IMEI, MAC address, APP installation list)
    > Official website link: https://developer.huawei.com/consumer/cn/hms/huawei-pushkit
 
    > Tencent Browsing Service SDK
    > SDK name: com.tencent.smtt
    > Purpose of use: for push messages
-   > Data type: user identification information (IMEI, MAC address)
+   > Data type: user identification information (IMEI, MAC address, APP installation list)
    > Official website link: https://x5.tencent.com/
 
 
