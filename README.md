@@ -3,7 +3,7 @@
 ### update version info: `version_update_android.json / version_update_ios.json`
 
 1. [HiPaCloud](https://hipacloud.com/apps/61246bbeb74fa7ca113500cb/tables/61357f137c852d44c4e9248d) Create a new version record and improve the release notes.
-2. `node scripts/update_app_version_md` update json file with hipa remote data, or edit it manually
+2. `node scripts/update_app_version_md.js` update json file with hipa remote data, or edit it manually
 3. check for errors then git commit
 4. `node scripts/upgrade_version.js` increase current project version number and add new tag
 5. `git push && git push --tags` push to GitHub, and Github Action publish it to [npm @wisdomgarden/mobile-assets](https://www.npmjs.com/package/@wisdomgarden/mobile-assets)
