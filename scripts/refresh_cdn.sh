@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# refresh jsdelivr
+curl https://data.jsdelivr.com/v1/package/npm/@wisdomgarden/mobile-assets
+
 declare -a tasks=(
   "https://purge.jsdelivr.net/npm/@wisdomgarden/mobile-assets@latest/version_update_android.json"
   "https://purge.jsdelivr.net/npm/@wisdomgarden/mobile-assets@latest/version_update_ios.json"
@@ -14,4 +17,6 @@ do
    curl $i
 done
 
-curl https://data.jsdelivr.com/v1/package/npm/@wisdomgarden/mobile-assets
+# refresh qiniu
+bash ./scripts/deploy_to_qiniu.sh
+qshell cdnrefresh -i ./scripts/refresh_qiniu_cdn.txt

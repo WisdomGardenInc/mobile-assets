@@ -1,0 +1,8 @@
+https://mobile-download.tronclass.com.cn/privacy-policy.html
+https://mobile-download.tronclass.com.cn/privacy-policy-zh-CN.md
+https://mobile-download.tronclass.com.cn/privacy-policy-zh-TW.md
+https://mobile-download.tronclass.com.cn/privacy-policy-en.md
+https://mobile-download.tronclass.com.cn/privacy-policy-info.json
+https://mobile-download.tronclass.com.cn/toggle.json
+https://mobile-download.tronclass.com.cn/version_update_android.json
+https://mobile-download.tronclass.com.cn/version_update_ios.json
