@@ -67,6 +67,9 @@ Welcome to use TronClass's related services! In order to use TronClass's related
    
    8.7. For more TronClass privacy protection policies, please check the company website.
 
+9. About the explanation that TronClass cannot provide account cancellation function
+
+   TronClass does not provide account registration service. The accounts used by users in the process of using TronClass are either synchronized with the unified identity authentication system of their schools or added or deleted manually by school system administrators. Therefore, TronClass cannot provide account cancellation function.
 
 
 Thank you for taking the time to understand our privacy policy! We will do our best to protect your personal information and legal rights, thank you again for your trust!
