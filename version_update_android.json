@@ -1,10 +1,10 @@
 {
-  "version": "2.1.9",
+  "version": "2.1.11",
   "update_type": 1,
   "allow_lowest_version": "2.1.7",
   "app_store_url": "https://play.google.com/store/apps/details?id=com.wisdomgarden.trpc",
-  "app_store_url_cn": "https://mobile-download.tronclass.com.cn/mobile-2.0/app/android/app-release-2.1.9.apk",
-  "release_note_en_us": "- Students can upload document attachments when answering quizzes.\n- Modify teacher's test correcting page, add \"Answer sheet\" function.\n- Optimize student's submission test page style.\n- Optimize custom performance item display.\n- Fixed problem that some teacher can not see the number of students on Race page.\n- Fixed errors in the statistics of the completion of learning activities.",
-  "release_note_zh_hans": "- 支持测验答题时上传文档附件\n- 调整教师测验批改页面样式，新增“答题卡”批改功能\n- 优化学生提交测验页面样式\n- 优化自定义成绩项展示规则\n- 修复部分用户抢答页面不显示学生人数的问题\n- 修复部分用户学习活动完成度统计错误的问题",
-  "release_note_zh_hant": "- 新增線上測驗答題時上傳檔案附件\n- 調整教師線上測驗批改頁面樣式，新增「答題卡」批改功能\n- 優化學生提交測驗頁面樣式\n- 優化自定義成績項展示規則\n- 修復部分使用者搶答頁面不顯示學生人數的問題\n- 修復部分使用者學習活動完成度統計錯誤的問題"
+  "app_store_url_cn": "https://mobile-download.tronclass.com.cn/mobile-2.0/app/android/app-release-2.1.11.apk",
+  "release_note_en_us": "- Fix problem with calculating learning completeness.\n- Fix bug where some users could not see courses.\n- Fix incorrect display of mathematical formulas.\n- Fix issues related to users not being able to answer SAQs.",
+  "release_note_zh_hans": "- 修复部分用户完成度计算错误的问题\n- 修复部分用户无法看到课程的问题\n- 修复数学公式显示样式不正确的问题\n- 修复部分用户简答题无法作答的问题",
+  "release_note_zh_hant": "- 修復部分用戶完成度計算錯誤的問題\n- 修復部分用戶無法看到課程的問題\n- 修複數學公式顯示樣式不正確的問題\n- 修復部分用戶簡答題無法作答的問題"
 }
