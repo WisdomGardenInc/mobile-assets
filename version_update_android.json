@@ -1,10 +1,10 @@
 {
-  "version": "2.1.11",
+  "version": "2.2.0",
   "update_type": 1,
   "allow_lowest_version": "2.1.7",
   "app_store_url": "https://play.google.com/store/apps/details?id=com.wisdomgarden.trpc",
-  "app_store_url_cn": "https://mobile-download.tronclass.com.cn/mobile-2.0/app/android/app-release-2.1.11.apk",
-  "release_note_en_us": "- Fix problem with calculating learning completeness.\n- Fix bug where some users could not see courses.\n- Fix incorrect display of mathematical formulas.\n- Fix issues related to users not being able to answer SAQs.",
-  "release_note_zh_hans": "- 修复部分用户完成度计算错误的问题\n- 修复部分用户无法看到课程的问题\n- 修复数学公式显示样式不正确的问题\n- 修复部分用户简答题无法作答的问题",
-  "release_note_zh_hant": "- 修復部分用戶完成度計算錯誤的問題\n- 修復部分用戶無法看到課程的問題\n- 修複數學公式顯示樣式不正確的問題\n- 修復部分用戶簡答題無法作答的問題"
+  "app_store_url_cn": "https://mobile-download.tronclass.com.cn/mobile-2.0/app/android/app-release-2.2.0.apk",
+  "release_note_en_us": "- Modify info pages style of learning activities.\n- Optimize video transcoding and playback experience.\n- Fix bugs and improve system performance.",
+  "release_note_zh_hans": "- 调整学习活动详情页面样式\n- 优化视频转码及播放体验\n- 已知问题修复和性能优化",
+  "release_note_zh_hant": "- 調整學習活動詳情頁面樣式\n- 優化影片轉碼及播放體驗\n- 已知問題修復和性能優化"
 }
