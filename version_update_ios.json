@@ -1,9 +1,9 @@
 {
-  "version": "2.2.1",
+  "version": "2.2.3",
   "update_type": 1,
-  "allow_lowest_version": "2.1.7",
+  "allow_lowest_version": "2.2.3",
   "app_store_url": "https://apps.apple.com/app/scratch/id973028199",
-  "release_note_en_us": "- Optimize video&audio playback experience.\n- Modify pages style of courses list.\n- Fix bugs and improve system performance.",
-  "release_note_zh_hans": "- 隐私政策与用户协议更新\n- 优化音视频教材视频及音频播放体验\n- 调整课程列表页样式\n- 已知问题修复和性能优化",
-  "release_note_zh_hant": "- 優化影音教材影片播放體驗\n- 調整課程列表樣式\n- 已知問題修復和性能優化"
+  "release_note_en_us": "- Fix bugs and improve system performance.",
+  "release_note_zh_hans": "- 已知问题修复和性能优化",
+  "release_note_zh_hant": "- 已知問題修復和性能優化"
 }
