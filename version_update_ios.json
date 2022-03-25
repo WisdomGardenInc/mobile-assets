@@ -1,9 +1,9 @@
 {
-  "version": "2.2.4",
+  "version": "2.2.5",
   "update_type": 1,
   "allow_lowest_version": "2.2.3",
   "app_store_url": "https://apps.apple.com/app/scratch/id973028199",
-  "release_note_en_us": "- Optimize page loading styles.\n- Fix bugs and improve system performance.",
-  "release_note_zh_hans": "- 优化页面加载样式\n- 已知问题修复和性能优化",
-  "release_note_zh_hant": "- 優化頁面載入樣式\n- 已知問題修復和性能優化"
+  "release_note_en_us": "- Known bugs fix and system optimization.",
+  "release_note_zh_hans": "- 修复已知问题，优化部分功能",
+  "release_note_zh_hant": "- 修復已知問題，功能優化。"
 }
