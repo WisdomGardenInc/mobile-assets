@@ -1,7 +1,7 @@
 const { prompt } = require("enquirer");
 const fs = require("fs");
 const path = require("path");
-const { getReleaseNote } = require("./platform/hipa.js");
+const { getReleaseNote } = require("./platform/feishu.js");
 
 const versionInfoAndroidFile = path.join(__dirname, "..", "version_update_android.json");
 const versionInfoIOSFile = path.join(__dirname, "..", "version_update_ios.json");
