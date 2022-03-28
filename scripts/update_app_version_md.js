@@ -1,8 +1,7 @@
 const { prompt } = require("enquirer");
-const axios = require("axios");
 const fs = require("fs");
 const path = require("path");
-const hipaEnv = require("./.hipa.env.js");
+const { getReleaseNote } = require("./platform/hipa.js");
 
 const versionInfoAndroidFile = path.join(__dirname, "..", "version_update_android.json");
 const versionInfoIOSFile = path.join(__dirname, "..", "version_update_ios.json");
@@ -60,49 +59,11 @@ const inputVersionInfo = ({ version, lowestVersion }) => {
   ]);
 };
 
-const getReleaseNote = async ({ version }) => {
-  try {
-    const { data } = await axios.get(
-      `/apps/${hipaEnv.APP_ID}/tables/${hipaEnv.TABLE_ID}/records?filter=${encodeURIComponent(
-        `版本号=[eq]${version}`
-      )}`,
-      {
-        baseURL: "https://api.hipacloud.com/v1",
-        headers: {
-          Accept: "application/json",
-          Authorization: `Bearer ${hipaEnv.API_KEY}`,
-        },
-        params: {
-          pageSize: 1,
-        },
-      }
-    );
-
-    if (data && data.items && data.items.length) {
-      const info = data.items[0].values;
-      const cn = (info["简体"] || "").trim();
-      const tw = (info["繁体"] || "").trim();
-      const en = (info["英文"] || "").trim();
-
-      // const release_note_zh_hans = info["简体"];
-      // const release_note_zh_hant = info["繁体"];
-      // const release_note_en_us = info["英文"];
-
-      return { cn, tw, en };
-    } else {
-      return null;
-    }
-  } catch (error) {
-    console.log(error);
-    return null;
-  }
-};
-
-const updateInfoFile = ({ version, lowestVersion }, releaseNote) => {
+const updateInfoFile = ({ version, lowestVersion }, releaseNote, tableUrl) => {
   console.log(`Version ${version}`);
   if (!releaseNote) {
     console.log("no release note, goto hipacloud create it!");
-    console.log(hipaEnv.VERSION_TABLE_URL);
+    console.log(tableUrl);
     return;
   }
   console.log(releaseNote);
@@ -123,7 +84,7 @@ const updateInfoFile = ({ version, lowestVersion }, releaseNote) => {
 
     const versionInfoStr = JSON.stringify(versionInfo, null, 2);
     console.log("-----------------------------");
-    console.log(filePath.substring(3));
+    console.log(filePath);
     console.log(versionInfoStr);
 
     fs.writeFileSync(filePath, versionInfoStr, {
@@ -142,8 +103,8 @@ const run = async () => {
     const input = await inputVersionInfo(defaultVersionInfo);
     console.log("\nNew Version Info:");
     console.log(input);
-    const releaseNote = await getReleaseNote(input);
-    updateInfoFile(input, releaseNote);
+    const { releaseNote, tableUrl } = await getReleaseNote(input);
+    updateInfoFile(input, releaseNote, tableUrl);
   } catch (error) {
     console.error(error);
   }
