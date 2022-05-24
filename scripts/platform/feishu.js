@@ -1,5 +1,6 @@
 const axios = require("axios");
 const ENV_VARIABLES = require("./.feishu.env.js");
+const feishuData = require("./feishu-data.js");
 
 const getTenantAccessToken = async () => {
   const config = {
@@ -36,9 +37,9 @@ const getReleaseNote = async ({ version }) => {
 
   try {
     const { data: response } = await axios.get(
-      `/apps/${ENV_VARIABLES.APP_TOKEN}/tables/${ENV_VARIABLES.TABLE_ID}/records`,
+      `/apps/${ENV_VARIABLES.APP_TOKEN}/tables/${ENV_VARIABLES.VERSION_TABLE_ID}/records`,
       {
-        baseURL: "https://open.feishu.cn/open-apis/bitable/v1",
+        baseURL: ENV_VARIABLES.API_PREFIX,
         headers: {
           Accept: "application/json",
           Authorization: `Bearer ${token}`,
@@ -68,6 +69,141 @@ const getReleaseNote = async ({ version }) => {
   }
 };
 
+const getVersionRecord = async (version, token) => {
+  try {
+    const { data: response } = await axios.get(
+      `/apps/${ENV_VARIABLES.APP_TOKEN}/tables/${ENV_VARIABLES.VERSION_TABLE_ID}/records`,
+      {
+        baseURL: ENV_VARIABLES.API_PREFIX,
+        headers: {
+          Accept: "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+        params: {
+          filter: `CurrentValue.[版本号]="${version}"`,
+          view_id: ENV_VARIABLES.VIEW_ID,
+          pageSize: 1,
+        },
+      }
+    );
+    const data = response.data;
+    if (data && data.items && data.items.length) {
+      return data.items[0]["record_id"];
+    }
+    return null;
+  } catch (error) {
+    console.error(error);
+    return null;
+  }
+};
+
+const getExistedMarketRecords = async (version, token) => {
+  try {
+    const { data: response } = await axios.get(
+      `/apps/${ENV_VARIABLES.APP_TOKEN}/tables/${ENV_VARIABLES.MARKET_VERSION_TABLE_ID}/records`,
+      {
+        baseURL: ENV_VARIABLES.API_PREFIX,
+        headers: {
+          Accept: "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+        params: {
+          filter: `CurrentValue.[版本号]="${version}"`,
+          view_id: ENV_VARIABLES.VIEW_ID,
+          pageSize: 1,
+        },
+      }
+    );
+    const data = response.data;
+    if (data && data.items && data.items.length) {
+      return data.items;
+    }
+    return null;
+  } catch (error) {
+    console.error(error);
+    return null;
+  }
+};
+
+const postMarketRecords = async (records, token) => {
+  try {
+    const response = await axios.post(
+      `/apps/${ENV_VARIABLES.APP_TOKEN}/tables/${ENV_VARIABLES.MARKET_VERSION_TABLE_ID}/records/batch_create`,
+      {
+        records: records,
+      },
+      {
+        baseURL: ENV_VARIABLES.API_PREFIX,
+        headers: {
+          Accept: "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+      }
+    );
+    return response.status === 200;
+  } catch (error) {
+    console.log(error);
+    return false;
+  }
+};
+
+const addMarketAppsVersion = async (version) => {
+  // 1. get version record
+  // 2. query version records filter existed
+  // 3. post new data
+
+  const token = await getTenantAccessToken();
+
+  if (!token) {
+    console.error("get tenant access token failed");
+    return;
+  }
+
+  const versionRecordId = await getVersionRecord(version, token);
+  if (!versionRecordId) {
+    console.error(`version record ${version} not found`);
+    return;
+  }
+
+  const existedData = await getExistedMarketRecords(version, token);
+  const existedMap = {};
+  if (existedData) {
+    existedData.forEach((record) => {
+      const market = record.fields?.["应用市场"]?.[0];
+      if (market?.record_ids.length) {
+        existedMap[market.record_ids[0]] = market.text;
+      }
+    });
+  }
+
+  const newRecordsData = feishuData
+    .getMarketVersionRecords(versionRecordId, version)
+    .filter((record) => !existedMap[record["fields"]["应用市场"][0]]);
+
+  const result = await postMarketRecords(newRecordsData, token);
+
+  console.log("**********************************************");
+  console.log("Version:", version, "\n");
+  console.log("Existed Market Version:", Object.keys(existedMap).length);
+  Object.values(existedMap).forEach((item) => {
+    console.log(item);
+  });
+
+  console.log("------------------------------");
+  console.log("Add Market Version:", newRecordsData.length);
+  newRecordsData.forEach((record) => {
+    console.log(feishuData.AVAILABLE_MARKETS_IDS[record["fields"]["应用市场"][0]]);
+  });
+  console.log("**********************************************");
+
+  if (result) {
+    console.log("success!");
+  } else {
+    console.log("failed!");
+  }
+};
+
 module.exports = {
   getReleaseNote,
+  addMarketAppsVersion,
 };
