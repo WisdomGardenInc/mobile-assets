@@ -2,7 +2,8 @@
 
 ### update version info: `version_update_android.json / version_update_ios.json`
 
-1. [HiPaCloud](https://hipacloud.com/apps/61246bbeb74fa7ca113500cb/tables/61357f137c852d44c4e9248d) Create a new version record and improve the release notes.
+
+1. ~~[HiPaCloud](https://hipacloud.com/apps/61246bbeb74fa7ca113500cb/tables/61357f137c852d44c4e9248d)~~[飞书多维表格](https://hipacloud.com/apps/61246bbeb74fa7ca113500cb/tables/61357f137c852d44c4e9248d) Create a new version record and improve the release notes.
 2. `node scripts/update_app_version_md.js` update json file with hipa remote data, or edit it manually
 3. check for errors then git commit
 4. `node scripts/upgrade_version.js` increase current project version number and add new tag
@@ -11,6 +12,10 @@
 7. preview release note. local use live server `./preview-release.html` or [Online from GitHub Pages](https://wisdomgardeninc.github.io/mobile-assets/preview-release.html)
 
 if update other file, edit `refresh_cdn.sh`, then run `bash scripts/refresh_cdn.sh` refresh it.
+
+
+### Batch increase market version records
+`node scripts/add_market_apps_version.js`
 
 ### update privacy policy
 1. `bash scripts/sync_privacy_files.sh`
