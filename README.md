@@ -5,7 +5,7 @@
 
 1. ~~[HiPaCloud](https://hipacloud.com/apps/61246bbeb74fa7ca113500cb/tables/61357f137c852d44c4e9248d)~~[飞书多维表格](https://hipacloud.com/apps/61246bbeb74fa7ca113500cb/tables/61357f137c852d44c4e9248d) Create a new version record and improve the release notes.
 2. `node scripts/update_app_version_md.js` update json file with hipa remote data, or edit it manually
-3. check for errors then git commit
+3. check for errors then git commit `git commit -m "update version file"`
 4. `node scripts/upgrade_version.js` increase current project version number and add new tag
 5. `git push && git push --tags` push to GitHub, and Github Action publish it to [npm @wisdomgarden/mobile-assets](https://www.npmjs.com/package/@wisdomgarden/mobile-assets)
 6. after about 10 minutes, check [jsDeliver package data](https://data.jsdelivr.com/v1/package/npm/@wisdomgarden/mobile-assets) util latest tag is same as package.json.version then `bash scripts/refresh_cdn.sh` refresh json file cdn cache
