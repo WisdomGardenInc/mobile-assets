@@ -23,31 +23,31 @@
     > 极光推送核心服务SDK
     > SDK名称：jcore.android-2.3.2
     > 使用目的：用于推送消息
-    > 数据类型：在后台状态下获取用户标识信息（IMEI、MAC地址、软件安装列表）
+    > 数据类型：在后台状态下获取用户标识信息（IMEI、MAC地址、ANDROID ID、软件安装列表）
     > 官网链接：https://www.jiguang.cn/
 
     > 极光推送SDK
     > SDK名称：cn.jpush.android-3.3.8
     > 使用目的：用于推送消息
-    > 数据类型：在后台状态下获取用户标识信息（IMEI、MAC地址、软件安装列表）
+    > 数据类型：在后台状态下获取用户标识信息（IMEI、MAC地址、、ANDROID ID、软件安装列表）
     > 官网链接：https://www.jiguang.cn/
    
     > OneSignal SDK
     > SDK名称：onesignal
     > 使用目的：用于推送消息
-    > 数据类型：在后台状态下获取用户标识信息（IMEI、MAC地址、软件安装列表）
+    > 数据类型：在后台状态下获取用户标识信息（IMEI、MAC地址、、ANDROID ID、软件安装列表）
     > 官网链接：https://onesignal.com/
 
     > 华为推送 SDK
     > SDK名称：com.huawei.hms
     > 使用目的：用于推送消息
-    > 数据类型：在后台状态下获取用户标识信息（IMEI、MAC地址、软件安装列表）
+    > 数据类型：在后台状态下获取用户标识信息（IMEI、MAC地址、、ANDROID ID、软件安装列表）
     > 官网链接：https://developer.huawei.com/consumer/cn/hms/huawei-pushkit
 
     > 腾讯浏览服务SDK
     > SDK名称：com.tencent.smtt
     > 使用目的：用于推送消息
-    > 数据类型：在后台状态下获取用户标识信息（IMEI、MAC地址、软件安装列表）
+    > 数据类型：在后台状态下获取用户标识信息（IMEI、MAC地址、、ANDROID ID、软件安装列表）
     > 官网链接：https://x5.tencent.com/
 
 
