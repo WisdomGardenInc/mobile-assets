@@ -178,3 +178,5 @@ dist
 
 .vscode/
 scripts/platform/.*.env.js
+ota/.env.js
+tmp/
