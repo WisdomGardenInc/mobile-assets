@@ -35,3 +35,11 @@ if update other file, edit `refresh_cdn.sh`, then run `bash scripts/refresh_cdn.
   "release_note_zh_hant": "- IOS安全區域調整\n- 修復作業描述不顯示問題\n- 作業批改邏輯優化\n- 修復搶答結果頁和評分頁面不顯示默認頭像問題\n- 修復互動列表，學生點擊搶答無反應問題\n- 互動教材播放提示文案優化\n- QR Code簽到失敗頁面優化\n- UI優化",
 }
 ```
+
+##### Upload zip file to Azure for TW
+CMD: `node ota/upload-to-azure.js qiniuZipUrl`
+e.g. `node ota/upload-to-azure.js https://mobile-download.tronclass.com.cn/mobile-2.0/ota/prod/2.2.9.1656581179.d71a7d06.zip`
+
+
+paremeter `qiniuZipUrl`: the latest ota zip file url on qiniu
+

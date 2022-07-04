@@ -5,7 +5,7 @@ const { BlobServiceClient } = require("@azure/storage-blob");
 const env = require("./.env.js");
 const AZURE_STORAGE_CONNECTION_STRING = env.AZURE_STORAGE_CONNECTION_STRING;
 const fileUrl = process.argv.slice(2)[0];
-const CONTAINER_NAME = "mobile-ota"
+const CONTAINER_NAME = "mobile-ota";
 
 const uploadFile = async (containerClient, filePath, fileUrl) => {
   const blobName = `${path.basename(path.dirname(fileUrl))}/${path.basename(fileUrl)}`;
@@ -16,6 +16,8 @@ const uploadFile = async (containerClient, filePath, fileUrl) => {
 
   const uploadBlobResponse = await blockBlobClient.uploadFile(filePath);
   console.log("Blob was uploaded successfully. requestId: ", uploadBlobResponse.requestId);
+
+  return blobName;
 };
 
 const getContainer = async (blobServiceClient) => {
@@ -36,7 +38,7 @@ const listContainer = async (containerClient) => {
   console.log("\nListing blobs...");
 
   for await (const blob of containerClient.listBlobsFlat()) {
-    console.log("\t", blob.name);
+    console.log("\t", "https://aztcmedia.blob.core.windows.net/mobile-ota/" + blob.name);
   }
 };
 
@@ -74,8 +76,10 @@ const main = async () => {
   }
   const blobServiceClient = BlobServiceClient.fromConnectionString(AZURE_STORAGE_CONNECTION_STRING);
   const containerClient = await getContainer(blobServiceClient);
-  await uploadFile(containerClient, filePath, fileUrl);
-  await listContainer(containerClient);
+  const blobName = await uploadFile(containerClient, filePath, fileUrl);
+  console.log("\nzip url:");
+  console.log("https://aztcmedia.blob.core.windows.net/mobile-ota/" + blobName);
+  // await listContainer(containerClient);
 };
 
 main()
