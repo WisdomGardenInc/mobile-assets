@@ -14,6 +14,7 @@ https://mobile-download.tronclass.com.cn/privacy-policy-en.md
 ```
 // need render html, use GitHub Pages
 https://wisdomgardeninc.github.io/mobile-assets/youtube-video-analysis.html
+https://wisdomgardeninc.github.io/mobile-assets/privacy_policy_google_play.html
 
 // normal text assets
 https://cdn.jsdelivr.net/npm/@wisdomgarden/mobile-assets@latest/youtube-video-analysis.html
