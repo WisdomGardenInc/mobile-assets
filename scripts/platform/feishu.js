@@ -97,6 +97,28 @@ const getVersionRecord = async (version, token) => {
   }
 };
 
+const _getMarketList = async (token) => {
+  try {
+    const { data: response } = await axios.get(
+      `/apps/${ENV_VARIABLES.APP_TOKEN}/tables/${ENV_VARIABLES.MARKET_LIST_TABLE_ID}/records`,
+      {
+        baseURL: ENV_VARIABLES.API_PREFIX,
+        headers: {
+          Accept: "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+        params: {
+          // view_id: ENV_VARIABLES.MARKET_LIST_VIEW_ID,
+          pageSize: 1,
+        },
+      }
+    );
+    console.log(response.data?.items);
+  } catch (error) {
+    console.error(error);
+  }
+};
+
 const getExistedMarketRecords = async (version, token) => {
   try {
     const { data: response } = await axios.get(
@@ -207,3 +229,10 @@ module.exports = {
   getReleaseNote,
   addMarketAppsVersion,
 };
+
+if (require.main === module) {
+  (async () => {
+    const token = await getTenantAccessToken();
+    _getMarketList(token);
+  })();
+}

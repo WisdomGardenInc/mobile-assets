@@ -23,6 +23,7 @@ const AVAILABLE_MARKETS = {
   百度手机助手: "recxTg3xmC",
   小米应用商店: "recNmoEBlj",
   OPPO开放平台: "recpBPc645",
+  VIVO: "recYuYUgoa",
 };
 
 const AVAILABLE_MARKETS_IDS = Object.fromEntries(Object.entries(AVAILABLE_MARKETS).map(([k, v]) => [v, k]));
@@ -74,6 +75,12 @@ const getMarketVersionRecords = (versionRecordId, version) => [
     fields: {
       ...getCommonFields(versionRecordId, version),
       应用市场: [AVAILABLE_MARKETS["OPPO开放平台"]],
+    },
+  },
+  {
+    fields: {
+      ...getCommonFields(versionRecordId, version),
+      应用市场: [AVAILABLE_MARKETS["VIVO"]],
     },
   },
   {
