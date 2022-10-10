@@ -13,7 +13,7 @@ const filterAzureOldBlob = async (containerClient) => {
   const blobs = [];
   for await (const blob of containerClient.listBlobsFlat()) {
     const blobTime = new Date(blob.properties.lastModified);
-    if (!blob.deleted && !blob.name.startsWith("prod") && blobTime < expTime) {
+    if (blob.name.endsWith(".zip") && !blob.deleted && !blob.name.startsWith("prod") && blobTime < expTime) {
       blobs.push(blob);
     }
   }
