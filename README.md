@@ -43,3 +43,14 @@ e.g. `node ota/upload-to-azure.js https://mobile-download.tronclass.com.cn/mobil
 
 paremeter `qiniuZipUrl`: the latest ota zip file url on qiniu
 
+
+### Update tc-orgs-tool Ota Org Information
+https://gitlab.tronclass.com.cn/lms/tc-orgs-tool
+
+#### before
+- Clone `git clone git@gitlab.tronclass.com.cn:lms/tc-orgs-tool.git`
+- Edit `ota/.env.js` set project path & [LeanCloud API](https://leancloud.cn/docs/#REST-API) authorization information
+- Make sure [OTAVersion prod env](https://console.leancloud.cn/apps/tRcsVqctq7saBytI0LpOCznA-gzGzoHsz/storage/data/OTAVersion) information correctly.
+- Run `node ota/update-orgs-server-json.js`
+- Goto `tc-orgs-tool` project, run `python update_orgs.py`
+
