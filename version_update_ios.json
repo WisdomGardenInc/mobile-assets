@@ -1,9 +1,9 @@
 {
-  "version": "2.3.4",
+  "version": "2.3.5",
   "update_type": 1,
   "allow_lowest_version": "2.2.9",
   "app_store_url": "https://apps.apple.com/app/scratch/id973028199",
-  "release_note_en_us": "- Fix bugs and improve system performance.",
-  "release_note_zh_hans": "- 已知问题修复和性能优化",
-  "release_note_zh_hant": "- 已知問題修復和性能優化"
+  "release_note_en_us": "- Support directly sharing files from other apps to personal resource library.\n- Fix bugs and improve system performance.",
+  "release_note_zh_hans": "- 支持将文件从其他App直接共享到个人资源库\n- 已知问题修复和性能优化",
+  "release_note_zh_hant": "- 提供將檔案從其他應用程式直接共享到個人資源庫\n- 已知問題修復和性能優化"
 }
