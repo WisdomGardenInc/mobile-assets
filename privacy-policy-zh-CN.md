@@ -21,13 +21,13 @@
 7. 为保障畅课（TronClass）相关功能的实现与应用安全稳定的运行，我们可能会接入由第三方及关联方提供的软件开发包(SDK)实现相关目的。我们会对合作方获取信息的软件工具开发包(SDK)进行严格的安全监测，以保护数据安全。我们对接入的相关第三方及关联方SDK在目录中列明。请注意，第三方SDK可能因为其版本升级、策略调整等原因导致数据处理类型存在一定变化，请以其公示的官方说明为准。
 
     > 极光推送核心服务SDK
-    > SDK名称：jcore.android-2.3.2
+    > SDK名称：jcore.android
     > 使用目的：用于推送消息
     > 数据类型：***在后台状态下获取用户标识信息（IMEI、MAC地址、ANDROID ID、软件安装列表、自启动）***
     > 官网链接：https://www.jiguang.cn/
 
     > 极光推送SDK
-    > SDK名称：cn.jpush.android-3.3.8
+    > SDK名称：cn.jpush.android
     > 使用目的：用于推送消息
     > 数据类型：***在后台状态下获取用户标识信息（IMEI、MAC地址、、ANDROID ID、软件安装列表、自启动）***
     > 官网链接：https://www.jiguang.cn/
@@ -43,6 +43,36 @@
     > 使用目的：用于推送消息
     > 数据类型：***在后台状态下获取用户标识信息（IMEI、MAC地址、、ANDROID ID、软件安装列表）***
     > 官网链接：https://developer.huawei.com/consumer/cn/hms/huawei-pushkit
+
+    > 小米推送 SDK
+    > SDK名称：com.xiaomi.mipush
+    > 使用目的：用于推送消息
+    > 数据类型：***在后台状态下获取用户标识信息（IMEI、MAC地址、、ANDROID ID、软件安装列表）***
+    > 官网链接：https://dev.mi.com/platform/push
+
+    > OPPO推送 SDK
+    > SDK名称：com.heytap.msp-push
+    > 使用目的：用于推送消息
+    > 数据类型：***在后台状态下获取用户标识信息（IMEI、MAC地址、、ANDROID ID、软件安装列表）***
+    > 官网链接：https://open.oppomobile.com/new/developmentDoc/info?id=11207
+
+    > 魅族推送 SDK
+    > SDK名称：com.meizu.flyme.internet:push
+    > 使用目的：用于推送消息
+    > 数据类型：***在后台状态下获取用户标识信息（IMEI、MAC地址、、ANDROID ID、软件安装列表）***
+    > 官网链接：https://open.flyme.cn/service/3
+
+    > VIVO推送 SDK
+    > SDK名称：com.vivo.push
+    > 使用目的：用于推送消息
+    > 数据类型：***在后台状态下获取用户标识信息（IMEI、MAC地址、、ANDROID ID、软件安装列表）***
+    > 官网链接：https://push.vivo.com.cn
+
+    > 荣耀推送 SDK
+    > SDK名称：HiPushSdk
+    > 使用目的：用于推送消息
+    > 数据类型：***在后台状态下获取用户标识信息（IMEI、MAC地址、、ANDROID ID、软件安装列表）***
+    > 官网链接：https://developer.hihonor.com/cn/kitdoc?category=&kitId=11002
 
     > 腾讯浏览服务SDK
     > SDK名称：com.tencent.smtt
