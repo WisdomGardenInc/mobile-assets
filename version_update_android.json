@@ -1,10 +1,10 @@
 {
-  "version": "2.3.9",
+  "version": "2.3.10",
   "update_type": 1,
-  "allow_lowest_version": "2.3.3",
+  "allow_lowest_version": "2.3.4",
   "app_store_url": "https://play.google.com/store/apps/details?id=com.wisdomgarden.trpc",
-  "app_store_url_cn": "https://mobile-download.tronclass.com.cn/mobile-2.0/app/android/app-release-2.3.9.apk",
-  "release_note_en_us": "- Fix bugs and improve system performance.",
-  "release_note_zh_hans": "- 已知问题修复和性能优化",
-  "release_note_zh_hant": "- 已知問題修復和性能優化"
+  "app_store_url_cn": "https://mobile-download.tronclass.com.cn/mobile-2.0/app/android/app-release-2.3.10.apk",
+  "release_note_en_us": "- Improve the location accuracy of Radar Rollcall.\n- Support manual zoom when scanning QR code in App.\n- Optimize the experience of viewing PDF files.\n- Fix known issues.",
+  "release_note_zh_hans": "- 提升雷达点名的定位准确度\n- 支持在App中扫码时手动放大二维码\n- 优化查看PDF文件体验\n- 修复已知问题",
+  "release_note_zh_hant": "- 提升雷達點名的定位準確度\n- 在App掃描時提供手動放大QR Code功能\n- 優化查看PDF檔案的體驗\n- 修復已知問題"
 }
