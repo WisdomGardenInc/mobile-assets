@@ -10,6 +10,7 @@ declare -a tasks=(
   # "https://purge.jsdelivr.net/npm/@wisdomgarden/mobile-assets@latest/privacy-policy-zh-CN.md"
   # "https://purge.jsdelivr.net/npm/@wisdomgarden/mobile-assets@latest/privacy-policy-zh-TW.md"
   # "https://purge.jsdelivr.net/npm/@wisdomgarden/mobile-assets@latest/privacy-policy-en.md"
+  # "https://purge.jsdelivr.net/npm/@wisdomgarden/mobile-assets@latest/youtube-video-analysis.html"
 )
 
 for i in "${tasks[@]}"
