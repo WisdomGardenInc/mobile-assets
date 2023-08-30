@@ -143,7 +143,7 @@
     let depName = getVariable('depName');
     let depCode = getVariable('depCode');
 
-    let start, end, currentStartTime, currentEndTime, duration, intervalId, videoDuration, THRESHOLD=5 * 60 * 1000, unStarted = false, errorTips;
+    let start, end, currentStartTime, currentEndTime, duration, intervalId, videoDuration, THRESHOLD=1 * 60 * 1000, unStarted = false, errorTips;
 
     if (currentLang === 'zh-Hans') {
         errorTips = '受YouTube限制，该视频只能在web端观看';
