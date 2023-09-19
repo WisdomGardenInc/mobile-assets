@@ -10,12 +10,6 @@ declare -a tasks=(
   # "https://purge.jsdelivr.net/npm/@wisdomgarden/mobile-assets@latest/privacy-policy-zh-CN.md"
   # "https://purge.jsdelivr.net/npm/@wisdomgarden/mobile-assets@latest/privacy-policy-zh-TW.md"
   # "https://purge.jsdelivr.net/npm/@wisdomgarden/mobile-assets@latest/privacy-policy-en.md"
-  # "https://purge.jsdelivr.net/npm/@wisdomgarden/mobile-assets@latest/youtube-video-analysis.html"
-  # "https://purge.jsdelivr.net/npm/@wisdomgarden/mobile-assets@latest/identity-web-login-proxy/favicon.ico"
-  # "https://purge.jsdelivr.net/npm/@wisdomgarden/mobile-assets@latest/identity-web-login-proxy/identity-web-login-proxy-callback.html"
-  # "https://purge.jsdelivr.net/npm/@wisdomgarden/mobile-assets@latest/identity-web-login-proxy/identity-web-login-proxy.css"
-  # "https://purge.jsdelivr.net/npm/@wisdomgarden/mobile-assets@latest/identity-web-login-proxy/identity-web-login-proxy.html"
-  # "https://purge.jsdelivr.net/npm/@wisdomgarden/mobile-assets@latest/identity-web-login-proxy/identity-web-login-proxy.js"
 )
 
 for i in "${tasks[@]}"

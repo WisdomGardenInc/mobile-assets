@@ -22,6 +22,12 @@ https://mobile-download.tronclass.com.cn/identity-web-login-proxy/identity-web-l
 // need render html, use GitHub Pages
 https://wisdomgardeninc.github.io/mobile-assets/youtube-video-analysis.html
 https://wisdomgardeninc.github.io/mobile-assets/privacy_policy_google_play.html
+// identity-web-login-proxy
+https://wisdomgardeninc.github.io/mobile-assets/identity-web-login-proxy/favicon.ico
+https://wisdomgardeninc.github.io/mobile-assets/identity-web-login-proxy/identity-web-login-proxy-callback.html
+https://wisdomgardeninc.github.io/mobile-assets/identity-web-login-proxy/identity-web-login-proxy.css
+https://wisdomgardeninc.github.io/mobile-assets/identity-web-login-proxy/identity-web-login-proxy.html
+https://wisdomgardeninc.github.io/mobile-assets/identity-web-login-proxy/identity-web-login-proxy.js
 
 // normal text assets
 https://cdn.jsdelivr.net/npm/@wisdomgarden/mobile-assets@latest/youtube-video-analysis.html
@@ -35,13 +41,6 @@ https://cdn.jsdelivr.net/npm/@wisdomgarden/mobile-assets@latest/privacy-policy-e
 // version update files
 https://cdn.jsdelivr.net/npm/@wisdomgarden/mobile-assets@latest/version_update_android.json
 https://cdn.jsdelivr.net/npm/@wisdomgarden/mobile-assets@latest/version_update_ios.json
-
-//identity-web-login-proxy
-https://cdn.jsdelivr.net/npm/@wisdomgarden/mobile-assets@latest/identity-web-login-proxy/favicon.ico
-https://cdn.jsdelivr.net/npm/@wisdomgarden/mobile-assets@latest/identity-web-login-proxy/identity-web-login-proxy-callback.html
-https://cdn.jsdelivr.net/npm/@wisdomgarden/mobile-assets@latest/identity-web-login-proxy/identity-web-login-proxy.css
-https://cdn.jsdelivr.net/npm/@wisdomgarden/mobile-assets@latest/identity-web-login-proxy/identity-web-login-proxy.html
-https://cdn.jsdelivr.net/npm/@wisdomgarden/mobile-assets@latest/identity-web-login-proxy/identity-web-login-proxy.js
 ```
 
 ### jsDeliver API
