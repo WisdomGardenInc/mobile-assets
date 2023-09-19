@@ -8,6 +8,13 @@ https://mobile-download.tronclass.com.cn/privacy-policy-info.json
 https://mobile-download.tronclass.com.cn/privacy-policy-zh-CN.md  
 https://mobile-download.tronclass.com.cn/privacy-policy-zh-TW.md
 https://mobile-download.tronclass.com.cn/privacy-policy-en.md
+
+//identity-web-login-proxy
+https://mobile-download.tronclass.com.cn/identity-web-login-proxy/favicon.ico
+https://mobile-download.tronclass.com.cn/identity-web-login-proxy/identity-web-login-proxy-callback.html
+https://mobile-download.tronclass.com.cn/identity-web-login-proxy/identity-web-login-proxy.css
+https://mobile-download.tronclass.com.cn/identity-web-login-proxy/identity-web-login-proxy.html
+https://mobile-download.tronclass.com.cn/identity-web-login-proxy/identity-web-login-proxy.js
 ```
 
 ### GitHub & jsDeliver assets
@@ -28,6 +35,13 @@ https://cdn.jsdelivr.net/npm/@wisdomgarden/mobile-assets@latest/privacy-policy-e
 // version update files
 https://cdn.jsdelivr.net/npm/@wisdomgarden/mobile-assets@latest/version_update_android.json
 https://cdn.jsdelivr.net/npm/@wisdomgarden/mobile-assets@latest/version_update_ios.json
+
+//identity-web-login-proxy
+https://cdn.jsdelivr.net/npm/@wisdomgarden/mobile-assets@latest/identity-web-login-proxy/favicon.ico
+https://cdn.jsdelivr.net/npm/@wisdomgarden/mobile-assets@latest/identity-web-login-proxy/identity-web-login-proxy-callback.html
+https://cdn.jsdelivr.net/npm/@wisdomgarden/mobile-assets@latest/identity-web-login-proxy/identity-web-login-proxy.css
+https://cdn.jsdelivr.net/npm/@wisdomgarden/mobile-assets@latest/identity-web-login-proxy/identity-web-login-proxy.html
+https://cdn.jsdelivr.net/npm/@wisdomgarden/mobile-assets@latest/identity-web-login-proxy/identity-web-login-proxy.js
 ```
 
 ### jsDeliver API
