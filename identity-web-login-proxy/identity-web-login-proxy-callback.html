@@ -72,7 +72,7 @@
 
             var queryString = window.identityLoginProxyUtils.paramsToUrl({
                 "client_id": config.resource,
-                "redirect_uri": getReidrectUrl(),
+                "redirect_uri": window.identityLoginProxyUtils.getReidrectUrl(org),
                 "code": code,
                 "grant_type": "authorization_code",
             });

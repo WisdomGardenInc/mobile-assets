@@ -22,8 +22,7 @@ function paramsToUrl(obj, encode = false) {
     .join("&");
 }
 
-function getReidrectUrl() {
-  var params = getUrlParams();
+function getReidrectUrl(org) {
   var pathName = window.location.pathname;
   var indexOfPath = pathName.lastIndexOf("/");
 
@@ -33,7 +32,7 @@ function getReidrectUrl() {
     window.location.origin +
     pathName +
     "identity-web-login-proxy-callback.html?" +
-    paramsToUrl({ org: params["org"], platform: params["platform"] }, true);
+    paramsToUrl({ org: encodeURIComponent(JSON.stringify(org)) }, true);
 
   return redirectUrl;
 }
@@ -67,7 +66,10 @@ function getInfoFromApp() {
     org = null;
   }
 
-  var platform = params["platform"] || "web";
+
+  var platform = org.platform || params["platform"] || "web";
+
+  org.platform = platform;
 
   return { org, platform, code: params["code"] };
 }

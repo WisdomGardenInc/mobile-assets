@@ -56,7 +56,7 @@
         if (!org) {
             alert("no org info");
         } else {
-            var redirectUrl = window.identityLoginProxyUtils.getReidrectUrl();
+            var redirectUrl = window.identityLoginProxyUtils.getReidrectUrl(org);
             redirectIdentityWebLoginUrl(org, redirectUrl, platform);
         }
     </script>
