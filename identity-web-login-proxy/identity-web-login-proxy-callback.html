@@ -35,8 +35,8 @@
             var params = null;
 
             if (response) {
-                const orgName = localStorage.getItem("identityLoginProxyOrgName");
-                const area = localStorage.getItem("identityLoginProxyArea");
+                const orgName = org.orgName;
+                const area = org.area;
 
                 params = window.identityLoginProxyUtils.paramsToUrl({
                     accessToken: response["access_token"],
@@ -83,20 +83,24 @@
             return getIdentityAccessToken(identityUrl, queryString)
         };
 
-        var params = window.identityLoginProxyUtils.getUrlParams();
-        var code = params["code"];
-        var identityConfig = localStorage.getItem("identityLoginProxyConfig");
-        var platform = localStorage.getItem("identityLoginProxyPlatform") || "web";
+        //  input org, platform, code
+        var params = window.identityLoginProxyUtils.getInfoFromApp();
+        var code = params.code;
+        var org = params.org;
+        var platform = params.platform;
 
         console.log(params);
         console.log(identityConfig);
         console.log(platform);
-        try {
-            identityConfig = JSON.parse(identityConfig);
-        } catch {
-            identityConfig = null;
-        }
-        if (code && identityConfig) {
+
+        if (!org || !code) {
+            alert("no code or org");
+        } else {
+            var identityConfig = window.identityLoginProxyUtils.getIdentityConfig(org, platform);
+
+            if (!identityConfig) {
+                alert("no identity config");
+            }
             loginByIdentityCode(identityConfig, code)
                 .then(function (response) {
                     backToApp(response, platform);
@@ -104,8 +108,7 @@
                     alert(error)
                     backToApp(null, platform);
                 });
-        } else {
-            alert("no code or config")
+
         }
     </script>
 </head>

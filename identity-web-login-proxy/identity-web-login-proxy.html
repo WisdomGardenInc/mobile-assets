@@ -42,10 +42,6 @@
                 identityConfig
             );
 
-            if (identityConfig) {
-                localStorage.setItem("identityLoginProxyConfig", JSON.stringify(identityConfig));
-            }
-
             console.log(authUrl);
             if (authUrl) {
                 location.href = authUrl;
@@ -53,24 +49,13 @@
         };
 
         //  input org, platform
-        var params = window.identityLoginProxyUtils.getUrlParams();
-
-        console.log(params);
-        var org = null;
-        try {
-            org = JSON.parse(decodeURIComponent(params["org"]));
-        } catch {
-            org = null;
-        }
-
-        var platform = params["platform"] || "web";
-        localStorage.setItem("identityLoginProxyPlatform", platform);
+        var params = window.identityLoginProxyUtils.getInfoFromApp();
+        var org = params.org;
+        var platform = params.platform;
 
         if (!org) {
             alert("no org info");
         } else {
-            localStorage.setItem("identityLoginProxyOrgName", org["orgName"]);
-            localStorage.setItem("identityLoginProxyArea", org["area"]);
             var redirectUrl = window.identityLoginProxyUtils.getReidrectUrl();
             redirectIdentityWebLoginUrl(org, redirectUrl, platform);
         }
