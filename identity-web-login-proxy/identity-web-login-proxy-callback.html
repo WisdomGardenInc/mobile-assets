@@ -29,42 +29,48 @@
 
         };
 
+        function backToAPPError(platform) {
+            if (platform === "app") {
+                location.href = "tronclass://";
+            } else if (platform === "line" && org.thirdParty && org.thirdParty.line && org.thirdParty.line.liffId) {
+                // https://line.me/R/app/1656813019-O9RKXrq6/?liff.state=1
+                location.href = "https://line.me/R/app/" + org.thirdParty.line.liffId;
+            } else {
+                location.href = location.origin;
+            }
+        }
         function backToApp(response, platform) {
             console.log(response);
-
-            var params = null;
-
-            if (response) {
-                const orgName = org.orgName;
-                const area = org.area;
-
-                params = window.identityLoginProxyUtils.paramsToUrl({
-                    accessToken: response["access_token"],
-                    refreshToken: response["refresh_token"],
-                    orgName,
-                    area
-                })
+            if (!response || !response["access_token"]) {
+                backToAPPError(platform);
+                return;
             }
 
-            // for h5
-            var host = location.origin;
-            // for h5, self host current page
-            var pathName = "/login-by-identity-token?";
-
+            const orgName = org.orgName;
+            const area = org.area;
+            var params = window.identityLoginProxyUtils.paramsToUrl({
+                accessToken: response["access_token"],
+                refreshToken: response["refresh_token"],
+                orgName,
+                area
+            })
 
             if (platform === "app") {
-                host = "tronclass://";
-                pathName = "login-by-identity-token?";
-            }
+                location.href = "tronclass://login-by-identity-token?" + params;
+            } else if (platform === "line") {
+                if (org.thirdParty && org.thirdParty.line && org.thirdParty.line.liffId) {
+                    location.href = "https://line.me/R/app/" + org.thirdParty.line.liffId + "/?liff.state=" + encodeURIComponent(JSON.stringify({
+                        "path": "/login-by-identity-token?",
+                        "params": params
+                    }));
+                } else {
+                    alert("use line but no liffId in org.thirdParty");
+                    location.href = location.origin + "/login-by-identity-token?" + params;
+                }
 
-            if (params) {
-                pathName += params
             } else {
-                // no response jump to default page
-                pathName = ""
+                location.href = location.origin + "/login-by-identity-token?" + params;
             }
-
-            location.href = host + pathName;
         }
 
         async function loginByIdentityCode(config, code) {
@@ -106,7 +112,7 @@
                     backToApp(response, platform);
                 }).catch(function (error) {
                     alert(error)
-                    backToApp(null, platform);
+                    backToAPPError(platform);
                 });
 
         }

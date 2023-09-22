@@ -66,7 +66,6 @@ function getInfoFromApp() {
     org = null;
   }
 
-
   var platform = org.platform || params["platform"] || "web";
 
   org.platform = platform;
