@@ -1,21 +1,25 @@
 ## Update assets flow
 
-### update version info: `version_update_android.json / version_update_ios.json`
+
+### Add version records before uploading to the market
+
+1. ~~[HiPaCloud](https://hipacloud.com/apps/61246bbeb74fa7ca113500cb/tables/61357f137c852d44c4e9248d)~~[飞书多维表格](https://wisdomgarden.feishu.cn/base/bascnGagJw701WLXVakop4vQlwc?table=tblgnx3liFOXJ3el&view=vewRsmyLYE) Create a new version record and improve the release notes, need edit it manually.
+
+2. `node scripts/add_market_apps_version.js` Batch increase market version records
 
 
-1. ~~[HiPaCloud](https://hipacloud.com/apps/61246bbeb74fa7ca113500cb/tables/61357f137c852d44c4e9248d)~~[飞书多维表格](https://hipacloud.com/apps/61246bbeb74fa7ca113500cb/tables/61357f137c852d44c4e9248d) Create a new version record and improve the release notes.
-2. `node scripts/update_app_version_md.js` update json file with hipa remote data, or edit it manually
-3. check for errors then git commit `git commit -m "update version file"`
-4. `node scripts/upgrade_version.js` increase current project version number and add new tag
-5. `git push && git push --tags` push to GitHub, and Github Action publish it to [npm @wisdomgarden/mobile-assets](https://www.npmjs.com/package/@wisdomgarden/mobile-assets)
-6. after about 10 minutes, check [jsDeliver package data](https://data.jsdelivr.com/v1/package/npm/@wisdomgarden/mobile-assets) util latest tag is same as package.json.version then `bash scripts/refresh_cdn.sh` refresh json file cdn cache
-7. preview release note. local use live server `./preview-release.html` or [Online from GitHub Pages](https://wisdomgardeninc.github.io/mobile-assets/preview-release.html)
+### Update version info is used to send update notifications
+**update `version_update_android.json / version_update_ios.json`**
+
+1. `node scripts/update_app_version_md.js` update json file with ~~hipa~~ feishu remote data, or edit it manually
+2. check for errors then git commit `git commit -m "update version file"`
+3. `node scripts/upgrade_version.js` increase current project version number and add new tag
+4. `git push && git push --tags` push to GitHub, and Github Action publish it to [npm @wisdomgarden/mobile-assets](https://www.npmjs.com/package/@wisdomgarden/mobile-assets)
+5. after about 10 minutes, check [jsDeliver package data](https://data.jsdelivr.com/v1/package/npm/@wisdomgarden/mobile-assets) util latest tag is same as package.json.version then `bash scripts/refresh_cdn.sh` refresh json file cdn cache
+6. preview release note. local use live server `./preview-release.html` or [Online from GitHub Pages](https://wisdomgardeninc.github.io/mobile-assets/preview-release.html)
 
 if update other file, edit `refresh_cdn.sh`, then run `bash scripts/refresh_cdn.sh` refresh it.
 
-
-### Batch increase market version records
-`node scripts/add_market_apps_version.js`
 
 ### update privacy policy
 1. `bash scripts/sync_privacy_files.sh`
