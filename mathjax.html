@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TronClass MathJax Playground</title>
+    <style>
+        body,
+        div {
+            padding: 0;
+            margin: 0;
+        }
+
+        body {
+            width: 100dvw;
+            height: 100dvh;
+            font-size: 16px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .content {
+            margin: 1rem;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            overflow-y: auto;
+            overflow-x: hidden;
+        }
+
+        .content textarea {
+            padding: 0.5rem;
+            width: calc(100% - 1.5rem);
+            min-height: 10%;
+            max-height: 70%;
+            resize: vertical;
+            border-color: darkolivegreen;
+        }
+
+        .content .output {
+            width: 100%;
+            word-break: break-word;
+        }
+
+        .content .error {
+            width: 100%;
+            color: brown;
+            word-break: break-word;
+        }
+
+        .content .renderButton {
+            align-self: flex-start;
+            margin: 1rem 0 1rem 0.1rem;
+        }
+    </style>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script>
+        MathJax = {
+            startup: {
+                typeset: false,
+            },
+            loader: {
+                load: [
+                    // "input/tex-base",
+                    "input/tex",
+                    "input/mml",
+                    "output/svg",
+                    "[tex]/ams",
+                    "[tex]/autoload",
+                    "[tex]/mhchem",
+                    "[tex]/physics",
+                ]
+            },
+            tex: {
+                inlineMath: [
+                    ["$", "$"],
+                    ["\\(", "\\)"],
+                ],
+                displayMath: [
+                    ["$$", "$$"],
+                    ["\\[", "\\]"],
+                ],
+                packages: {"[+]": ["ams", "autoload", "mhchem", "physics"]},
+                autoload: {
+                    color: [],
+                    colorv2: ["color"],
+                },
+            },
+            options: {
+                skipHtmlTags: ["script", "noscript", "style", "textarea", "pre", "code"],
+            }
+        };
+
+        let mathJaxInited = new Promise((resolve) => {
+            Object.assign(MathJax.startup, {
+                ready: () => {
+                    MathJax.startup.defaultReady();
+                },
+                pageReady: () => {
+                    MathJax.startup.defaultPageReady();
+                    resolve();
+                },
+            });
+            (() => {
+                var script = document.createElement('script');
+                script.src = 'https://unpkg.com/mathjax@3.1.2/es5/startup.js';
+                script.async = true;
+                document.head.appendChild(script);
+            })();
+        });
+
+
+    </script>
+    <script type="module">
+        import {createApp} from 'https://unpkg.com/petite-vue?module';
+
+        createApp({
+            latex: String.raw`$\arctan({\frac{x}{\sqrt{6}}})$`,
+            isRender: true,
+            error: null,
+            contentRef: null,
+            outputRef: null,
+            mathJaxVersion: MathJax.version,
+            onMounted() {
+                this.contentRef = document.getElementById("content");
+                this.output = document.getElementById("output");
+                this.contentRef.style.visibility = "visible";
+            },
+            async onClickRender(evt) {
+                this.error = null;
+                this.isRender = true;
+
+                this.output.innerHTML = this.latex;
+                try {
+                    await mathJaxInited;
+                    this.mathJaxVersion = MathJax.version;
+                    MathJax.typesetClear();
+                    MathJax.texReset();
+                    await MathJax.typesetPromise([this.output]);
+                } catch (error) {
+                    this.error = error.toString();
+                }
+                this.isRender = false;
+            },
+        }).mount("#app");
+    </script>
+</head>
+
+<body id="app" v-scope>
+    <div id="content" class="content" style="visibility: hidden;" @vue:mounted="onMounted">
+        <h1>TronClass MathJax V{{mathJaxVersion}} Playground</h1>
+        <textarea autocomplete="off" placeholder="LaTeX eq." wrap="soft" spellcheck="false" v-model="latex"></textarea>
+        <button @click="onClickRender" class="renderButton">Render</button>
+        <div v-show="!isRender" class="output">
+            <h3>Output:</h3>
+            <div id="output"></div>
+        </div>
+        <div v-if="error" class="output error">
+            <h3>Error:</h3>
+            {{error}}
+        </div>
+    </div>
+</body>
+
+</html>
