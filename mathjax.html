@@ -7,6 +7,8 @@
     <title>TronClass MathJax Playground</title>
     <style>
         body,
+        code,
+        pre,
         div {
             padding: 0;
             margin: 0;
@@ -39,6 +41,36 @@
             border-color: darkolivegreen;
         }
 
+        .content .codeArea {
+            width: 100%;
+            box-sizing: border-box;
+            position: relative;
+            background: #f3f3f3;
+            margin-top: 1rem;
+            border-radius: 3px;
+            padding: 2rem 1rem 1rem 1rem;
+        }
+
+        .content .codeArea .langTag {
+            position: absolute;
+            display: inline-block;
+            right: 0;
+            color: wheat;
+            top: 0;
+            font-size: 0.8rem;
+            padding: 5px;
+            border-radius: 3px;
+            background-color: black;
+        }
+
+        .content pre code {
+            white-space: pre;
+        }
+
+        .content .codeArea pre code.hljs {
+            padding: 0;
+        }
+
         .content .output {
             width: 100%;
             word-break: break-word;
@@ -55,6 +87,7 @@
             margin: 1rem 0 1rem 0.1rem;
         }
     </style>
+    <link rel="stylesheet" href="https://unpkg.com/@highlightjs/cdn-assets@11.9.0/styles/atom-one-light.min.css">
     <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
     <script>
         MathJax = {
@@ -115,6 +148,10 @@
     </script>
     <script type="module">
         import {createApp} from 'https://unpkg.com/petite-vue?module';
+        import hljs from 'https://unpkg.com/@highlightjs/cdn-assets@11.9.0/es/highlight.min.js';
+        import latex from 'https://unpkg.com/@highlightjs/cdn-assets@11.9.0/es/languages/latex.min.js';
+
+        hljs.registerLanguage('latex', latex);
 
         createApp({
             latex: String.raw`$\arctan({\frac{x}{\sqrt{6}}})$`,
@@ -125,14 +162,19 @@
             mathJaxVersion: MathJax.version,
             onMounted() {
                 this.contentRef = document.getElementById("content");
+                this.code = document.getElementById("code");
                 this.output = document.getElementById("output");
+
+                this.renderCode();
                 this.contentRef.style.visibility = "visible";
+            },
+            renderCode() {
+                this.code.innerHTML = hljs.highlight(this.latex, {language: "latex"}).value;
             },
             async onClickRender(evt) {
                 this.error = null;
                 this.isRender = true;
-
-                this.output.innerHTML = this.latex;
+                this.output.innerHTML = this.latex.replace("\n", "<br />");
                 try {
                     await mathJaxInited;
                     this.mathJaxVersion = MathJax.version;
@@ -151,7 +193,11 @@
 <body id="app" v-scope>
     <div id="content" class="content" style="visibility: hidden;" @vue:mounted="onMounted">
         <h1>TronClass MathJax V{{mathJaxVersion}} Playground</h1>
-        <textarea autocomplete="off" placeholder="LaTeX eq." wrap="soft" spellcheck="false" v-model="latex"></textarea>
+        <textarea autocomplete="off" placeholder="LaTeX eq." wrap="soft" spellcheck="false" @input="renderCode" v-model="latex"></textarea>
+        <div class="codeArea">
+            <span class="langTag">Latex</span>
+            <pre><code class="language-latex" id="code">{{latex}}</code></pre>
+        </div>
         <button @click="onClickRender" class="renderButton">Render</button>
         <div v-show="!isRender" class="output">
             <h3>Output:</h3>
