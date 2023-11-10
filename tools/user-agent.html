@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Get User Agent</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            padding: 16px;
+            font-size: 16px;
+        }
+    </style>
+
+    <script type="text/javascript">
+        window.onload = function () {
+            var text = document.getElementById("text");
+
+            text.innerText = navigator.userAgent;
+        }
+    </script>
+</head>
+
+<body>
+    <div id="content">
+        <span id="text"></span>
+    </div>
+</body>
+
+</html>

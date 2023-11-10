@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Video.JS Playground</title>
+  <link href="https://cdn.staticfile.org/video.js/7.21.0/video-js.min.css" rel="stylesheet" />
+  <style>
+    * {
+      padding: 0;
+      margin: 0;
+    }
+
+    .wg-video {
+      width: 100vw;
+      height: 100vh;
+    }
+
+    .error {}
+  </style>
+  <script src="https://cdn.staticfile.org/video.js/7.21.0/video.min.js"></script>
+</head>
+
+<body>
+  <video id="wg-video" class="video-js wg-video">
+    <p class="vjs-no-js">
+      To view this video please enable JavaScript, and consider upgrading to a
+      web browser that
+      <a href="https://videojs.com/html5-video-support/" target="_blank">supports HTML5 video</a>
+    </p>
+  </video>
+  <script type="text/javascript">
+    ; ((function () {
+      // https://mobile-download.tronclass.com.cn/P1-1.mp4
+      // video/mp4
+      const searchParams = new URLSearchParams(window.location.search);
+      let src = searchParams.get("src");
+      let type = searchParams.get("type");
+
+
+      try {
+        src = new URL(decodeURIComponent(src));
+      } catch {
+        src = "";
+      }
+
+      if (!src) {
+        alert('usage: videojs-playground.html?src=url[&type=mimetype]');
+        return;
+      }
+
+      if (!type) {
+        if (src.pathname.lastIndexOf(".") === -1) {
+          type = "video/mp4"
+        }
+      }
+
+      window.onload = () => {
+        const player = videojs("wg-video", {
+          controls: true,
+          autoplay: true,
+          preload: 'auto'
+        });
+
+        player.on("error", () => {
+          const error = player.error();
+
+          for (let key in error) {
+            if (key.startsWith("MEDIA_ERR")) {
+              if (error[key] === error.code) {
+                error["errorType"] = key;
+              }
+            }
+          }
+          alert(JSON.stringify(error, null, 2));
+        });
+
+
+        const srcOptions = { type, src: src.href };
+        if (!type) {
+          delete srcOptions["type"];
+        }
+
+        player.src(srcOptions);
+      }
+
+    })());
+  </script>
+</body>
+
+</html>
