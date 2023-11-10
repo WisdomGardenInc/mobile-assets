@@ -31,13 +31,13 @@
           }
         };
 
-        fetch(url, { method: "POST" })
+        fetch(url, { method: "HEAD" })
           .then(_finally)
           .catch(_finally)
       });
     }
 
-    _check("https://identitytoolkit.googleapis.com/v1/accounts:signInWithCustomToken?key=error")
+    _check("https://maps.googleapis.com/maps/api/geocode/json")
       .then(gotoGooglePlay)
       .catch(gotoMainlandMarket)
   </script>
