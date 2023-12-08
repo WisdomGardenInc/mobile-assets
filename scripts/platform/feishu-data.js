@@ -53,12 +53,12 @@ const getMarketVersionRecords = (versionRecordId, version) => [
       应用市场: [AVAILABLE_MARKETS["GooglePlay"]],
     },
   },
-  {
-    fields: {
-      ...getCommonFields(versionRecordId, version),
-      应用市场: [AVAILABLE_MARKETS["应用宝"]],
-    },
-  },
+  // {
+  //   fields: {
+  //     ...getCommonFields(versionRecordId, version),
+  //     应用市场: [AVAILABLE_MARKETS["应用宝"]],
+  //   },
+  // },
   {
     fields: {
       ...getCommonFields(versionRecordId, version),
