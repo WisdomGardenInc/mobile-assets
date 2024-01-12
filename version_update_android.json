@@ -1,6 +1,6 @@
 {
   "version": "2.4.7",
-  "update_type": 0,
+  "update_type": 1,
   "allow_lowest_version": "2.3.13",
   "app_store_url": "https://play.google.com/store/apps/details?id=com.wisdomgarden.trpc",
   "app_store_url_cn": "https://mobile-download.tronclass.com.cn/mobile-2.0/app/android/app-release-2.4.7.apk",
