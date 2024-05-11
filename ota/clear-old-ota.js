@@ -43,26 +43,27 @@ const clearAzure = async (prodFileName) => {
   console.log("\nClearing Azure old OTA blobs done!");
 };
 
-const filterQiniuOldBlob = (prodFileName) => {
-  // qshell listbucket2 --prefix mobile-2.0/ota/ --suffixes '.zip' --end "2022-06-01-00-00-00" lms-mobile
+const filterQiniuOldBlob = (prodCurrentUseFileName) => {
+  // qshell listbucket2 --prefix mobile-2.0/ota/ --suffixes '.zip' --end "2024-06-01-00-00-00" --show-fields Key --silence lms-mobile
 
   const expDate = new Date(expTime);
   const expDateStr = `${expDate.getFullYear()}-${expDate.getMonth() + 1}-${expDate.getDate()}-00-00-00`;
-  const command = `qshell listbucket2 --prefix mobile-2.0/ota/ --suffixes '.zip' --end "${expDateStr}" ${QINIU_BUCKET}`;
+  const command = `qshell listbucket2 --prefix mobile-2.0/ota/ --suffixes '.zip' --end "${expDateStr}" --show-fields Key --silence ${QINIU_BUCKET}`;
 
   const blobNames = execSync(command)
     .toString()
     .split("\n")
     .map((item) => item.trim().split("\t")[0].trim())
-    .filter((item) => item.length && !item.endsWith(prodFileName));
+    .filter((item) => item.length && !item.endsWith(prodCurrentUseFileName))
+    .slice(1);
 
   return blobNames;
 };
 
-const clearQiniu = (prodFileName) => {
+const clearQiniu = (prodCurrentUseFileName) => {
   console.log("Clearing QiNiu old OTA blobs\n");
 
-  const blobs = filterQiniuOldBlob(prodFileName);
+  const blobs = filterQiniuOldBlob(prodCurrentUseFileName);
   if (!blobs.length) {
     console.log("no old OTA blobs");
     return;
