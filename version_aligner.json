@@ -1,0 +1,30 @@
+[
+  {
+    "mobileVersion": "2.7.0",
+    "serverVersion": "1.69~1.71"
+  },
+  {
+    "mobileVersion": "2.6.2",
+    "serverVersion": "1.68~1.70"
+  },
+  {
+    "mobileVersion": "2.6.1",
+    "serverVersion": "1.68~1.70"
+  },
+  {
+    "mobileVersion": "2.6.0",
+    "serverVersion": "1.68~1.70"
+  },
+  {
+    "mobileVersion": "2.5.2",
+    "serverVersion": "1.67~1.69"
+  },
+  {
+    "mobileVersion": "2.5.1",
+    "serverVersion": "1.67~1.69"
+  },
+  {
+    "mobileVersion": "2.5.0",
+    "serverVersion": "1.67~1.69"
+  }
+]

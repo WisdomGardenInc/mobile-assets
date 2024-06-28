@@ -214,7 +214,9 @@ const addMarketAppsVersion = async (version) => {
   console.log("------------------------------");
   console.log("Add Market Version:", newRecordsData.length);
   newRecordsData.forEach((record) => {
-    console.log(feishuData.AVAILABLE_MARKETS_IDS[record["fields"]["应用市场"][0]]);
+    console.log(
+      feishuData.AVAILABLE_MARKETS_IDS[record["fields"]["应用市场"][0]]
+    );
   });
   console.log("**********************************************");
 
@@ -225,9 +227,54 @@ const addMarketAppsVersion = async (version) => {
   }
 };
 
+const getVersionAlignerInfo = async (version) => {
+  const result = {
+    mobileVersion: version,
+    serverVersion: null,
+  };
+
+  const token = await getTenantAccessToken();
+  if (!token) {
+    return result;
+  }
+
+  try {
+    const { data: response } = await axios.get(
+      `/apps/${ENV_VARIABLES.APP_TOKEN}/tables/${ENV_VARIABLES.VERSION_TABLE_ID}/records`,
+      {
+        baseURL: ENV_VARIABLES.API_PREFIX,
+        headers: {
+          Accept: "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+        params: {
+          filter: `CurrentValue.[版本号]="${version}"`,
+          view_id: ENV_VARIABLES.VIEW_ID,
+          pageSize: 1,
+        },
+      }
+    );
+    const data = response.data;
+    if (data && data.items && data.items.length) {
+      const fields = data.items[0].fields;
+
+      result.mobileVersion = fields["版本号"];
+
+      if (fields["兼容web版本"]) {
+        result.serverVersion = fields["兼容web版本"];
+      }
+    }
+  } catch (error) {
+    console.log(error);
+  } finally {
+    return result;
+  }
+};
+
 module.exports = {
   getReleaseNote,
   addMarketAppsVersion,
+  getVersionAlignerInfo,
 };
 
 if (require.main === module) {

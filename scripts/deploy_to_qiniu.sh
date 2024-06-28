@@ -29,3 +29,6 @@ qshell fput --overwrite lms-mobile version_update_ios.json version_update_ios.js
 
 # identity-web-login-proxy
 qshell qupload2 --bucket=lms-mobile --overwrite --src-dir=./identity-web-login-proxy --key-prefix=identity-web-login-proxy --skip-file-prefixes .
+
+# App version corresponds to server version
+qshell fput --overwrite lms-mobile version_aligner.json version_aligner.json
