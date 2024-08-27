@@ -1,7 +1,11 @@
 [
   {
+    "mobileVersion": "2.8.0",
+    "serverVersion": "1.70-1.72"
+  },
+  {
     "mobileVersion": "2.7.0",
-    "serverVersion": "1.72"
+    "serverVersion": "1.69-1.71"
   },
   {
     "mobileVersion": "2.6.2",

@@ -47,11 +47,11 @@ const inputVersionInfo = ({ version }) => {
     {
       name: "version",
       type: "input",
-      message: "input the app new version",
+      message: "input the app version",
       initial: version,
       validate: (value) => {
         if (!utils.versionReg.test(value)) {
-          return `newVersion version ${value} format error. e.g. 1.1.1`;
+          return `version ${value} format error. e.g. 1.1.1`;
         }
         return true;
       },
@@ -66,7 +66,7 @@ const run = async () => {
   }
   try {
     const { version } = await inputVersionInfo(defaultVersionInfo);
-    console.log("\nNew Version Info:", version);
+    console.log("\nupdate version:", version);
     await changeVersionAlignerByVersion(version);
   } catch (error) {
     console.log("error", error);
