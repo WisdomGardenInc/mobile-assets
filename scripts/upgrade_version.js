@@ -2,7 +2,6 @@
 const { prompt } = require("enquirer");
 const versionReg = new RegExp(/^\d+(\.\d+)*$/);
 const shell = require("shelljs");
-const fs = require("fs");
 const shellSilentOption = { silent: true };
 
 const getCurrentVersion = () => {
