@@ -7,6 +7,8 @@ declare -a tasks=(
   "https://purge.jsdelivr.net/npm/@wisdomgarden/mobile-assets@latest/version_update_android.json"
   "https://purge.jsdelivr.net/npm/@wisdomgarden/mobile-assets@latest/version_update_ios.json"
   
+  "https://purge.jsdelivr.net/npm/@wisdomgarden/mobile-assets@latest/version_aligner.json"
+  
   "https://purge.jsdelivr.net/npm/@wisdomgarden/mobile-assets@latest/policy-common.js"
   "https://purge.jsdelivr.net/npm/@wisdomgarden/mobile-assets@latest/policy-common.css"
   "https://purge.jsdelivr.net/npm/@wisdomgarden/mobile-assets@latest/privacy-policy.html"

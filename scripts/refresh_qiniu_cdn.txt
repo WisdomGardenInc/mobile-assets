@@ -18,3 +18,4 @@ https://mobile-download.tronclass.com.cn/summary-privacy-policy-zh-CN.md
 https://mobile-download.tronclass.com.cn/toggle.json
 https://mobile-download.tronclass.com.cn/version_update_android.json
 https://mobile-download.tronclass.com.cn/version_update_ios.json
+https://mobile-download.tronclass.com.cn/version_aligner.json

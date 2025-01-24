@@ -101,6 +101,7 @@ https://cdn.jsdelivr.net/npm/@wisdomgarden/mobile-assets@latest/summary-privacy-
 // version update files
 https://cdn.jsdelivr.net/npm/@wisdomgarden/mobile-assets@latest/version_update_android.json
 https://cdn.jsdelivr.net/npm/@wisdomgarden/mobile-assets@latest/version_update_ios.json
+https://cdn.jsdelivr.net/npm/@wisdomgarden/mobile-assets@latest/version_aligner.json
 ```
 
 ### jsDeliver API
