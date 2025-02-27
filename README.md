@@ -5,7 +5,7 @@
 ### I. Sync version file files
   - In Project [mobile-assistant](https://gitlab.tronclass.com.cn/lms/mobile-assistant), prepare the preliminary work according to readme.md.
   - You should clone mobile-assistant into the same directory as the current project.
-  - use `bash sync_version_files.sh` to sync latest file
+  - use `bash ./scripts/sync_version_files.sh` to sync latest file
 
 
 ### II. upgrade package `mobile-assets` version
