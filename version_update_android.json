@@ -1,9 +1,9 @@
 {
-  "version": "2.11.0",
+  "version": "2.11.1",
   "update_type": 1,
-  "allow_lowest_version": "2.8.0",
+  "allow_lowest_version": "2.9.1",
   "app_store_url": "https://play.google.com/store/apps/details?id=com.wisdomgarden.trpc",
-  "app_store_url_cn": "https://mobile-download.tronclass.com.cn/mobile-2.0/app/android/app-release-2.11.0.apk",
+  "app_store_url_cn": "https://mobile-download.tronclass.com.cn/mobile-2.0/app/android/app-release-2.11.1.apk",
   "release_note_en_us": "- Fix bugs and improve system performance.",
   "release_note_zh_hans": "- 已知问题修复和性能优化",
   "release_note_zh_hant": "- 已知問題修復和性能優化"
