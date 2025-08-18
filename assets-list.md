@@ -70,6 +70,11 @@ https://wisdomgardeninc.github.io/mobile-assets/identity-web-login-proxy/identit
 https://wisdomgardeninc.github.io/mobile-assets/identity-web-login-proxy/identity-web-login-proxy.html
 https://wisdomgardeninc.github.io/mobile-assets/identity-web-login-proxy/identity-web-login-proxy.js
 
+// eda-third-party-login-proxy
+https://wisdomgardeninc.github.io/mobile-assets/eda-third-party-login-proxy/favicon.ico
+https://wisdomgardeninc.github.io/mobile-assets/eda-third-party-login-proxy/native-callback.html
+https://wisdomgardeninc.github.io/mobile-assets/eda-third-party-login-proxy/normal.css
+
 // normal text assets
 https://cdn.jsdelivr.net/npm/@wisdomgarden/mobile-assets@latest/youtube-video-analysis.html
 https://cdn.jsdelivr.net/npm/@wisdomgarden/mobile-assets@latest/callback.html
