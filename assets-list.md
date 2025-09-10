@@ -5,6 +5,7 @@ https://mobile-download.tronclass.com.cn/youtube-video-analysis.html
 http://mobile-download.tronclass.com.cn/callback.html
 
 // privacy-policy
+https://mobile-download.tronclass.com.cn/marked.min-4.0.1.js
 https://mobile-download.tronclass.com.cn/policy-common.js
 https://mobile-download.tronclass.com.cn/policy-common.css
 
@@ -41,6 +42,7 @@ https://mobile-download.tronclass.com.cn/identity-web-login-proxy/identity-web-l
 https://wisdomgardeninc.github.io/mobile-assets/youtube-video-analysis.html
 https://wisdomgardeninc.github.io/mobile-assets/privacy_policy_google_play.html
 
+https://wisdomgardeninc.github.io/mobile-assets/marked.min-4.0.1.js
 https://wisdomgardeninc.github.io/mobile-assets/policy-common.js
 https://wisdomgardeninc.github.io/mobile-assets/policy-common.css
 
@@ -80,6 +82,7 @@ https://cdn.jsdelivr.net/npm/@wisdomgarden/mobile-assets@latest/youtube-video-an
 https://cdn.jsdelivr.net/npm/@wisdomgarden/mobile-assets@latest/callback.html
 
 // not used start
+https://cdn.jsdelivr.net/npm/@wisdomgarden/mobile-assets@latest/marked.min-4.0.1.js
 https://cdn.jsdelivr.net/npm/@wisdomgarden/mobile-assets@latest/policy-common.js
 https://cdn.jsdelivr.net/npm/@wisdomgarden/mobile-assets@latest/policy-common.css
 

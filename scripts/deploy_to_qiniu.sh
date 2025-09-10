@@ -3,6 +3,7 @@
 qshell fput --overwrite lms-mobile policy-common.js policy-common.js
 qshell fput --overwrite lms-mobile policy-common.css policy-common.css
 # privacy-policy
+qshell fput --overwrite lms-mobile marked.min-4.0.1.js marked.min-4.0.1.js
 qshell fput --overwrite lms-mobile privacy-policy.html privacy-policy.html
 qshell fput --overwrite lms-mobile privacy-policy-info.json privacy-policy-info.json
 qshell fput --overwrite lms-mobile privacy-policy-zh-CN.md privacy-policy-zh-CN.md
