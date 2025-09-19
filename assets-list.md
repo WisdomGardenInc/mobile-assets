@@ -5,6 +5,7 @@ https://mobile-download.tronclass.com.cn/youtube-video-analysis.html
 http://mobile-download.tronclass.com.cn/callback.html
 
 // privacy-policy
+https://mobile-download.tronclass.com.cn/policy-jump.html
 https://mobile-download.tronclass.com.cn/marked.min-4.0.1.js
 https://mobile-download.tronclass.com.cn/policy-common.js
 https://mobile-download.tronclass.com.cn/policy-common.css

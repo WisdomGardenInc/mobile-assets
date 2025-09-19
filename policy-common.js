@@ -16,6 +16,12 @@ function wgGetUrlParams() {
     }, {});
 }
 
+const policyEndpointMap = {
+  "privacy-policy.html": "privacy-policy",
+  "user-agreement.html": "user-agreement",
+  "children-privacy-policy.html": "children-privacy-policy",
+};
+
 function renderContent(options) {
   // infoFile,
   // contentFile,
@@ -78,12 +84,13 @@ function renderContent(options) {
       if (window.marked) {
         var renderer = {
           link(href, title, text) {
-            if (
-              href === "privacy-policy.html" ||
-              href === "user-agreement.html" ||
-              href === "children-privacy-policy.html"
-            ) {
-              href = href + "?language=" + language;
+            const endpoint = policyEndpointMap[href];
+            if (endpoint) {
+              href =
+                "policy-jump.html?endpoint=" +
+                endpoint +
+                "&language=" +
+                language;
             }
 
             var hrefAttribute = href ? ' href="' + href + '" ' : "";

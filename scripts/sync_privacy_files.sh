@@ -5,6 +5,7 @@ APP_REPO_RELATIVE_PATH="../mobile-2.5"
 
 VERSION=$(node -p -e "require('${APP_REPO_RELATIVE_PATH}/package.json').version")
 
+cp ${APP_REPO_RELATIVE_PATH}/doc/privacy-policy/policy-jump.html .
 cp ${APP_REPO_RELATIVE_PATH}/doc/privacy-policy/marked.min-4.0.1.js .
 cp ${APP_REPO_RELATIVE_PATH}/doc/privacy-policy/policy-common.js .
 cp ${APP_REPO_RELATIVE_PATH}/doc/privacy-policy/policy-common.css .

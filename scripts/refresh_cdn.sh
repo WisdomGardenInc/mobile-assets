@@ -6,9 +6,10 @@ curl https://data.jsdelivr.com/v1/package/npm/@wisdomgarden/mobile-assets
 declare -a tasks=(
   "https://purge.jsdelivr.net/npm/@wisdomgarden/mobile-assets@latest/version_update_android.json"
   "https://purge.jsdelivr.net/npm/@wisdomgarden/mobile-assets@latest/version_update_ios.json"
-  
+
   "https://purge.jsdelivr.net/npm/@wisdomgarden/mobile-assets@latest/version_aligner.json"
-  
+
+  "https://purge.jsdelivr.net/npm/@wisdomgarden/mobile-assets@latest/policy-jump.html"
   "https://purge.jsdelivr.net/npm/@wisdomgarden/mobile-assets@latest/marked.min-4.0.1.js"
   "https://purge.jsdelivr.net/npm/@wisdomgarden/mobile-assets@latest/policy-common.js"
   "https://purge.jsdelivr.net/npm/@wisdomgarden/mobile-assets@latest/policy-common.css"

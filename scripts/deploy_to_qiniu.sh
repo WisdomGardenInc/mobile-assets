@@ -1,4 +1,6 @@
 # privacy-policy files
+# policy jump
+qshell fput --overwrite lms-mobile policy-jump.html policy-jump.html
 # privacy-policy common
 qshell fput --overwrite lms-mobile policy-common.js policy-common.js
 qshell fput --overwrite lms-mobile policy-common.css policy-common.css
