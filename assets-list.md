@@ -43,6 +43,7 @@ https://mobile-download.tronclass.com.cn/identity-web-login-proxy/identity-web-l
 https://wisdomgardeninc.github.io/mobile-assets/youtube-video-analysis.html
 https://wisdomgardeninc.github.io/mobile-assets/privacy_policy_google_play.html
 
+https://wisdomgardeninc.github.io/mobile-assets/policy-jump.html
 https://wisdomgardeninc.github.io/mobile-assets/marked.min-4.0.1.js
 https://wisdomgardeninc.github.io/mobile-assets/policy-common.js
 https://wisdomgardeninc.github.io/mobile-assets/policy-common.css
@@ -83,6 +84,7 @@ https://cdn.jsdelivr.net/npm/@wisdomgarden/mobile-assets@latest/youtube-video-an
 https://cdn.jsdelivr.net/npm/@wisdomgarden/mobile-assets@latest/callback.html
 
 // not used start
+https://cdn.jsdelivr.net/npm/@wisdomgarden/mobile-assets@latest/policy-jump.html
 https://cdn.jsdelivr.net/npm/@wisdomgarden/mobile-assets@latest/marked.min-4.0.1.js
 https://cdn.jsdelivr.net/npm/@wisdomgarden/mobile-assets@latest/policy-common.js
 https://cdn.jsdelivr.net/npm/@wisdomgarden/mobile-assets@latest/policy-common.css
