@@ -31,6 +31,9 @@ declare -a tasks=(
 
   "https://purge.jsdelivr.net/npm/@wisdomgarden/mobile-assets@latest/summary-privacy-policy.html"
   "https://purge.jsdelivr.net/npm/@wisdomgarden/mobile-assets@latest/summary-privacy-policy-zh-CN.md"
+
+  "https://purge.jsdelivr.net/npm/@wisdomgarden/mobile-assets@latest/mhesi/version/android.json"
+  "https://purge.jsdelivr.net/npm/@wisdomgarden/mobile-assets@latest/mhesi/version/ios.json"
 )
 
 for i in "${tasks[@]}"

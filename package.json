@@ -10,7 +10,8 @@
   "files": [
     "/*.html",
     "/*.json",
-    "/*.md"
+    "/*.md",
+    "/mhesi/version/*"
   ],
   "devDependencies": {
     "enquirer": "^2.4.1",

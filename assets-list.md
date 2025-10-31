@@ -74,11 +74,6 @@ https://wisdomgardeninc.github.io/mobile-assets/identity-web-login-proxy/identit
 https://wisdomgardeninc.github.io/mobile-assets/identity-web-login-proxy/identity-web-login-proxy.html
 https://wisdomgardeninc.github.io/mobile-assets/identity-web-login-proxy/identity-web-login-proxy.js
 
-// eda-third-party-login-proxy
-https://wisdomgardeninc.github.io/mobile-assets/eda-third-party-login-proxy/favicon.ico
-https://wisdomgardeninc.github.io/mobile-assets/eda-third-party-login-proxy/native-callback.html
-https://wisdomgardeninc.github.io/mobile-assets/eda-third-party-login-proxy/normal.css
-
 // normal text assets
 https://cdn.jsdelivr.net/npm/@wisdomgarden/mobile-assets@latest/youtube-video-analysis.html
 https://cdn.jsdelivr.net/npm/@wisdomgarden/mobile-assets@latest/callback.html
@@ -136,4 +131,34 @@ https://www.npmjs.com/package/@wisdomgarden/mobile-assets
 https://data.jsdelivr.com/v1/package/npm/@wisdomgarden/mobile-assets
 https://cdn.jsdelivr.net/npm/@wisdomgarden/mobile-assets@latest/version_update_android.json
 https://cdn.jsdelivr.net/npm/@wisdomgarden/mobile-assets@latest/version_update_ios.json
+```
+
+
+### mhesi assets, only use GitHub & jsDeliver
+- cdn url
+```
+// eda-third-party-login-proxy, use mhesi assets. will be removed
+https://wisdomgardeninc.github.io/mobile-assets/eda-third-party-login-proxy/favicon.ico
+https://wisdomgardeninc.github.io/mobile-assets/eda-third-party-login-proxy/native-callback.html
+https://wisdomgardeninc.github.io/mobile-assets/eda-third-party-login-proxy/normal.css
+
+// third-party-login-proxy
+https://wisdomgardeninc.github.io/mobile-assets/mhesi/third-party-login-proxy/favicon.ico
+https://wisdomgardeninc.github.io/mobile-assets/mhesi/third-party-login-proxy/native-callback.html
+https://wisdomgardeninc.github.io/mobile-assets/mhesi/third-party-login-proxy/normal.css
+
+// version update files
+https://cdn.jsdelivr.net/npm/@wisdomgarden/mobile-assets@latest/mhesi/version/android.json
+https://cdn.jsdelivr.net/npm/@wisdomgarden/mobile-assets@latest/mhesi/version/ios.json
+```
+- refresh cnd cache use purge api
+
+```
+https://purge.jsdelivr.net/npm/@wisdomgarden/mobile-assets@latest/mhesi/version/android.json
+https://purge.jsdelivr.net/npm/@wisdomgarden/mobile-assets@latest/mhesi/version/ios.json
+```
+- check info
+```
+https://cdn.jsdelivr.net/npm/@wisdomgarden/mobile-assets@latest/mhesi/version/android.json
+https://cdn.jsdelivr.net/npm/@wisdomgarden/mobile-assets@latest/mhesi/version/ios.json
 ```
