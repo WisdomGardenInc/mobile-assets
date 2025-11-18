@@ -1,0 +1,11 @@
+{
+    "applinks": {
+        "apps": [],
+        "details": [
+            {
+                "appID": "3N577SK5F9.org.mhesiskill.app",
+                "paths": [ "/line-auth/*" ]
+            }
+        ]
+    }
+}
