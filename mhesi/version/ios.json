@@ -1,8 +1,8 @@
 {
-  "version": "1.5.0",
-  "update_type": 1,
-  "allow_lowest_version": "1.3.0",
+  "version": "1.6.1",
+  "update_type": 0,
+  "allow_lowest_version": "1.6.0",
   "app_store_url": "https://apps.apple.com/app/scratch/id6744092689",
-  "release_note_en_us": "- Welcome back! We've upgraded our platform to serve you better. You'll find improved performance, new features, and an enhanced user experience. Thank you for your patience during the upgrade. Let's continue your learning journey",
-  "release_note_th_th": "- ยินดีต้อนรับกลับมา! เราได้อัปเกรดแพลตฟอร์มเพื่อให้บริการที่ดีขึ้น คุณจะพบกับประสิทธิภาพที่ดีขึ้น ฟีเจอร์ใหม่ และประสบการณ์การใช้งานที่ดียิ่งขึ้น ขอบคุณที่รอคอยในช่วงอัปเกรด มาเริ่มต้นการเรียนรู้ของคุณกันเลย!"
+  "release_note_en_us": "- Improved LINE SSO login experience.- Optimized the National Identification process.- Updated logic for learning completion rate calculations.- Refined rules for on-site enrollment and online exam scores.- Fixed bugs and improved overall stability.",
+  "release_note_th_th": "- ปรับปรุงประสบการณ์การเข้าสู่ระบบผ่าน LINE (Line SSO)- ปรับปรุงกระบวนการยืนยันตัวตน- ปรับปรุงวิธีการคำนวณอัตราความสำเร็จของเรียนรู้- ปรับปรุงเงื่อนไขการลงทะเบียนหลักสูตรภาคปฎิบัติ และคะแนนสอบของหลักสูตรออนไลน์- แก้ไขข้อผิดพลาดและปรับปรุงประสิทธิภาพการทำงาน"
 }
