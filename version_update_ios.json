@@ -1,7 +1,7 @@
 {
-  "version": "2.13.4",
+  "version": "2.14.0",
   "update_type": 1,
-  "allow_lowest_version": "2.11.2",
+  "allow_lowest_version": "2.12.0",
   "app_store_url": "https://apps.apple.com/app/scratch/id973028199",
   "release_note_en_us": "- Fix bugs and improve system performance.",
   "release_note_zh_hans": "- 已知问题修复和性能优化",
