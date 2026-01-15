@@ -1,8 +1,8 @@
 {
-  "version": "1.6.1",
+  "version": "1.6.3",
   "update_type": 0,
   "allow_lowest_version": "1.6.0",
   "app_store_url": "https://play.google.com/store/apps/details?id=org.mhesiskill.app",
-  "release_note_en_us": "- Improved LINE SSO login experience.\n- Optimized the National Identification process.\n- Updated logic for learning completion rate calculations.\n- Refined rules for on-site enrollment and online exam scores.\n- Fixed bugs and improved overall stability.",
-  "release_note_th_th": "- ปรับปรุงประสบการณ์การเข้าสู่ระบบผ่าน LINE (Line SSO)\n- ปรับปรุงกระบวนการยืนยันตัวตน\n- ปรับปรุงวิธีการคำนวณอัตราความสำเร็จของเรียนรู้\n- ปรับปรุงเงื่อนไขการลงทะเบียนหลักสูตรภาคปฎิบัติ และคะแนนสอบของหลักสูตรออนไลน์\n- แก้ไขข้อผิดพลาดและปรับปรุงประสิทธิภาพการทำงาน"
+  "release_note_en_us": "This release introduces course restart support for learners with no remaining attempts, learning reminder notifications via email, and includes bug fixes along with overall stability improvements.",
+  "release_note_th_th": "เวอร์ชันนี้รองรับการเริ่มเรียนใหม่สำหรับผู้เรียนที่หมดสิทธิ์สอบ พร้อมระบบแจ้งเตือนการเรียนทางอีเมล รวมถึงการแก้ไขข้อบกพร่องและเพิ่มความเสถียรของระบบ"
 }
