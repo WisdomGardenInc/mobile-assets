@@ -1,285 +1,196 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <style>
-        .video-container {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            top: 0;
-            left: 0;
-            bottom: 0;
-            right: 0;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-        }
-
-        iframe {
-            /* optional */
-            width: 100%;
-            height: 100%;
-        }
-        .loading-container {
-            position: absolute;
-            left: 0;
-            top: -10px;
-            right: 0;
-            bottom: 0;
-            z-index: 13;
-            display: flex;
-            -webkit-box-pack: center;
-            -ms-flex-pack: center;
-            -webkit-justify-content: center;
-            -moz-justify-content: center;
-            justify-content: center;
-            -webkit-box-align: center;
-            -ms-flex-align: center;
-            -webkit-align-items: center;
-            -moz-align-items: center;
-            align-items: center;
-            -webkit-transition: 0.2s opacity linear;
-            transition: 0.2s opacity linear;
-        }
-        .loading{
-            padding: 25px;
-            min-width: 205px;
-            max-width: 80%;
-            height: 60px;
-            background-color: rgb(4, 6, 6);
-            border-radius: 15px;
-            color: #fff;
-            text-align: center;
-            text-overflow: ellipsis;
-            font-size: 15px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            width: 400px;
-        }
-        .loading>*{
-            flex: 1;
-        }
-        .spinner svg {
-            width: 40px;
-            height: 40px;
-        }
-        .spinner {
-            stroke: #1BB6B7;
-            fill: #1BB6B7;
-        }
-        .loading-text{
-            font-size: 25px;
-        }
-    </style>
     <meta charset="UTF-8">
-    <script src="https://cdn.jsdelivr.net/npm/jquery@1.11.2/dist/jquery.min.js" integrity="sha256-1OxYPHYEAB+HIz0f4AdsvZCfFaX4xrTD9d2BtGLXnTI=" crossorigin="anonymous"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-select=none">
+    <style>
+        * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+        body, html { margin: 0; padding: 0; background: #000; width: 100%; height: 100%; overflow: hidden; font-family: sans-serif; }
+
+        .video-container { position: relative; width: 100vw; height: 100vh; display: flex; justify-content: center; align-items: center; overflow: hidden; background: #000; }
+        #player { position: absolute; width: 100%; height: 100%; }
+
+        #loader { position: absolute; top: 0; right: 0; bottom: 0; left: 0; z-index: 100; display: flex; flex-direction: column; justify-content: center; align-items: center; background: #000; color: #fff; text-align: center; padding: 20px; }
+        .spin { width: 40px; height: 40px; border: 3px solid rgba(27,182,183,0.3); border-top: 3px solid #1BB6B7; border-radius: 50%; animation: s 0.8s linear infinite; margin-bottom: 10px; }
+        @keyframes s { to { transform: rotate(360deg); } }
+        .loading-text { font-size: 16px; letter-spacing: 0.5px; }
+    </style>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@1.11.2/dist/jquery.min.js"></script>
 </head>
 <body>
-<div class="loading-container active">
-    <div class="loading">
-        <ion-spinner class="spinner spinner-ios"><svg viewBox="0 0 64 64"><g stroke-width="4" stroke-linecap="round"><line y1="17" y2="29" transform="translate(32,32) rotate(180)"><animate attributeName="stroke-opacity" dur="750ms" values="1;.85;.7;.65;.55;.45;.35;.25;.15;.1;0;1" repeatCount="indefinite"></animate></line><line y1="17" y2="29" transform="translate(32,32) rotate(210)"><animate attributeName="stroke-opacity" dur="750ms" values="0;1;.85;.7;.65;.55;.45;.35;.25;.15;.1;0" repeatCount="indefinite"></animate></line><line y1="17" y2="29" transform="translate(32,32) rotate(240)"><animate attributeName="stroke-opacity" dur="750ms" values=".1;0;1;.85;.7;.65;.55;.45;.35;.25;.15;.1" repeatCount="indefinite"></animate></line><line y1="17" y2="29" transform="translate(32,32) rotate(270)"><animate attributeName="stroke-opacity" dur="750ms" values=".15;.1;0;1;.85;.7;.65;.55;.45;.35;.25;.15" repeatCount="indefinite"></animate></line><line y1="17" y2="29" transform="translate(32,32) rotate(300)"><animate attributeName="stroke-opacity" dur="750ms" values=".25;.15;.1;0;1;.85;.7;.65;.55;.45;.35;.25" repeatCount="indefinite"></animate></line><line y1="17" y2="29" transform="translate(32,32) rotate(330)"><animate attributeName="stroke-opacity" dur="750ms" values=".35;.25;.15;.1;0;1;.85;.7;.65;.55;.45;.35" repeatCount="indefinite"></animate></line><line y1="17" y2="29" transform="translate(32,32) rotate(0)"><animate attributeName="stroke-opacity" dur="750ms" values=".45;.35;.25;.15;.1;0;1;.85;.7;.65;.55;.45" repeatCount="indefinite"></animate></line><line y1="17" y2="29" transform="translate(32,32) rotate(30)"><animate attributeName="stroke-opacity" dur="750ms" values=".55;.45;.35;.25;.15;.1;0;1;.85;.7;.65;.55" repeatCount="indefinite"></animate></line><line y1="17" y2="29" transform="translate(32,32) rotate(60)"><animate attributeName="stroke-opacity" dur="750ms" values=".65;.55;.45;.35;.25;.15;.1;0;1;.85;.7;.65" repeatCount="indefinite"></animate></line><line y1="17" y2="29" transform="translate(32,32) rotate(90)"><animate attributeName="stroke-opacity" dur="750ms" values=".7;.65;.55;.45;.35;.25;.15;.1;0;1;.85;.7" repeatCount="indefinite"></animate></line><line y1="17" y2="29" transform="translate(32,32) rotate(120)"><animate attributeName="stroke-opacity" dur="750ms" values=".85;.7;.65;.55;.45;.35;.25;.15;.1;0;1;.85" repeatCount="indefinite"></animate></line><line y1="17" y2="29" transform="translate(32,32) rotate(150)"><animate attributeName="stroke-opacity" dur="750ms" values="1;.85;.7;.65;.55;.45;.35;.25;.15;.1;0;1" repeatCount="indefinite"></animate></line></g></svg></ion-spinner>
-        <span class="loading-text"></span>
-        <div class="loading-close">
-            <i class="icon-svg icon-svg-cross icon-close"></i>
-        </div>
-    </div>
+
+<div id="loader">
+    <div class="spin"></div>
+    <span class="loading-text"></span>
 </div>
 
-<div class="video-container">
+<div class="video-container" id="mainContainer">
     <div id="player"></div>
 </div>
 
-
 <script>
-    window.onload = function(){
-        let tag = document.createElement('script');
-        tag.src = "https://www.youtube.com/iframe_api";
-        let firstScriptTag = document.getElementsByTagName('script')[1];
-        firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
-    };
+    const WGP_Tracker = {
+        params: (function() {
+            const urlP = new URLSearchParams(window.location.search);
+            const p = {};
+            const keys = [
+                'videoId', 'courseId', 'moduleId', 'syllabusId', 'activityId',
+                'isMobile', 'userId', 'orgId', 'depId', 'actionType', 'endpoint',
+                'url', 'statisticSession', 'apiSession', 'apiUrl', 'currentLang',
+                'isTeacher', 'isStudent', 'ts', 'masterCourseId', 'orgName',
+                'orgCode', 'userNo', 'userName', 'courseCode', 'courseName',
+                'depName', 'depCode'
+            ];
+            keys.forEach(key => { p[key] = urlP.get(key) || ''; });
+            return p;
+        })(),
 
-    let playerReady = false;
+        state: {
+            player: null,
+            ready: false,
+            intervalId: null,
+            startAt: null,
+            lastPostTime: null,
+            videoDuration: 0,
+            threshold: 60 * 1000
+        },
 
-    let player;
-
-    function getVariable(variable) {
-        let query = window.location.search.substring(1);
-        let vars = query.split("&");
-        for (let i = 0; i < vars.length; i++) {
-            let pair = vars[i].split("=");
-            if(pair[0] == variable){return pair[1]}
-        }
-        return(false);
-    }
-
-    let videoId = getVariable('videoId');
-    let courseId = getVariable('courseId');
-    let moduleId = getVariable('moduleId');
-    let syllabusId = getVariable('syllabusId');
-    let activityId = getVariable('activityId');
-    let isMobile = getVariable('isMobile');
-    let userId = getVariable('userId');
-    let orgId = getVariable('orgId');
-    let depId = getVariable('depId');
-    let actionType = getVariable('actionType');
-    let endpoint = getVariable('endpoint');
-    let url = getVariable('url');
-    let statisticSession = getVariable('statisticSession');
-    let apiSession = getVariable('apiSession');
-    let apiUrl = getVariable('apiUrl');
-    let currentLang = getVariable('currentLang');
-    let isTeacher = getVariable('isTeacher');
-    let isStudent = getVariable('isStudent');
-    let ts = getVariable('ts');
-    let masterCourseId = getVariable('masterCourseId');
-    let orgName = getVariable('orgName');
-    let orgCode = getVariable('orgCode');
-    let userNo = getVariable('userNo');
-    let userName = getVariable('userName');
-    let courseCode = getVariable('courseCode');
-    let courseName = getVariable('courseName');
-    let depName = getVariable('depName');
-    let depCode = getVariable('depCode');
-
-    let start, end, currentStartTime, currentEndTime, duration, intervalId, videoDuration, THRESHOLD=1 * 60 * 1000, unStarted = false, errorTips;
-
-    if (currentLang === 'zh-Hans') {
-        errorTips = '受YouTube限制，该视频只能在web端观看';
-        loadingErr = '加载超时，请稍后重试，或在web端进行观看';
-        $('.loading-text').text('正在加载...');
-    } else if (currentLang === 'zh-Hant') {
-        errorTips = '受YouTube限制，該影片只能在web端觀看';
-        loadingErr = '加載超時，請稍後重試，或在web端進行觀看';
-        $('.loading-text').text('正在加載...');
-    } else {
-        errorTips = 'Limited by YouTube, the video can only be viewed on the web.';
-        loadingErr = 'Loading timed out, please try again later, or watch it on web';
-        $('.loading-text').text('Loading...');
-    }
-
-    function onYouTubeIframeAPIReady() {
-        player = new YT.Player('player', {
-            videoId: videoId,
-            width: window.innerWidth,
-            height: window.innerHeight,
-            playerVars: {'playsinline': 1},
-            events: {
-                'onReady': onPlayerReady,
-                'onStateChange': onPlayerStateChange
+        i18n: {
+            getDict() {
+                const lang = WGP_Tracker.params.currentLang;
+                if (lang === 'zh-Hans') return { loading: '正在加载...', loadTimeoutError: '加载超时，请稍后重试，或在web端进行观看', errorTips: '受YouTube限制，该视频只能在web端观看' };
+                if (lang === 'zh-Hant') return {  loading: '正在加載...', loadTimeoutError: '加載超時，請稍後重試，或在web端進行觀看', errorTips: '受YouTube限制，該影片只能在web端觀看' };
+                return { loading: 'Loading...', loadTimeoutError: 'Loading timed out, please try again later, or watch it on web', errorTips: 'Limited by YouTube, the video can only be viewed on the web.'};
             }
-        });
-    }
+        },
 
-    function onPlayerReady(event) {
-        event.target.playVideo();
-        videoDuration = player.getDuration();
-        playerReady = true;
-        $('.loading-container').css('display', 'none');
-    }
-    function onPlayerStateChange(event) {
-        if(event.data == YT.PlayerState.PLAYING) {
-            start = Math.round(player.getCurrentTime());
-            currentStartTime = new Date();
-            intervalId = setInterval(function () {
-                end = Math.round(player.getCurrentTime());
-                if(end - start > 0) {
-                    duration = end - start;
-                    post();
+        initInterval() {
+            this.state.startAt = Math.round(this.state.player.getCurrentTime());
+            this.state.lastPostTime = new Date();
+
+            if (this.state.intervalId) clearInterval(this.state.intervalId);
+            this.state.intervalId = setInterval(() => {
+                const nowTime = Math.round(this.state.player.getCurrentTime());
+                const duration = nowTime - this.state.startAt;
+                if (duration > 0) {
+                    this.reportProgress(this.state.startAt, nowTime, duration);
+                    this.state.startAt = nowTime;
                 }
-                currentStartTime = new Date();
-                return start = end;
-            }, THRESHOLD);
-        } else if(event.data == YT.PlayerState.PAUSED || event.data == YT.PlayerState.ENDED || event.data == YT.PlayerState.BUFFERING) {
-            if(intervalId) {
-                clearInterval(intervalId);
+                this.state.lastPostTime = new Date();
+            }, this.state.threshold);
+        },
+
+        stopAndFlush() {
+            if (this.state.intervalId) clearInterval(this.state.intervalId);
+            if (this.state.startAt === null) return;
+
+            const nowTime = Math.round(this.state.player.getCurrentTime());
+            const realDuration = Math.round((new Date() - this.state.lastPostTime) / 1000);
+
+            if (realDuration > 0) {
+                this.reportProgress(this.state.startAt, nowTime, realDuration);
             }
-            end = Math.round(player.getCurrentTime());
-            currentEndTime = new Date();
-            duration = Math.round((currentEndTime - currentStartTime)/1000);
-            if(start != null && duration > 0) {
-                post();
-                start = null;
-            }
-        }
-    }
+            this.state.startAt = null;
+        },
 
+        reportProgress(startPos, endPos, duration) {
+            const p = this.params;
 
-    function post() {
-        let videoData = {
-            is_mobile: isMobile,
-            user_id: userId,
-            org_id: orgId,
-            dep_id: depId,
-            course_id: courseId,
-            module_id: moduleId,
-            syllabus_id: syllabusId,
-            activity_id: activityId,
-            action_type: actionType,
-            start_at: start,
-            end_at: end,
-            duration: duration,
-            is_teacher: isTeacher,
-            is_student: isStudent,
-            ts: ts,
-            master_course_id: masterCourseId,
-            org_name: orgName,
-            org_code: orgCode,
-            user_no: userNo,
-            user_name: userName,
-            course_code: courseCode,
-            course_name: courseName,
-            dep_name: depName,
-            dep_code: depCode,
-        };
+            const videoData = {
+                is_mobile:        p.isMobile,
+                user_id:          p.userId,
+                org_id:           p.orgId,
+                dep_id:           p.depId,
+                course_id:        p.courseId,
+                module_id:        p.moduleId,
+                syllabus_id:      p.syllabusId,
+                activity_id:      p.activityId,
+                action_type:      p.actionType,
+                start_at:         startPos,
+                end_at:           endPos,
+                duration:         duration,
+                is_teacher:       p.isTeacher,
+                is_student:       p.isStudent,
+                ts:               p.ts,
+                master_course_id: p.masterCourseId,
+                org_name:         p.orgName,
+                org_code:         p.orgCode,
+                user_no:          p.userNo,
+                user_name:        p.userName,
+                course_code:      p.courseCode,
+                course_name:      p.courseName,
+                dep_name:         p.depName,
+                dep_code:         p.depCode,
+            };
 
-        $.ajax({
-            type: 'POST',
-            headers: {SESSION: statisticSession},
-            contentType: 'application/json; charset=utf-8',
-            url: `${url}/${endpoint}`,
-            data: JSON.stringify(videoData),
-            dataType: "json",
-            processData: true
-        });
+            $.ajax({
+                type: 'POST',
+                headers: { SESSION: p.statisticSession },
+                contentType: 'application/json; charset=utf-8',
+                url: `${p.url}/${p.endpoint}`,
+                data: JSON.stringify(videoData)
+            });
 
-        let logPlayInfo = {
-            start: start,
-            end: end,
-            duration: videoDuration
-        };
-
-        $.ajax({
-            type: 'POST',
-            headers: {'X-SESSION-ID': apiSession},
-            contentType: 'application/json; charset=utf-8',
-            url: `${apiUrl}/api/course/activities-read/${activityId}`,
-            data: JSON.stringify(logPlayInfo),
-            dataType: "json",
-            processData: true
-        });
-    }
-
-    window.onbeforeunload = window.onunload = function () {
-        if(player){
-            end = Math.round(player.getCurrentTime());
-            currentEndTime = new Date();
-            duration = Math.round((currentEndTime - currentStartTime)/1000);
-            if(start != null && duration > 0) {
-                post();
-                start = null;
-            }
+            $.ajax({
+                type: 'POST',
+                headers: { 'X-SESSION-ID': p.apiSession },
+                contentType: 'application/json; charset=utf-8',
+                url: `${p.apiUrl}/api/course/activities-read/${p.activityId}`,
+                data: JSON.stringify({
+                    start:    startPos,
+                    end:      endPos,
+                    duration: this.state.videoDuration
+                })
+            });
         }
     };
 
-    setTimeout(function(){
-        if(!playerReady){
-            $('.loading-container').css('display', 'none');
-            alert(loadingErr);
-            window.close()
+    const dict = WGP_Tracker.i18n.getDict();
+    $('.loading-text').text(dict.loading);
+
+    window.onYouTubeIframeAPIReady = function() {
+        WGP_Tracker.state.player = new YT.Player("player", {
+            videoId: WGP_Tracker.params.videoId || undefined,
+            playerVars: {
+                'playsinline': 0,
+                'rel': 0,
+                'cc_load_policy': 1,
+                'disablekb': 1
+            },
+            events: {
+                onReady: (e) => {
+                    WGP_Tracker.state.ready = true;
+                    WGP_Tracker.state.videoDuration = e.target.getDuration();
+                    e.target.playVideo();
+                    $("#loader").fadeOut();
+                },
+                onStateChange: (e) => {
+                    if (e.data == YT.PlayerState.PLAYING) {
+                        WGP_Tracker.initInterval();
+                    } else if (e.data == YT.PlayerState.PAUSED || e.data == YT.PlayerState.ENDED || e.data == YT.PlayerState.BUFFERING) {
+                        WGP_Tracker.stopAndFlush();
+                    }
+                },
+                onError: () => {
+                   alert(dict.errorTips);
+                }
+            }
+        });
+    };
+
+    window.onbeforeunload = function() {
+        if (WGP_Tracker.state.ready) WGP_Tracker.stopAndFlush();
+    };
+
+    setTimeout(() => {
+        if (!WGP_Tracker.state.ready) {
+            $("#loader").fadeOut();
+            alert(dict.loadTimeoutError);
+            window.close();
         }
-    },15*1000)
+    }, 15000);
+
+    $.getScript("https://www.youtube.com/iframe_api");
 </script>
 </body>
 </html>
