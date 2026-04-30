@@ -125,7 +125,7 @@
 
             $.ajax({
                 type: 'POST',
-                headers: { SESSION: p.statisticSession },
+                headers: { "X-SESSION-ID": p.apiSession },
                 contentType: 'application/json; charset=utf-8',
                 url: `${p.url}/${p.endpoint}`,
                 data: JSON.stringify(videoData)
