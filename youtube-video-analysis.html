@@ -37,9 +37,8 @@
                 'videoId', 'courseId', 'moduleId', 'syllabusId', 'activityId',
                 'isMobile', 'userId', 'orgId', 'depId', 'actionType', 'endpoint',
                 'url', 'statisticSession', 'apiSession', 'apiUrl', 'currentLang',
-                'isTeacher', 'isStudent', 'ts', 'masterCourseId', 'orgName',
-                'orgCode', 'userNo', 'userName', 'courseCode', 'courseName',
-                'depName', 'depCode'
+                'isTeacher', 'isStudent', 'ts', 'orgName', 'orgCode',
+                'userNo', 'userName', 'courseCode', 'depName', 'depCode'
             ];
             keys.forEach(key => { p[key] = urlP.get(key) || ''; });
             return p;
@@ -97,30 +96,27 @@
             const p = this.params;
 
             const videoData = {
-                is_mobile:        p.isMobile,
-                user_id:          p.userId,
-                org_id:           p.orgId,
-                dep_id:           p.depId,
-                course_id:        p.courseId,
-                module_id:        p.moduleId,
-                syllabus_id:      p.syllabusId,
-                activity_id:      p.activityId,
-                action_type:      p.actionType,
-                start_at:         startPos,
-                end_at:           endPos,
-                duration:         duration,
-                is_teacher:       p.isTeacher,
-                is_student:       p.isStudent,
-                ts:               p.ts,
-                master_course_id: p.masterCourseId,
-                org_name:         p.orgName,
-                org_code:         p.orgCode,
-                user_no:          p.userNo,
-                user_name:        p.userName,
-                course_code:      p.courseCode,
-                course_name:      p.courseName,
-                dep_name:         p.depName,
-                dep_code:         p.depCode,
+                is_mobile:   p.isMobile === "true" || p.isMobile === true,
+                is_teacher:  p.isTeacher === "true" || p.isTeacher === true,
+                user_id:     Number(p.userId),
+                org_id:      Number(p.orgId),
+                dep_id:      Number(p.depId),
+                course_id:   Number(p.courseId),
+                module_id:   Number(p.moduleId),
+                syllabus_id: Number(p.syllabusId),
+                activity_id: Number(p.activityId),
+                start_at:    Number(startPos),
+                end_at:      Number(endPos),
+                duration:    Number(duration),
+                ts:          Number(p.ts),
+                user_no:     p.userNo,
+                user_name:   p.userName,
+                org_name:    p.orgName,
+                org_code:    p.orgCode,
+                dep_name:    p.depName,
+                dep_code:    p.depCode,
+                course_code: p.courseCode,
+                action_type: p.actionType
             };
 
             $.ajax({
