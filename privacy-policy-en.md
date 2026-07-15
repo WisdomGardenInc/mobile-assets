@@ -8,7 +8,7 @@ Welcome to use TronClass's related services! In order to use TronClass's related
 
 4. When using the TronClass service, users may not publish or upload information that they consider to be private to TronClass, or disseminate such information to other people through TronClass services. The user shall be responsible for the privacy leakage caused by the behavior of.
 
-5. TronClass may collect user information when providing services. TronClass will clearly inform users, usually the information includes:
+5. TronClass may collect user information when providing services, and will clearly inform users that the information usually includes:
 
     5.1. User information: including basic information of natural persons (including name, year of birth, gender, telephone number, e-mail address), network identification information (including system account number, e-mail address and password related to the foregoing), personal Internet records (including Website browsing records, software usage records, click records), personal common device information (including hardware serial number, hardware model, device MAC address, operating system type, unique device identifier, IMEI information), personal location information (including approximate geographic location) , Precise positioning information).
 
