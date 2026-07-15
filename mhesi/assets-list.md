@@ -1,11 +1,6 @@
 ### mhesi assets, only use GitHub & jsDeliver
 - cdn url
 ```
-// eda-third-party-login-proxy, use mhesi assets. will be removed
-https://wisdomgardeninc.github.io/mobile-assets/eda-third-party-login-proxy/favicon.ico
-https://wisdomgardeninc.github.io/mobile-assets/eda-third-party-login-proxy/native-callback.html
-https://wisdomgardeninc.github.io/mobile-assets/eda-third-party-login-proxy/normal.css
-
 // third-party-login-proxy
 https://wisdomgardeninc.github.io/mobile-assets/mhesi/third-party-login-proxy/favicon.ico
 https://wisdomgardeninc.github.io/mobile-assets/mhesi/third-party-login-proxy/native-callback.html
