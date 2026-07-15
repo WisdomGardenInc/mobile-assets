@@ -29,6 +29,28 @@ https://mobile-download.tronclass.com.cn/children-privacy-policy-zh-CN.md
 https://mobile-download.tronclass.com.cn/summary-privacy-policy.html
 https://mobile-download.tronclass.com.cn/summary-privacy-policy-zh-CN.md
 
+// app-legal/ — used by new app versions
+https://mobile-download.tronclass.com.cn/app-legal/policy-jump.html
+https://mobile-download.tronclass.com.cn/app-legal/marked-4.0.1.min.js
+https://mobile-download.tronclass.com.cn/app-legal/policy-common.js
+https://mobile-download.tronclass.com.cn/app-legal/policy-common.css
+https://mobile-download.tronclass.com.cn/app-legal/privacy-policy.html
+https://mobile-download.tronclass.com.cn/app-legal/privacy-policy-info.json
+https://mobile-download.tronclass.com.cn/app-legal/privacy-policy-zh-CN.md
+https://mobile-download.tronclass.com.cn/app-legal/privacy-policy-en.md
+https://mobile-download.tronclass.com.cn/app-legal/privacy-policy-zh-TW.md
+https://mobile-download.tronclass.com.cn/app-legal/user-agreement.html
+https://mobile-download.tronclass.com.cn/app-legal/user-agreement-info.json
+https://mobile-download.tronclass.com.cn/app-legal/user-agreement-zh-CN.md
+https://mobile-download.tronclass.com.cn/app-legal/user-agreement-zh-TW.md
+https://mobile-download.tronclass.com.cn/app-legal/user-agreement-en.md
+https://mobile-download.tronclass.com.cn/app-legal/children-privacy-policy.html
+https://mobile-download.tronclass.com.cn/app-legal/children-privacy-policy-info.json
+https://mobile-download.tronclass.com.cn/app-legal/children-privacy-policy-zh-CN.md
+https://mobile-download.tronclass.com.cn/app-legal/summary-privacy-policy.html
+https://mobile-download.tronclass.com.cn/app-legal/summary-privacy-policy-zh-CN.md
+https://mobile-download.tronclass.com.cn/app-legal/privacy_policy_google_play.html
+
 // identity-web-login-proxy
 https://mobile-download.tronclass.com.cn/identity-web-login-proxy/favicon.ico
 https://mobile-download.tronclass.com.cn/identity-web-login-proxy/identity-web-login-proxy-callback.html
@@ -66,6 +88,28 @@ https://wisdomgardeninc.github.io/mobile-assets/children-privacy-policy-zh-CN.md
 
 https://wisdomgardeninc.github.io/mobile-assets/summary-privacy-policy.html
 https://wisdomgardeninc.github.io/mobile-assets/summary-privacy-policy-zh-CN.md
+
+// app-legal/ — used by new app versions
+https://wisdomgardeninc.github.io/mobile-assets/app-legal/policy-jump.html
+https://wisdomgardeninc.github.io/mobile-assets/app-legal/marked-4.0.1.min.js
+https://wisdomgardeninc.github.io/mobile-assets/app-legal/policy-common.js
+https://wisdomgardeninc.github.io/mobile-assets/app-legal/policy-common.css
+https://wisdomgardeninc.github.io/mobile-assets/app-legal/privacy-policy.html
+https://wisdomgardeninc.github.io/mobile-assets/app-legal/privacy-policy-info.json
+https://wisdomgardeninc.github.io/mobile-assets/app-legal/privacy-policy-zh-CN.md
+https://wisdomgardeninc.github.io/mobile-assets/app-legal/privacy-policy-en.md
+https://wisdomgardeninc.github.io/mobile-assets/app-legal/privacy-policy-zh-TW.md
+https://wisdomgardeninc.github.io/mobile-assets/app-legal/user-agreement.html
+https://wisdomgardeninc.github.io/mobile-assets/app-legal/user-agreement-info.json
+https://wisdomgardeninc.github.io/mobile-assets/app-legal/user-agreement-zh-CN.md
+https://wisdomgardeninc.github.io/mobile-assets/app-legal/user-agreement-zh-TW.md
+https://wisdomgardeninc.github.io/mobile-assets/app-legal/user-agreement-en.md
+https://wisdomgardeninc.github.io/mobile-assets/app-legal/children-privacy-policy.html
+https://wisdomgardeninc.github.io/mobile-assets/app-legal/children-privacy-policy-info.json
+https://wisdomgardeninc.github.io/mobile-assets/app-legal/children-privacy-policy-zh-CN.md
+https://wisdomgardeninc.github.io/mobile-assets/app-legal/summary-privacy-policy.html
+https://wisdomgardeninc.github.io/mobile-assets/app-legal/summary-privacy-policy-zh-CN.md
+https://wisdomgardeninc.github.io/mobile-assets/app-legal/privacy_policy_google_play.html
 
 // identity-web-login-proxy
 https://wisdomgardeninc.github.io/mobile-assets/identity-web-login-proxy/favicon.ico
