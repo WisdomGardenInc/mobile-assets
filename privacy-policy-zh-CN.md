@@ -8,7 +8,7 @@
 
 4. 用户在使用畅课（TronClass）服务时不可将自认为隐私的信息发表、上传至畅课（TronClass），也不可将该等信息通过畅课（TronClass）的服务传播给其他人，若用户的行为引起的隐私泄漏，由用户承担责任。
 
-5. 畅课（TronClass）在提供服务时可能会搜集用户信息，用于实现高效互动课堂功能、改进畅课（TronClass）软件服务、实现安全运行。畅课（TronClass）会明确告知用户，通常信息包括：
+5. 畅课（TronClass）在提供服务时可能会搜集用户信息。畅课（TronClass）会明确告知用户，通常信息包括：
    
     5.1. 用户信息：***包括自然人的基本资料（包括姓名、出生年份、性别、电话号码、电子邮箱）、网络身份标识信息（包括系统账号、邮箱地址以及与前述有关的密码）、个人上网记录（包括网站浏览记录、软件使用记录、点击记录）、在后台状态下获取个人常用设备信息（包括硬件序列号、硬件型号、设备 MAC 地址、ANDROID ID、操作系统类型、唯一设备标识符、IMEI信息）、个人位置信息（包括大概地理位置、精确定位信息）***。
    
@@ -29,55 +29,55 @@
     > 极光推送SDK
     > SDK名称：cn.jpush.android
     > 使用目的：用于推送消息
-    > 数据类型：***在后台状态下获取用户标识信息（IMEI、MAC地址、、ANDROID ID、软件安装列表、自启动）***
+    > 数据类型：***在后台状态下获取用户标识信息（IMEI、MAC地址、ANDROID ID、软件安装列表、自启动）***
     > 官网链接：https://www.jiguang.cn/
    
     > OneSignal SDK
     > SDK名称：onesignal
     > 使用目的：用于推送消息
-    > 数据类型：***在后台状态下获取用户标识信息（IMEI、MAC地址、、ANDROID ID、软件安装列表）***
+    > 数据类型：***在后台状态下获取用户标识信息（IMEI、MAC地址、ANDROID ID、软件安装列表）***
     > 官网链接：https://onesignal.com/
 
     > 华为推送 SDK
     > SDK名称：com.huawei.hms
     > 使用目的：用于推送消息
-    > 数据类型：***在后台状态下获取用户标识信息（IMEI、MAC地址、、ANDROID ID、软件安装列表）***
+    > 数据类型：***在后台状态下获取用户标识信息（IMEI、MAC地址、ANDROID ID、软件安装列表）***
     > 官网链接：https://developer.huawei.com/consumer/cn/hms/huawei-pushkit
 
     > 小米推送 SDK
     > SDK名称：com.xiaomi.mipush
     > 使用目的：用于推送消息
-    > 数据类型：***在后台状态下获取用户标识信息（IMEI、MAC地址、、ANDROID ID、软件安装列表）***
+    > 数据类型：***在后台状态下获取用户标识信息（IMEI、MAC地址、ANDROID ID、软件安装列表）***
     > 官网链接：https://dev.mi.com/platform/push
 
     > OPPO推送 SDK
     > SDK名称：com.heytap.msp-push
     > 使用目的：用于推送消息
-    > 数据类型：***在后台状态下获取用户标识信息（IMEI、MAC地址、、ANDROID ID、软件安装列表）***
+    > 数据类型：***在后台状态下获取用户标识信息（IMEI、MAC地址、ANDROID ID、软件安装列表）***
     > 官网链接：https://open.oppomobile.com/new/developmentDoc/info?id=11207
 
     > 魅族推送 SDK
     > SDK名称：com.meizu.flyme.internet:push
     > 使用目的：用于推送消息
-    > 数据类型：***在后台状态下获取用户标识信息（IMEI、MAC地址、、ANDROID ID、软件安装列表）***
+    > 数据类型：***在后台状态下获取用户标识信息（IMEI、MAC地址、ANDROID ID、软件安装列表）***
     > 官网链接：https://open.flyme.cn/service/3
 
     > VIVO推送 SDK
     > SDK名称：com.vivo.push
     > 使用目的：用于推送消息
-    > 数据类型：***在后台状态下获取用户标识信息（IMEI、MAC地址、、ANDROID ID、软件安装列表）***
+    > 数据类型：***在后台状态下获取用户标识信息（IMEI、MAC地址、ANDROID ID、软件安装列表）***
     > 官网链接：https://push.vivo.com.cn
 
     > 荣耀推送 SDK
     > SDK名称：HiPushSdk
     > 使用目的：用于推送消息
-    > 数据类型：***在后台状态下获取用户标识信息（IMEI、MAC地址、、ANDROID ID、软件安装列表）***
+    > 数据类型：***在后台状态下获取用户标识信息（IMEI、MAC地址、ANDROID ID、软件安装列表）***
     > 官网链接：https://developer.hihonor.com/cn/kitdoc?category=&kitId=11002
 
     > 腾讯浏览服务SDK
     > SDK名称：com.tencent.smtt
     > 使用目的：用于推送消息
-    > 数据类型：***在后台状态下获取用户标识信息（IMEI、MAC地址、、ANDROID ID、软件安装列表）***
+    > 数据类型：***在后台状态下获取用户标识信息（IMEI、MAC地址、ANDROID ID、软件安装列表）***
     > 官网链接：https://x5.tencent.com/
 
 
