@@ -25,6 +25,32 @@ qshell fput --overwrite lms-mobile children-privacy-policy-zh-CN.md children-pri
 qshell fput --overwrite lms-mobile summary-privacy-policy.html summary-privacy-policy.html
 qshell fput --overwrite lms-mobile summary-privacy-policy-zh-CN.md summary-privacy-policy-zh-CN.md
 
+# ---------------------------------------------------------------------------
+# app-legal/ : consolidated copy used by new app versions.
+# Root-level keys above are kept for already-released apps (do not remove).
+# NOTE: marked is renamed to marked-4.0.1.min.js here.
+# ---------------------------------------------------------------------------
+qshell fput --overwrite lms-mobile app-legal/policy-jump.html app-legal/policy-jump.html
+qshell fput --overwrite lms-mobile app-legal/policy-common.js app-legal/policy-common.js
+qshell fput --overwrite lms-mobile app-legal/policy-common.css app-legal/policy-common.css
+qshell fput --overwrite lms-mobile app-legal/marked-4.0.1.min.js app-legal/marked-4.0.1.min.js
+qshell fput --overwrite lms-mobile app-legal/privacy-policy.html app-legal/privacy-policy.html
+qshell fput --overwrite lms-mobile app-legal/privacy-policy-info.json app-legal/privacy-policy-info.json
+qshell fput --overwrite lms-mobile app-legal/privacy-policy-zh-CN.md app-legal/privacy-policy-zh-CN.md
+qshell fput --overwrite lms-mobile app-legal/privacy-policy-en.md app-legal/privacy-policy-en.md
+qshell fput --overwrite lms-mobile app-legal/privacy-policy-zh-TW.md app-legal/privacy-policy-zh-TW.md
+qshell fput --overwrite lms-mobile app-legal/user-agreement.html app-legal/user-agreement.html
+qshell fput --overwrite lms-mobile app-legal/user-agreement-info.json app-legal/user-agreement-info.json
+qshell fput --overwrite lms-mobile app-legal/user-agreement-zh-CN.md app-legal/user-agreement-zh-CN.md
+qshell fput --overwrite lms-mobile app-legal/user-agreement-zh-TW.md app-legal/user-agreement-zh-TW.md
+qshell fput --overwrite lms-mobile app-legal/user-agreement-en.md app-legal/user-agreement-en.md
+qshell fput --overwrite lms-mobile app-legal/children-privacy-policy.html app-legal/children-privacy-policy.html
+qshell fput --overwrite lms-mobile app-legal/children-privacy-policy-info.json app-legal/children-privacy-policy-info.json
+qshell fput --overwrite lms-mobile app-legal/children-privacy-policy-zh-CN.md app-legal/children-privacy-policy-zh-CN.md
+qshell fput --overwrite lms-mobile app-legal/summary-privacy-policy.html app-legal/summary-privacy-policy.html
+qshell fput --overwrite lms-mobile app-legal/summary-privacy-policy-zh-CN.md app-legal/summary-privacy-policy-zh-CN.md
+qshell fput --overwrite lms-mobile app-legal/privacy_policy_google_play.html app-legal/privacy_policy_google_play.html
+
 # version update
 qshell fput --overwrite lms-mobile toggle.json toggle.json
 qshell fput --overwrite lms-mobile version_update_android.json version_update_android.json

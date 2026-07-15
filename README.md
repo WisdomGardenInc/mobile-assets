@@ -24,5 +24,11 @@ if update other file, edit `refresh_cdn.sh`, then run `bash scripts/refresh_cdn.
 
 ## Update privacy policy
 
-1. `bash scripts/sync_privacy_files.sh`
-2. goto [II. upgrade package `mobile-assets` version](#II-upgrade-package-mobile-assets-version) to continue
+Privacy-policy / user-agreement files live in `app-legal/`. Edit them there, then
+publish via [II](#II-upgrade-package-mobile-assets-version). Keep the whole set in
+that folder — pages load `policy-common.*` / `marked-4.0.1.min.js` and fetch their
+`*-info.json` / `*-<lang>.md` by relative path.
+
+- Root-level copies are legacy duplicates for already-released apps still using the
+  root URLs; edit them in sync, and delete once those app versions are retired.
+- China app-market review snapshots: see `app-legal/store-review/`.

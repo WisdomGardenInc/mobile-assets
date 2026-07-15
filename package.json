@@ -11,6 +11,10 @@
     "/*.html",
     "/*.json",
     "/*.md",
+    "/app-legal/*.html",
+    "/app-legal/*.json",
+    "/app-legal/*.md",
+    "/app-legal/*.js",
     "/mhesi/version/*"
   ],
   "devDependencies": {
