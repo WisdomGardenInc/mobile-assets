@@ -1,5 +1,9 @@
 [
   {
+    "mobileVersion": "2.15.1",
+    "serverVersion": "1.76"
+  },
+  {
     "mobileVersion": "2.15.0",
     "serverVersion": "1.76"
   },
@@ -58,45 +62,5 @@
   {
     "mobileVersion": "2.10.0",
     "serverVersion": "1.72"
-  },
-  {
-    "mobileVersion": "2.9.1",
-    "serverVersion": "1.71"
-  },
-  {
-    "mobileVersion": "2.8.1",
-    "serverVersion": "1.70-1.72"
-  },
-  {
-    "mobileVersion": "2.8.0",
-    "serverVersion": "1.70-1.72"
-  },
-  {
-    "mobileVersion": "2.7.0",
-    "serverVersion": "1.69-1.71"
-  },
-  {
-    "mobileVersion": "2.6.2",
-    "serverVersion": "1.68-1.70"
-  },
-  {
-    "mobileVersion": "2.6.1",
-    "serverVersion": "1.68-1.70"
-  },
-  {
-    "mobileVersion": "2.6.0",
-    "serverVersion": "1.68-1.70"
-  },
-  {
-    "mobileVersion": "2.5.2",
-    "serverVersion": "1.67-1.69"
-  },
-  {
-    "mobileVersion": "2.5.1",
-    "serverVersion": "1.67-1.69"
-  },
-  {
-    "mobileVersion": "2.5.0",
-    "serverVersion": "1.67-1.69"
   }
 ]
