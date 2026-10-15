@@ -1,5 +1,9 @@
 [
   {
+    "mobileVersion": "2.16.1",
+    "serverVersion": "1.77"
+  },
+  {
     "mobileVersion": "2.16.0",
     "serverVersion": "1.77"
   },
