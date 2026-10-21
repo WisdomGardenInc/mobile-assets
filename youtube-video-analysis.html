@@ -49,7 +49,6 @@
             ready: false,
             intervalId: null,
             startAt: null,
-            lastPostTime: null,
             videoDuration: 0,
             threshold: 60 * 1000
         },
@@ -62,34 +61,34 @@
                 return { loading: 'Loading...', loadTimeoutError: 'Loading timed out, please try again later, or watch it on web', errorTips: 'Limited by YouTube, the video can only be viewed on the web.'};
             }
         },
+        getCurrentSec() {
+            return Math.round(this.state.player.getCurrentTime());
+        },
 
         initInterval() {
-            this.state.startAt = Math.round(this.state.player.getCurrentTime());
-            this.state.lastPostTime = new Date();
-
+            this.state.startAt = this.getCurrentSec();
             if (this.state.intervalId) clearInterval(this.state.intervalId);
             this.state.intervalId = setInterval(() => {
-                const nowTime = Math.round(this.state.player.getCurrentTime());
-                const duration = nowTime - this.state.startAt;
-                if (duration > 0) {
-                    this.reportProgress(this.state.startAt, nowTime, duration);
-                    this.state.startAt = nowTime;
-                }
-                this.state.lastPostTime = new Date();
+                const current = this.getCurrentSec();
+                this.flushProgress(current);
+                this.state.startAt = current;
             }, this.state.threshold);
         },
 
         stopAndFlush() {
             if (this.state.intervalId) clearInterval(this.state.intervalId);
             if (this.state.startAt === null) return;
-
-            const nowTime = Math.round(this.state.player.getCurrentTime());
-            const realDuration = Math.round((new Date() - this.state.lastPostTime) / 1000);
-
-            if (realDuration > 0) {
-                this.reportProgress(this.state.startAt, nowTime, realDuration);
-            }
+            const current = this.getCurrentSec();
+            this.flushProgress(current);
             this.state.startAt = null;
+        },
+
+        flushProgress(current) {
+            if (this.state.startAt === null) return;
+            const duration = current - this.state.startAt;
+            if (duration > 0) {
+                this.reportProgress(this.state.startAt, current, duration);
+            }
         },
 
         reportProgress(startPos, endPos, duration) {
