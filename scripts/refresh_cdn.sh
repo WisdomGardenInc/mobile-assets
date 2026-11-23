@@ -5,7 +5,7 @@
 # Usage:
 #   bash scripts/refresh_cdn.sh [scope]
 #
-#   version     version_update_*.json / version_aligner.json / toggle.json
+#   version     version_update*.json / version_aligner.json / toggle.json
 #   legal       privacy-policy / user-agreement / children / summary (root + app-legal/)
 #   mhesi       mhesi/version/*.json
 #   identity    identity-web-login-proxy/ directory
@@ -27,6 +27,7 @@ QINIU_HOST="https://mobile-download.tronclass.com.cn"
 
 # Served on BOTH jsDelivr and qiniu.
 VERSION_FILES=(
+  version_update.json
   version_update_android.json
   version_update_ios.json
   version_aligner.json

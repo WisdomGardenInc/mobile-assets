@@ -1,8 +1,15 @@
 
-## qiniu assets
+### qiniu assets
 ```
 https://mobile-download.tronclass.com.cn/youtube-video-analysis.html
 http://mobile-download.tronclass.com.cn/callback.html
+
+// version update files
+https://mobile-download.tronclass.com.cn/version_update.json
+https://mobile-download.tronclass.com.cn/version_update_android.json
+https://mobile-download.tronclass.com.cn/version_update_ios.json
+https://mobile-download.tronclass.com.cn/version_aligner.json
+https://mobile-download.tronclass.com.cn/toggle.json
 
 // privacy-policy
 https://mobile-download.tronclass.com.cn/policy-jump.html
@@ -149,6 +156,7 @@ https://cdn.jsdelivr.net/npm/@wisdomgarden/mobile-assets@latest/summary-privacy-
 
 // not used end
 // version update files
+https://cdn.jsdelivr.net/npm/@wisdomgarden/mobile-assets@latest/version_update.json
 https://cdn.jsdelivr.net/npm/@wisdomgarden/mobile-assets@latest/version_update_android.json
 https://cdn.jsdelivr.net/npm/@wisdomgarden/mobile-assets@latest/version_update_ios.json
 https://cdn.jsdelivr.net/npm/@wisdomgarden/mobile-assets@latest/version_aligner.json
@@ -163,16 +171,24 @@ https://data.jsdelivr.com/v1/package/npm/@wisdomgarden/mobile-assets
 https://cdn.jsdelivr.net/npm/@wisdomgarden/mobile-assets@latest
 ```
 
-### refresh cnd cache use purge api
+### Refresh version files on jsDelivr and Qiniu
+
+After the npm package is published, run `bash scripts/refresh_cdn.sh version`
+from the repository root. It purges jsDelivr and uploads and refreshes the
+version files on Qiniu. The jsDelivr purge URLs for the update configs are:
+
 ```
+https://purge.jsdelivr.net/npm/@wisdomgarden/mobile-assets@latest/version_update.json
 https://purge.jsdelivr.net/npm/@wisdomgarden/mobile-assets@latest/version_update_android.json
 https://purge.jsdelivr.net/npm/@wisdomgarden/mobile-assets@latest/version_update_ios.json
 ```
 
 ### check info
 ```
+https://mobile-download.tronclass.com.cn/version_update.json
 https://www.npmjs.com/package/@wisdomgarden/mobile-assets
 https://data.jsdelivr.com/v1/package/npm/@wisdomgarden/mobile-assets
+https://cdn.jsdelivr.net/npm/@wisdomgarden/mobile-assets@latest/version_update.json
 https://cdn.jsdelivr.net/npm/@wisdomgarden/mobile-assets@latest/version_update_android.json
 https://cdn.jsdelivr.net/npm/@wisdomgarden/mobile-assets@latest/version_update_ios.json
 ```

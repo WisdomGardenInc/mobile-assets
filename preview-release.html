@@ -3,129 +3,403 @@
 
 <head>
   <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Preview Release</title>
-
-  <link crossorigin="anonymous" media="all" rel="stylesheet"
-    href="https://cdn.jsdelivr.net/gh/markdowncss/air/css/air.min.css" />
-
+  <title>Release preview</title>
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      font-size: 16px;
-      text-align: left;
+    :root {
+      font: 16px system-ui, sans-serif;
+      --text: #183638;
+      color: var(--text);
+      background: #f4f9f9;
+      --line: #d8e8e9;
+      --primary: #20bec8;
+      --primary-ink: #004e51;
+      --primary-soft: #eaf8fa;
     }
 
     body {
-      margin: 8px 32px;
+      margin: 0;
     }
 
-    .info>div>span:nth-child(1) {
-      font-weight: bold;
-      font-size: 20px;
-      margin-right: 12px;
+    main {
+      max-width: 66rem;
+      margin: auto;
+      padding: clamp(1rem, 4vw, 2.5rem);
     }
 
-    .info>div>span:nth-child(2) {
-      color: red;
+    h1 {
+      margin: 0 0 1.25rem;
+      font-size: clamp(1.75rem, 4vw, 2.4rem);
+    }
+
+    .mode-switch {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-bottom: 1rem;
+    }
+
+    button, a {
+      color: var(--primary-ink);
+    }
+
+    button {
+      font: inherit;
+      cursor: pointer;
+    }
+
+    button:focus-visible, a:focus-visible {
+      outline: 2px solid var(--primary-ink);
+      outline-offset: 3px;
+    }
+
+    .mode-switch button {
+      padding: 0.45rem 0.75rem;
+      border: 1px solid var(--line);
+      border-radius: 0.35rem;
+      background: #fff;
+    }
+
+    .mode-switch [aria-pressed="true"] {
+      background: var(--primary);
+      border-color: var(--primary);
+      color: var(--text);
+    }
+
+    .table-wrap {
+      overflow-x: auto;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      background: #fff;
+      text-align: left;
+    }
+
+    th, td {
+      padding: 0.75rem;
+      border-bottom: 1px solid var(--line);
+      vertical-align: top;
+    }
+
+    thead th {
+      font-size: 0.875rem;
+      background: var(--primary-soft);
+    }
+
+    tbody tr:has([aria-pressed="true"]) {
+      background: var(--primary-soft);
+    }
+
+    .channel {
+      padding: 0.125rem 0;
+      border: 0;
+      background: transparent;
+      font-weight: 650;
+      text-align: left;
+      text-decoration: underline;
+      text-underline-offset: 0.2em;
+    }
+
+    td a {
+      display: block;
+      width: fit-content;
+      white-space: nowrap;
+    }
+
+    .version {
+      font-family: ui-monospace, monospace;
+      white-space: nowrap;
+    }
+
+    #notes {
+      margin-top: 2rem;
+    }
+
+    #notes h2 {
+      margin: 0 0 0.75rem;
+      font-size: 1.3rem;
     }
 
     .note {
-      margin-top: 32px;
-      padding-bottom: 32px;
-      border-bottom: 1px solid #ddd;
+      padding: 0.85rem 0;
+      border-top: 1px solid var(--line);
     }
 
-    .note:first-of-type {
-      margin-top: 16px;
+    .note h3 {
+      margin: 0;
+      font-size: 1rem;
     }
 
-    .note>span {
-      display: inline-block;
-      font-size: 16px;
-      font-weight: bold;
-      padding-bottom: 8px;
+    .note-body {
+      white-space: pre-wrap;
+      overflow-wrap: anywhere;
     }
 
-    .release-note-area {
-      margin-top: 32px;
+    .note-body.is-markdown {
+      white-space: normal;
     }
 
-    .release-note-area>span {
-      font-size: 20px;
-      font-weight: bold;
-      padding-bottom: 16px;
+    .note img {
+      max-width: 100%;
+    }
+
+    #status:empty {
+      margin: 0;
     }
   </style>
 </head>
 
 <body>
-  <div class="info">
-    <div>
-      <span>Version:</span><span id="version"></span>
+  <main>
+    <h1>Release preview</h1>
+    <div class="mode-switch" role="group" aria-label="Configuration format">
+      <button type="button" data-mode="current" aria-pressed="true">New configuration</button>
+      <button type="button" data-mode="legacy" aria-pressed="false">Legacy configuration</button>
     </div>
-    <div>
-      <span>Allow Lowest Version:</span><span id="lowestVersion"></span>
+    <p id="status" role="status" aria-live="polite"></p>
+    <div class="table-wrap">
+      <table id="releases" aria-label="Release channels" hidden>
+        <thead>
+          <tr>
+            <th scope="col">Channel</th>
+            <th scope="col">Version</th>
+            <th scope="col">Minimum version</th>
+            <th scope="col">Update policy</th>
+            <th scope="col">Update link</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
     </div>
-    <div>
-      <span>Force Update:</span><span id="forceUpdate"></span>
-    </div>
-    <div id="download">
-      <span>Download:</span>
-    </div>
-  </div>
-
-  <div class="release-note-area">
-    <span>Release Note:</span>
-    <div class="note">
-      <span>Simplified Chinese</span>
-      <div id="content_cn"></div>
-    </div>
-
-    <div class="note">
-      <span>Traditional Chinese</span>
-      <div id="content_tw"></div>
-    </div>
-
-    <div class="note">
-      <span>English</span>
-      <div id="content_en"></div>
-    </div>
-  </div>
+    <section id="notes" aria-labelledby="notes-heading" hidden>
+      <h2 id="notes-heading"></h2>
+      <div id="notes-content"></div>
+    </section>
+  </main>
   <script src="https://cdn.jsdelivr.net/npm/marked@4.0.1/marked.min.js" integrity="sha256-qzUhVpKqiqYVRIQmTWVyvDYN9or3v7nWmxnsmErSCRA=" crossorigin="anonymous"></script>
   <script>
-    fetch("./version_update_android.json").then(function (response) {
-      return response.text();
-    }).then(function (text) {
-      const json = JSON.parse(text);
-      const releaseNote = json["release_note_zh_hans"];
+    const channels = [
+      ["ios", "iOS / App Store", "Open App Store"],
+      ["googleplay", "Google Play", "Open Google Play"],
+      ["harmonyos", "HarmonyOS", "Open AppGallery"],
+      ["cn", "Mainland Android", "Download APK"],
+    ];
+    const languages = [
+      ["zh_hans", "Simplified Chinese"],
+      ["zh_hant", "Traditional Chinese"],
+      ["en_us", "English"],
+    ];
+    const allowedNoteTags = new Set([
+      "A", "BLOCKQUOTE", "BR", "CODE", "DEL", "EM", "H1", "H2", "H3", "H4", "H5", "H6",
+      "HR", "IMG", "LI", "OL", "P", "PRE", "STRONG", "TABLE", "TBODY", "TD", "TH", "THEAD", "TR", "UL",
+    ]);
+    const modes = [...document.querySelectorAll("[data-mode]")];
+    const status = document.querySelector("#status");
+    const table = document.querySelector("#releases");
+    const rows = table.tBodies[0];
+    const notes = document.querySelector("#notes");
+    const notesHeading = document.querySelector("#notes-heading");
+    const notesContent = document.querySelector("#notes-content");
+    let requestId = 0;
 
-      document.getElementById('version').innerHTML = json["version"];
-      document.getElementById('lowestVersion').innerHTML = json["allow_lowest_version"];
-      document.getElementById('forceUpdate').innerHTML = json["allow_lowest_version"] === 0 ? "true" : "false";
+    async function readJson(filename) {
+      const response = await fetch(`./${filename}`, { cache: "no-cache" });
+      if (!response.ok) {
+        throw new Error(`Could not load ${filename}.`);
+      }
+      return response.json();
+    }
 
-      const aTag = document.createElement("a");
-      aTag.setAttribute("href", json["app_store_url_cn"]);
-      aTag.setAttribute("target", "_blank");
-      aTag.text = "app-release-" + json["version"] + ".apk"
+    async function loadCurrent() {
+      const manifest = await readJson("version_update.json");
+      return channels.map(([id, name, linkLabel]) => {
+        const config = manifest.channels?.[id];
+        return {
+          id,
+          name,
+          config,
+          notes: manifest.release_notes?.[config?.version],
+          links: [[linkLabel, config?.url]],
+        };
+      });
+    }
 
-      document.getElementById('download').appendChild(aTag);
+    async function loadLegacy() {
+      const legacyChannels = [["ios", "Legacy iOS"], ["android", "Legacy Android"]];
+      return Promise.all(legacyChannels.map(async ([id, name]) => {
+        try {
+          const config = await readJson(`version_update_${id}.json`);
+          const links = id === "ios"
+            ? [["Open App Store", config.app_store_url]]
+            : [["Open Google Play", config.app_store_url], ["Download APK", config.app_store_url_cn]];
+          return { id, name, config, notes: config, links };
+        } catch {
+          return { id, name, unavailable: true, links: [] };
+        }
+      }));
+    }
 
+    function compareVersions(left, right) {
+      const leftParts = left.split(".").map(Number);
+      const rightParts = right.split(".").map(Number);
+      for (let i = 0; i < Math.max(leftParts.length, rightParts.length); i += 1) {
+        const difference = (leftParts[i] ?? 0) - (rightParts[i] ?? 0);
+        if (difference !== 0) {
+          return difference;
+        }
+      }
+      return 0;
+    }
 
-      document.getElementById('content_cn').innerHTML =
-        marked.parse(json["release_note_zh_hans"]);
+    function getUpdatePolicy({ version, allow_lowest_version: minimum, update_type: type }) {
+      if (type === 0 || (minimum && compareVersions(minimum, version) >= 0)) {
+        return "Required for all older versions";
+      }
+      return minimum ? `Required below ${minimum}` : "Optional";
+    }
 
-      document.getElementById('content_tw').innerHTML =
-        marked.parse(json["release_note_zh_hant"]);
+    function getHttpsUrl(value) {
+      try {
+        const url = new URL(value);
+        return url.protocol === "https:" ? url.href : undefined;
+      } catch {
+        return undefined;
+      }
+    }
 
-      document.getElementById('content_en').innerHTML =
-        marked.parse(json["release_note_en_us"]);
+    function renderNote(container, markdown) {
+      if (typeof window.marked?.parse !== "function") {
+        container.textContent = markdown;
+        return;
+      }
+      const template = document.createElement("template");
+      template.innerHTML = window.marked.parse(markdown);
+      for (const node of template.content.querySelectorAll("*")) {
+        if (!allowedNoteTags.has(node.tagName)) {
+          node.replaceWith(document.createTextNode(node.textContent));
+          continue;
+        }
+        for (const attribute of [...node.attributes]) {
+          const { name, value } = attribute;
+          const isLink = node.tagName === "A" && name === "href";
+          const isImage = node.tagName === "IMG" && name === "src";
+          if ((isLink || isImage) && getHttpsUrl(value)) {
+            continue;
+          }
+          if (node.tagName !== "IMG" || name !== "alt") {
+            node.removeAttribute(name);
+          }
+        }
+      }
+      container.classList.add("is-markdown");
+      container.replaceChildren(template.content);
+    }
 
+    function showNotes(release) {
+      for (const button of rows.querySelectorAll(".channel")) {
+        button.setAttribute("aria-pressed", String(button.dataset.channel === release.id));
+      }
 
-    })
+      const version = release.config?.version;
+      notesHeading.textContent = version
+        ? `${release.name} · ${version} release notes`
+        : `${release.name} release notes`;
+      notesContent.replaceChildren();
+      for (const [code, label] of languages) {
+        const markdown = release.notes?.[`release_note_${code}`];
+        if (typeof markdown !== "string" || !markdown.trim()) {
+          continue;
+        }
+        const section = document.createElement("section");
+        section.className = "note";
+        const heading = document.createElement("h3");
+        heading.textContent = label;
+        const body = document.createElement("div");
+        body.className = "note-body";
+        renderNote(body, markdown);
+        section.append(heading, body);
+        notesContent.append(section);
+      }
 
+      if (!notesContent.childElementCount) {
+        notesContent.textContent = release.unavailable ? "Could not load this configuration." : "No release notes.";
+      }
+      notes.hidden = false;
+    }
+
+    function renderReleases(releases) {
+      for (const release of releases) {
+        const row = rows.insertRow();
+        const channel = document.createElement("th");
+        channel.scope = "row";
+        const button = document.createElement("button");
+        button.type = "button";
+        button.className = "channel";
+        button.dataset.channel = release.id;
+        button.textContent = release.name;
+        button.addEventListener("click", () => showNotes(release));
+        channel.append(button);
+        row.append(channel);
+
+        const version = row.insertCell();
+        version.className = "version";
+        version.textContent = release.config?.version ?? "—";
+        const minimum = row.insertCell();
+        minimum.className = "version";
+        minimum.textContent = release.config?.allow_lowest_version ?? "—";
+        const policy = row.insertCell();
+        policy.textContent = release.unavailable ? "Unavailable" : release.config ? getUpdatePolicy(release.config) : "Not configured";
+        const links = row.insertCell();
+        for (const [label, value] of release.links) {
+          const url = getHttpsUrl(value);
+          if (!url) {
+            continue;
+          }
+          const anchor = document.createElement("a");
+          anchor.href = url;
+          anchor.textContent = label;
+          anchor.title = url;
+          anchor.target = "_blank";
+          anchor.rel = "noopener noreferrer";
+          links.append(anchor);
+        }
+        if (!links.childElementCount) {
+          links.textContent = "—";
+        }
+      }
+
+      table.hidden = false;
+      showNotes(releases.find(({ id, config }) => id === "cn" && config) ??
+        releases.find(({ config }) => config) ?? releases[0]);
+    }
+
+    async function showMode(mode) {
+      const id = ++requestId;
+      for (const button of modes) {
+        button.setAttribute("aria-pressed", String(button.dataset.mode === mode));
+      }
+      rows.replaceChildren();
+      table.hidden = notes.hidden = true;
+      status.textContent = "Loading configuration…";
+      try {
+        const releases = await (mode === "current" ? loadCurrent() : loadLegacy());
+        if (id === requestId) {
+          status.textContent = "";
+          renderReleases(releases);
+        }
+      } catch {
+        if (id === requestId) {
+          status.textContent = "Could not load this configuration. Reload to try again.";
+        }
+      }
+    }
+
+    for (const button of modes) {
+      button.addEventListener("click", () => showMode(button.dataset.mode));
+    }
+    showMode("current");
   </script>
 </body>
 

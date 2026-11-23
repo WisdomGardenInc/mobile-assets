@@ -1,7 +1,7 @@
 # mobile-assets
 
 Static assets hosted for the TronClass mobile apps: app version-update configs
-(`version_update_*.json`, `version_aligner.json`, `toggle.json`), the privacy
+(`version_update*.json`, `version_aligner.json`, `toggle.json`), the privacy
 policy / user agreement documents (root + `app-legal/`), the mhesi version files
 and login-proxy pages, plus a few standalone HTML tools.
 
@@ -34,7 +34,7 @@ after the new version is live.
    docs and vice versa:
 
    ```bash
-   bash scripts/refresh_cdn.sh version    # version_update_*.json / version_aligner.json / toggle.json
+   bash scripts/refresh_cdn.sh version    # version_update*.json / version_aligner.json / toggle.json
    bash scripts/refresh_cdn.sh legal      # privacy-policy / user-agreement / children / summary (root + app-legal/)
    bash scripts/refresh_cdn.sh mhesi      # mhesi/version/*.json + mhesi/third-party-login-proxy/
    bash scripts/refresh_cdn.sh identity   # identity-web-login-proxy/ directory
@@ -53,6 +53,7 @@ Notes:
 
 1. Sync version files from [mobile-assistant](https://gitlab.tronclass.com.cn/lms/mobile-assistant):
    `bash ./scripts/sync_version_files.sh [path-to-mobile-assistant]` (defaults to `../mobile-assistant`).
+   This copies `version_update.json` and both compatibility files used by older clients.
 2. [Publish and add tag](#publish-and-add-tag).
 3. [Refresh CDN](#refresh-cdn): `bash scripts/refresh_cdn.sh version`.
 4. Preview the release note: local live server `./preview-release.html`, or
