@@ -180,3 +180,5 @@ dist
 scripts/platform/.*.env.js
 ota/.env.js
 tmp/
+
+.ai-*/
