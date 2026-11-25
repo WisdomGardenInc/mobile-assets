@@ -87,7 +87,7 @@ function renderContent(options) {
             const endpoint = policyEndpointMap[href];
             if (endpoint) {
               href =
-                "policy-jump.html?endpoint=" +
+                "app-legal/policy-jump.html?endpoint=" +
                 endpoint +
                 "&language=" +
                 language;
