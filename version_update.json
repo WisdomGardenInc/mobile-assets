@@ -10,7 +10,10 @@
       "allow_lowest_version": "2.14.5",
       "url": "https://play.google.com/store/apps/details?id=com.wisdomgarden.trpc"
     },
-    "harmonyos": null,
+    "harmonyos": {
+      "version": "2.16.3",
+      "allow_lowest_version": "2.16.0"
+    },
     "cn": {
       "version": "2.16.1",
       "allow_lowest_version": "2.14.5",
@@ -19,6 +22,11 @@
   },
   "release_notes": {
     "2.16.1": {
+      "release_note_en_us": "- Fix bugs and improve system performance.",
+      "release_note_zh_hans": "- 已知问题修复和性能优化",
+      "release_note_zh_hant": "- 已知問題修復和性能優化"
+    },
+    "2.16.3": {
       "release_note_en_us": "- Fix bugs and improve system performance.",
       "release_note_zh_hans": "- 已知问题修复和性能优化",
       "release_note_zh_hant": "- 已知問題修復和性能優化"
