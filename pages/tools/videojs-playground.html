@@ -5,88 +5,168 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Video.JS Playground</title>
+  <title>Video.js Playground</title>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/video.js@7.21.0/dist/video-js.min.css" integrity="sha256-MQILNoDAnXbaJT0pfW0/qpj9a1UcHHUYKduMEqn0oa0=" crossorigin="anonymous">
   <style>
-    * {
-      padding: 0;
+    :root {
+      font: 16px/1.5 system-ui, sans-serif;
+      color: #183638;
+      background: #f4f9f9;
+    }
+
+    body {
       margin: 0;
     }
 
-    .wg-video {
-      width: 100vw;
-      height: 100vh;
+    main {
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+      min-height: 100dvh;
     }
 
-    .error {}
+    #source-form {
+      box-sizing: border-box;
+      align-self: center;
+      width: 100%;
+      max-width: 52rem;
+      padding: 1rem;
+    }
+
+    h1 { margin: 0 0 0.75rem; font-size: 1.5rem; }
+    label { font-weight: 650; }
+
+    .source-controls {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-top: 0.35rem;
+    }
+
+    input, button {
+      border: 1px solid #a7c0c2;
+      border-radius: 0.35rem;
+      padding: 0.5rem 0.75rem;
+      font: inherit;
+    }
+
+    input { min-width: 0; flex: 1 1 10rem; }
+    button { border-color: #005c62; color: #fff; background: #005c62; cursor: pointer; }
+    :focus-visible { outline: 2px solid #005c62; outline-offset: 2px; }
+
+    #source-error { margin: 0.5rem 0 0; color: #a62735; }
+    #source-error:empty { margin: 0; }
+
+    #player {
+      flex: 1;
+      position: relative;
+      min-height: 14rem;
+      --video-ratio: 1.777778;
+    }
+
+    #player .wg-video:not(.vjs-fullscreen) {
+      position: absolute;
+      inset: 0 0 auto;
+      width: min(100%, calc(var(--player-height, 100vh) * var(--video-ratio)));
+      height: auto;
+      aspect-ratio: var(--video-ratio);
+      margin-inline: auto;
+    }
   </style>
   <script src="https://cdn.jsdelivr.net/npm/video.js@7.21.0/dist/video.min.js" integrity="sha256-g0QI4cIRHjM66SR0Al0fexaBmWOJRsqmbs7StKonXG4=" crossorigin="anonymous"></script>
 </head>
 
 <body>
-  <video id="wg-video" class="video-js wg-video">
-    <p class="vjs-no-js">
-      To view this video please enable JavaScript, and consider upgrading to a
-      web browser that
-      <a href="https://videojs.com/html5-video-support/" target="_blank">supports HTML5 video</a>
-    </p>
-  </video>
-  <script type="text/javascript">
-    ; ((function () {
-      // https://mobile-download.tronclass.com.cn/P1-1.mp4
-      // video/mp4
-      const searchParams = new URLSearchParams(window.location.search);
-      let src = searchParams.get("src");
-      let type = searchParams.get("type");
+  <main>
+    <form id="source-form" novalidate>
+      <h1>Video.js Playground</h1>
+      <label for="source-url">Video URL</label>
+      <div class="source-controls">
+        <input id="source-url" type="url" placeholder="https://example.com/video.mp4"
+          autocomplete="off" spellcheck="false" aria-describedby="source-error" required>
+        <button type="submit">Load video</button>
+      </div>
+      <p id="source-error" role="alert"></p>
+    </form>
+    <div id="player" hidden>
+      <video id="wg-video" class="video-js wg-video" playsinline></video>
+    </div>
+    <noscript>Enable JavaScript to load and play videos.</noscript>
+  </main>
+  <script>
+    const form = document.querySelector("#source-form");
+    const sourceInput = document.querySelector("#source-url");
+    const sourceError = document.querySelector("#source-error");
+    const playerContainer = document.querySelector("#player");
+    const params = new URLSearchParams(window.location.search);
+    const initialSource = params.get("src");
+    const initialType = params.get("type");
+    let player;
 
+    new ResizeObserver(([{ contentRect }]) => {
+      playerContainer.style.setProperty("--player-height", `${contentRect.height}px`);
+    }).observe(playerContainer);
 
+    function loadVideo(value, type) {
+      sourceError.textContent = "";
+      sourceInput.removeAttribute("aria-invalid");
+      let url;
       try {
-        src = new URL(decodeURIComponent(src));
+        url = new URL(value);
       } catch {
-        src = "";
-      }
-
-      if (!src) {
-        alert('usage: videojs-playground.html?src=url[&type=mimetype]');
+        sourceInput.setAttribute("aria-invalid", "true");
+        sourceError.textContent = "Enter a valid video URL.";
         return;
       }
 
-      if (!type) {
-        if (src.pathname.lastIndexOf(".") === -1) {
-          type = "video/mp4"
-        }
+      if (typeof videojs !== "function") {
+        sourceError.textContent = "Video.js could not load. Reload the page and try again.";
+        return;
       }
 
-      window.onload = () => {
-        const player = videojs("wg-video", {
+      playerContainer.hidden = false;
+      if (!player) {
+        player = videojs("wg-video", {
           controls: true,
           autoplay: true,
-          preload: 'auto'
+          preload: "auto",
         });
-
+        player.on("loadedmetadata", () => {
+          const width = player.videoWidth();
+          const height = player.videoHeight();
+          if (width && height) {
+            playerContainer.style.setProperty("--video-ratio", width / height);
+          }
+        });
         player.on("error", () => {
           const error = player.error();
-
-          for (let key in error) {
-            if (key.startsWith("MEDIA_ERR")) {
-              if (error[key] === error.code) {
-                error["errorType"] = key;
-              }
-            }
+          if (error) {
+            sourceError.textContent = `Playback error (${error.code}): ${error.message}`;
           }
-          alert(JSON.stringify(error, null, 2));
         });
-
-
-        const srcOptions = { type, src: src.href };
-        if (!type) {
-          delete srcOptions["type"];
-        }
-
-        player.src(srcOptions);
       }
 
-    })());
+      const source = { src: url.href };
+      if (type) {
+        source.type = type;
+      } else if (!url.pathname.includes(".")) {
+        source.type = "video/mp4";
+      }
+      playerContainer.style.removeProperty("--video-ratio");
+      player.error(null);
+      player.src(source);
+    }
+
+    form.addEventListener("submit", event => {
+      event.preventDefault();
+      const value = sourceInput.value.trim();
+      loadVideo(value, value === initialSource ? initialType : null);
+    });
+
+    if (initialSource !== null) {
+      sourceInput.value = initialSource;
+      loadVideo(initialSource, initialType);
+    }
   </script>
 </body>
 

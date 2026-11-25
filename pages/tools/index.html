@@ -4,16 +4,148 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TronClass Tools</title>
+    <style>
+        :root {
+            font: 16px/1.55 system-ui, sans-serif;
+            color: #183638;
+            background: #f4f9f9;
+            --line: #d8e8e9;
+            --muted: #496568;
+            --primary: #005c62;
+            --primary-soft: #eaf8fa;
+        }
+
+        body {
+            margin: 0;
+        }
+
+        main {
+            max-width: 52rem;
+            margin: auto;
+            padding: clamp(1rem, 5vw, 3.5rem);
+        }
+
+        h1 {
+            margin: 0 0 1.5rem;
+            font-size: clamp(1.8rem, 5vw, 2.4rem);
+            line-height: 1.2;
+        }
+
+        .tools {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 0.75rem;
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        .tool {
+            box-sizing: border-box;
+            display: grid;
+            grid-template-columns: 1fr auto;
+            align-items: start;
+            gap: 0.75rem;
+            height: 100%;
+            padding: 1.125rem;
+            border: 1px solid var(--line);
+            border-radius: 0.65rem;
+            color: inherit;
+            background: #fff;
+            text-decoration: none;
+        }
+
+        .tool:hover, .tool:focus-visible {
+            border-color: var(--primary);
+        }
+
+        .tool:focus-visible {
+            outline: 2px solid var(--primary);
+            outline-offset: 3px;
+        }
+
+        .tool-name, .tool-description {
+            display: block;
+        }
+
+        .tool-name {
+            color: var(--primary);
+            font-size: 1.05rem;
+            font-weight: 650;
+        }
+
+        .tool-description {
+            margin-top: 0.25rem;
+            color: var(--muted);
+            font-size: 0.9375rem;
+        }
+
+        .tool-arrow {
+            display: grid;
+            place-items: center;
+            width: 1.9rem;
+            height: 1.9rem;
+            border-radius: 0.4rem;
+            color: var(--primary);
+            background: var(--primary-soft);
+        }
+
+        @media (max-width: 40rem) {
+            .tools {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
 </head>
 <body>
     <main>
         <h1>TronClass Tools</h1>
-        <ul>
-            <li><a href="./mathjax.html">MathJax Playground</a></li>
-            <li><a href="./wg-qrcode-format.html">WG QR Code Format</a></li>
-            <li><a href="./videojs-playground.html">Video.js Playground</a> (requires a <code>src</code> URL)</li>
-            <li><a href="./app-market-jumper.html">App Market Jumper</a> (redirects to an app store)</li>
-            <li><a href="./user-agent.html">User Agent Viewer</a></li>
+        <ul class="tools" role="list">
+            <li>
+                <a class="tool" href="./mathjax.html">
+                    <span>
+                        <span class="tool-name">MathJax Playground</span>
+                        <span class="tool-description">Preview LaTeX formulas and MathML.</span>
+                    </span>
+                    <span class="tool-arrow" aria-hidden="true">→</span>
+                </a>
+            </li>
+            <li>
+                <a class="tool" href="./wg-qrcode-format.html">
+                    <span>
+                        <span class="tool-name">WG QR Code Format</span>
+                        <span class="tool-description">Encode JSON into WG QR data or decode an existing QR payload.</span>
+                    </span>
+                    <span class="tool-arrow" aria-hidden="true">→</span>
+                </a>
+            </li>
+            <li>
+                <a class="tool" href="./videojs-playground.html">
+                    <span>
+                        <span class="tool-name">Video.js Playground</span>
+                        <span class="tool-description">Load a video URL and test playback.</span>
+                    </span>
+                    <span class="tool-arrow" aria-hidden="true">→</span>
+                </a>
+            </li>
+            <li>
+                <a class="tool" href="./app-market-jumper.html">
+                    <span>
+                        <span class="tool-name">App Market Jumper</span>
+                        <span class="tool-description">Redirect to Google Play or Tencent MyApp for TronClass on Android.</span>
+                    </span>
+                    <span class="tool-arrow" aria-hidden="true">→</span>
+                </a>
+            </li>
+            <li>
+                <a class="tool" href="./user-agent.html">
+                    <span>
+                        <span class="tool-name">User Agent Viewer</span>
+                        <span class="tool-description">View the user agent string reported by this browser.</span>
+                    </span>
+                    <span class="tool-arrow" aria-hidden="true">→</span>
+                </a>
+            </li>
         </ul>
     </main>
 </body>
