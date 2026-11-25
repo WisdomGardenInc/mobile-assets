@@ -8,18 +8,18 @@
   "license": "WisdomGarden",
   "private": false,
   "files": [
-    "/*.html",
+    "/callback.html",
+    "/policy-jump.html",
+    "/*privacy-policy.html",
+    "/user-agreement.html",
+    "/youtube-video-analysis.html",
     "/*.json",
     "/*.md",
     "/app-legal/*.html",
     "/app-legal/*.json",
     "/app-legal/*.md",
     "/app-legal/*.js",
-    "/mhesi/version/*",
-    "/pages/preview-release.html",
-    "/pages/tools/index.html",
-    "/pages/tools/mathjax.html",
-    "/pages/tools/wg-qrcode-format.html"
+    "/mhesi/version/*"
   ],
   "devDependencies": {
     "enquirer": "^2.4.1",
