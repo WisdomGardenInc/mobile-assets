@@ -23,7 +23,7 @@
 
 ### 检查发布状态
 
-确认 npm 的最新版本和 jsDelivr 的 `tags.latest` 都与 `package.json` 一致，再刷新。 [npm 包](https://www.npmjs.com/package/@wisdomgarden/mobile-assets) · [jsDelivr 包数据](https://data.jsdelivr.com/v1/package/npm/@wisdomgarden/mobile-assets)
+打开[发布状态检查页](https://wisdomgardeninc.github.io/mobile-assets/pages/check-release.html)，查看 npm 和 jsDelivr 的最新版本。填入本次 `package.json` 的版本号或 Git Tag，两处都显示「已就绪」后再刷新。 [npm 包](https://www.npmjs.com/package/@wisdomgarden/mobile-assets) · [jsDelivr 包数据](https://data.jsdelivr.com/v1/package/npm/@wisdomgarden/mobile-assets)
 
 ### 选择刷新范围
 

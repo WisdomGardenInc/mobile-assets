@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>检查发布状态</title>
+  <style>
+    :root {
+      font: 16px/1.55 system-ui, sans-serif;
+      color: #183638;
+      background: #f4f9f9;
+      --line: #d8e8e9;
+      --muted: #496568;
+      --primary: #005c62;
+    }
+
+    body { margin: 0; }
+
+    main {
+      max-width: 46rem;
+      margin: auto;
+      padding: clamp(1rem, 5vw, 3.5rem);
+    }
+
+    h1 { margin: 0; font-size: clamp(1.8rem, 5vw, 2.4rem); }
+    h2 { margin: 0; font-size: 1.05rem; }
+    p { margin: 0.4rem 0 0; }
+    a { color: var(--primary); text-underline-offset: 0.2em; }
+    code, output { font-family: ui-monospace, monospace; }
+    header code, .hint, #summary, #copy-status { color: var(--muted); }
+    header { margin-bottom: 1.5rem; }
+
+    form, article, #next-step {
+      padding: 1rem;
+      border: 1px solid var(--line);
+      border-radius: 0.55rem;
+      background: #fff;
+    }
+
+    label { font-weight: 650; }
+    .hint, #summary, #copy-status { font-size: 0.875rem; }
+    .controls { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 0.55rem; }
+
+    input, button, #command {
+      box-sizing: border-box;
+      min-height: 2.65rem;
+      border: 1px solid #a7c0c2;
+      border-radius: 0.35rem;
+      padding: 0.45rem 0.75rem;
+      font: inherit;
+    }
+
+    input { min-width: 0; flex: 1 1 10rem; color: inherit; background: #fff; }
+
+    button {
+      border-color: var(--primary);
+      background: var(--primary);
+      color: #fff;
+      cursor: pointer;
+    }
+
+    button:disabled { opacity: 0.65; cursor: default; }
+    :focus-visible { outline: 2px solid var(--primary); outline-offset: 3px; }
+
+    .sources {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(min(100%, 14rem), 1fr));
+      gap: 0.75rem;
+      margin-top: 0.75rem;
+    }
+
+    .source-heading { display: flex; flex-wrap: wrap; align-items: baseline; gap: 0.4rem 0.65rem; }
+    .source-heading a { font-size: 0.875rem; }
+    .reading { margin-top: 0.9rem; color: var(--muted); font-size: 0.875rem; }
+    output { display: block; color: #183638; font-size: 1.45rem; font-weight: 650; overflow-wrap: anywhere; }
+    .source-status { font-size: 0.875rem; color: var(--muted); }
+    .source-status[data-state="ready"] { color: #11714c; }
+    .source-status[data-state="waiting"] { color: #855500; }
+    .source-status[data-state="error"] { color: #a62735; }
+    #summary { min-height: 1.4rem; }
+    #next-step { margin-top: 0.75rem; border-color: #abd9d6; background: #eaf8fa; }
+    #command {
+      display: flex;
+      align-items: center;
+      flex: 1 1 20rem;
+      min-width: 0;
+      background: #fff;
+      font: 0.875rem ui-monospace, monospace;
+      overflow-wrap: anywhere;
+    }
+    #copy-status:empty { margin: 0; }
+    nav { display: flex; flex-wrap: wrap; gap: 0.5rem 1rem; margin-top: 1.5rem; font-size: 0.875rem; }
+  </style>
+</head>
+
+<body>
+  <main>
+    <header>
+      <h1>检查发布状态</h1>
+      <p><code>@wisdomgarden/mobile-assets</code></p>
+    </header>
+
+    <form id="check-form" novalidate>
+      <label for="target-version">目标 npm 包版本（选填）</label>
+      <p id="version-hint" class="hint">填写本次发布的 <code>package.json</code> 版本或 Git Tag，与下方最新版本比对。</p>
+      <div class="controls">
+        <input id="target-version" type="text" placeholder="例如 0.0.82" autocomplete="off"
+          autocapitalize="off" spellcheck="false" aria-describedby="version-hint summary">
+        <button id="check-button" type="submit">重新查询</button>
+      </div>
+    </form>
+
+    <section class="sources" aria-label="各来源的最新包版本">
+      <article id="npm" aria-labelledby="npm-heading">
+        <div class="source-heading">
+          <h2 id="npm-heading">npm</h2>
+          <a href="https://www.npmjs.com/package/@wisdomgarden/mobile-assets" target="_blank" rel="noopener">npm 包</a>
+        </div>
+        <p class="reading"><code>latest</code> <output aria-label="npm 最新版本">—</output></p>
+        <p class="source-status"></p>
+      </article>
+      <article id="jsdelivr" aria-labelledby="jsdelivr-heading">
+        <div class="source-heading">
+          <h2 id="jsdelivr-heading">jsDelivr</h2>
+          <a href="https://data.jsdelivr.com/v1/package/npm/@wisdomgarden/mobile-assets" target="_blank" rel="noopener">包数据</a>
+        </div>
+        <p class="reading"><code>tags.latest</code> <output aria-label="jsDelivr 最新版本">—</output></p>
+        <p class="source-status"></p>
+      </article>
+    </section>
+
+    <p id="summary" role="status"></p>
+
+    <section id="next-step" aria-labelledby="next-step-heading" hidden>
+      <h2 id="next-step-heading">刷新 App 更新通知</h2>
+      <p>在本仓库根目录运行以下命令。</p>
+      <div class="controls">
+        <code id="command" tabindex="-1">bash scripts/refresh_cdn.sh version</code>
+        <button id="copy-command" type="button">复制命令</button>
+      </div>
+      <p id="copy-status" role="status"></p>
+    </section>
+
+    <nav aria-label="发布指南和配置核对">
+      <a href="https://github.com/WisdomGardenInc/mobile-assets/blob/master/RELEASING.zh-CN.md#刷新-cdn">发布指南</a>
+      <a href="preview-release.html">发版预览</a>
+      <a href="https://mobile-download.tronclass.com.cn/version_update.json" target="_blank" rel="noopener">七牛版本配置</a>
+      <a href="https://cdn.jsdelivr.net/npm/@wisdomgarden/mobile-assets@latest/version_update.json" target="_blank" rel="noopener">jsDelivr 版本配置</a>
+    </nav>
+  </main>
+
+  <script>
+    const packageName = "@wisdomgarden/mobile-assets";
+    const sources = [
+      {
+        card: document.querySelector("#npm"),
+        url: `https://registry.npmjs.org/${encodeURIComponent(packageName)}/latest`,
+        readVersion: data => data.version,
+      },
+      {
+        card: document.querySelector("#jsdelivr"),
+        url: `https://data.jsdelivr.com/v1/package/npm/${packageName}`,
+        readVersion: data => data.tags?.latest,
+      },
+    ];
+    const targetInput = document.querySelector("#target-version");
+    const checkButton = document.querySelector("#check-button");
+    const summary = document.querySelector("#summary");
+    const nextStep = document.querySelector("#next-step");
+    const command = document.querySelector("#command");
+    const copyStatus = document.querySelector("#copy-status");
+    const versionPattern = /^(0|[1-9]\d*)\.(0|[1-9]\d*)\.(0|[1-9]\d*)$/;
+    const statusLabels = {
+      loading: "正在查询…",
+      available: "",
+      ready: "已就绪",
+      waiting: "版本不一致",
+      error: "查询失败",
+    };
+
+    let versions = [];
+    let retryTimer;
+
+    async function fetchVersion({ url, readVersion }) {
+      const response = await fetch(url, { cache: "no-store", signal: AbortSignal.timeout(10000) });
+      if (!response.ok) throw new Error(`HTTP ${response.status}`);
+
+      const version = readVersion(await response.json());
+      if (typeof version !== "string" || !version) throw new Error("响应缺少 latest 版本");
+      return version;
+    }
+
+    function renderStatus() {
+      clearTimeout(retryTimer);
+      const target = targetInput.value.trim().replace(/^v/i, "");
+      const invalidTarget = targetInput.value.trim() !== "" && !versionPattern.test(target);
+      targetInput.setAttribute("aria-invalid", String(invalidTarget));
+
+      const states = sources.map(({ card }, index) => {
+        const result = versions[index];
+        const output = card.querySelector("output");
+        const status = card.querySelector(".source-status");
+        let state = "loading";
+        if (result?.status === "rejected") {
+          state = "error";
+        } else if (result) {
+          state = "available";
+          if (target && !invalidTarget) state = result.value === target ? "ready" : "waiting";
+        }
+        output.textContent = result?.value ?? "—";
+        status.textContent = statusLabels[state];
+        status.dataset.state = state;
+        return state;
+      });
+
+      const ready = states.every(state => state === "ready");
+      nextStep.hidden = !ready;
+      if (!ready) copyStatus.textContent = "";
+
+      if (invalidTarget) {
+        summary.textContent = "请输入三段式包版本，例如 0.0.82 或 v0.0.82。";
+      } else if (states.includes("loading")) {
+        summary.textContent = "正在查询最新包版本。";
+      } else if (states.includes("error")) {
+        summary.textContent = "可以重新查询，或打开对应来源手动核对。";
+      } else if (ready) {
+        summary.textContent = `两处的最新版本均为 ${target}。`;
+      } else if (target) {
+        summary.textContent = "等待两处版本匹配，页面将在 15 秒后重新查询。";
+        retryTimer = setTimeout(checkVersions, 15000);
+      } else {
+        summary.textContent = "";
+      }
+    }
+
+    async function checkVersions() {
+      if (checkButton.disabled) return;
+      checkButton.disabled = true;
+      versions = [];
+      renderStatus();
+
+      versions = await Promise.allSettled(sources.map(fetchVersion));
+      checkButton.disabled = false;
+      renderStatus();
+    }
+
+    document.querySelector("#check-form").addEventListener("submit", event => {
+      event.preventDefault();
+      checkVersions();
+    });
+    targetInput.addEventListener("input", renderStatus);
+    document.querySelector("#copy-command").addEventListener("click", async () => {
+      try {
+        await navigator.clipboard.writeText(command.textContent);
+        copyStatus.textContent = "已复制命令。";
+      } catch {
+        command.focus();
+        const selection = window.getSelection();
+        const range = document.createRange();
+        range.selectNodeContents(command);
+        selection.removeAllRanges();
+        selection.addRange(range);
+        copyStatus.textContent = "已选中命令，可以手动复制。";
+      }
+    });
+
+    checkVersions();
+  </script>
+</body>
+
+</html>

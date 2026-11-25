@@ -23,7 +23,7 @@ App update notices and legal assets share the release steps below. Run commands 
 
 ### Check the release status
 
-Refresh when the latest npm version and jsDelivr's `tags.latest` both match `package.json`. [npm package](https://www.npmjs.com/package/@wisdomgarden/mobile-assets) · [jsDelivr package data](https://data.jsdelivr.com/v1/package/npm/@wisdomgarden/mobile-assets)
+Open the [release status page](https://wisdomgardeninc.github.io/mobile-assets/pages/check-release.html) to see the latest versions reported by npm and jsDelivr. Enter the version from `package.json` or the Git tag and wait for both sources to show 「已就绪」 (Ready) before refreshing. [npm package](https://www.npmjs.com/package/@wisdomgarden/mobile-assets) · [jsDelivr package data](https://data.jsdelivr.com/v1/package/npm/@wisdomgarden/mobile-assets)
 
 ### Select a refresh scope
 
