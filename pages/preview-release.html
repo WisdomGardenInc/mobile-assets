@@ -205,7 +205,7 @@
     let requestId = 0;
 
     async function readJson(filename) {
-      const response = await fetch(`./${filename}`, { cache: "no-cache" });
+      const response = await fetch(`../${filename}`, { cache: "no-cache" });
       if (!response.ok) {
         throw new Error(`Could not load ${filename}.`);
       }

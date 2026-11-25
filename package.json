@@ -15,7 +15,11 @@
     "/app-legal/*.json",
     "/app-legal/*.md",
     "/app-legal/*.js",
-    "/mhesi/version/*"
+    "/mhesi/version/*",
+    "/pages/preview-release.html",
+    "/pages/tools/index.html",
+    "/pages/tools/mathjax.html",
+    "/pages/tools/wg-qrcode-format.html"
   ],
   "devDependencies": {
     "enquirer": "^2.4.1",
